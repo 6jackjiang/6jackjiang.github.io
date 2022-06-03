@@ -1,0 +1,800 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="米兰的小铁匠">
+  <meta name="keywords" content="博客,技术博客,计算机,CS">
+  
+    <meta name="description" content="1. C&#x2F;C++内存分布  我们先来看下面的一段代码和相关问题  1234567891011121314151617int globalVar &#x3D; 1;static int staticGlobalVar &#x3D; 1;void Test()&amp;#123; static int staticVar &#x3D; 1; int localVar &#x3D; 1;  int num1[10] &#x3D; &amp;#123;1, 2,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C&#x2F;C++内存管理">
+<meta property="og:url" content="https://6jackjiang.github.io/2022/05/28/categories/c++/C_C++%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="米兰的小铁匠">
+<meta property="og:description" content="1. C&#x2F;C++内存分布  我们先来看下面的一段代码和相关问题  1234567891011121314151617int globalVar &#x3D; 1;static int staticGlobalVar &#x3D; 1;void Test()&amp;#123; static int staticVar &#x3D; 1; int localVar &#x3D; 1;  int num1[10] &#x3D; &amp;#123;1, 2,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/94337144f0cf4fe8a94e41ac52dfc0cc.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2250a6eecbf246fba51ea3f4c9586476.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/e0e33e38942341ef3306d04b16dc01b4.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/c269c81edd09479b889045ceca8ab708.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ba553b2f2ffa459da1e5ae67a9fc5fa8.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/838fb15363ba43f49ab3e1763ae8e319.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/e24f5e9c7f5743c290442e21e3b04414.png">
+<meta property="article:published_time" content="2022-05-28T07:05:22.000Z">
+<meta property="article:modified_time" content="2022-06-03T08:36:18.251Z">
+<meta property="article:author" content="米兰的小铁匠">
+<meta property="article:tag" content="c语言">
+<meta property="article:tag" content="开发语言">
+<meta property="article:tag" content="c++">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/94337144f0cf4fe8a94e41ac52dfc0cc.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>C/C++内存管理 - 米兰的小铁匠</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"6jackjiang.github.io","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>米兰的小铁匠</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="C/C++内存管理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-28 15:05" pubdate>
+          2022年5月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          53 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">C/C++内存管理</h1>
+            
+            <div class="markdown-body">
+              
+              <p></p>
+
+<p></p>
+<hr/>
+<h1><a id="1_CC_5"></a>1. C/C++内存分布</h1>
+<blockquote>
+<p>我们先来看下面的一段代码和相关问题</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> globalVar = <span class="hljs-number">1</span>;<br><span class="hljs-type">static</span> <span class="hljs-type">int</span> staticGlobalVar = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Test</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br> <span class="hljs-type">static</span> <span class="hljs-type">int</span> staticVar = <span class="hljs-number">1</span>;<br> <span class="hljs-type">int</span> localVar = <span class="hljs-number">1</span>;<br> <br> <span class="hljs-type">int</span> num1[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;;<br> <span class="hljs-type">char</span> char2[] = <span class="hljs-string">&quot;abcd&quot;</span>;<br> <span class="hljs-type">char</span>* pChar3 = <span class="hljs-string">&quot;abcd&quot;</span>;<br> <span class="hljs-type">int</span>* ptr1 = (<span class="hljs-type">int</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in">sizeof</span> (<span class="hljs-type">int</span>)*<span class="hljs-number">4</span>);<br> <span class="hljs-type">int</span>* ptr2 = (<span class="hljs-type">int</span>*)<span class="hljs-built_in">calloc</span>(<span class="hljs-number">4</span>, <span class="hljs-built_in">sizeof</span>(<span class="hljs-type">int</span>));<br> <span class="hljs-type">int</span>* ptr3 = (<span class="hljs-type">int</span>*)<span class="hljs-built_in">realloc</span>(ptr2, <span class="hljs-built_in">sizeof</span>(<span class="hljs-type">int</span>)*<span class="hljs-number">4</span>);<br> <span class="hljs-built_in">free</span> (ptr1);<br> <span class="hljs-built_in">free</span> (ptr3);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<ol><li>选择题：<br/> 选项: A.栈 B.堆 C.数据段 D.代码段<br/> globalVar在哪里？C staticGlobalVar在哪里？C<br/> staticVar在哪里？C localVar在哪里？A<br/> num1 在哪里？A<br/> char2在哪里？ A *char2在哪里？A<br/> pChar3在哪里？A *pChar3在哪里？D<br/> ptr1在哪里？A *ptr1在哪里？B</li><li>填空题：<br/> sizeof(num1) = 40;<br/> sizeof(char2) = 5; strlen(char2) = 4;<br/> sizeof(pChar3) = 4/8; strlen(pChar3) = 4;<br/> sizeof(ptr1) = 4/8;</li></ol>
+</blockquote>
+<ol><li>栈又叫堆栈，非静态局部变量/函数参数/返回值等等，栈是向下增长的。</li><li>内存映射段是高效的I/O映射方式，用于装载一个共享的动态内存库。用户可使用系统接口创建共享共<br/> 享内存，做进程间通信。（Linux课程如果没学到这块，现在只需要了解一下）</li><li>堆用于程序运行时动态内存分配，堆是可以上增长的。</li><li>数据段–存储全局数据和静态数据。</li><li>代码段–可执行的代码/只读常量。</li></ol>
+<hr/>
+<h1><a id="2_C_51"></a>2. C语言中动态内存管理方式</h1>
+<p>2.1 malloc/calloc/realloc和free</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">Test</span> <span class="hljs-params">()</span><br>&#123;<br> <span class="hljs-type">int</span>* p1 = (<span class="hljs-type">int</span>*) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<br> <span class="hljs-built_in">free</span>(p1);<br> <br> <span class="hljs-comment">// 1.malloc/calloc/realloc的区别是什么？</span><br> <span class="hljs-type">int</span>* p2 = (<span class="hljs-type">int</span>*)<span class="hljs-built_in">calloc</span>(<span class="hljs-number">4</span>, <span class="hljs-keyword">sizeof</span> (<span class="hljs-type">int</span>));<br> <span class="hljs-type">int</span>* p3 = (<span class="hljs-type">int</span>*)<span class="hljs-built_in">realloc</span>(p2, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>)*<span class="hljs-number">10</span>);<br> <br> <span class="hljs-comment">// 这里需要free(p2)吗？</span><br> <span class="hljs-built_in">free</span>(p3 );<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>看一下这个需要free(p2)吗？答案是不需要的，因为根据上面那个realloc底层实现上来看，他会在封装realloc内部进行操作，free()掉原空间，所以此时入去再去free()的话就相当于对一块原空间free了两次(以上陈述建立在新空间中开辟)。<br/> <strong>使用malloc、calloc、realloc函数申请的空间都为堆空间，程序结束之后，系统不会将其自动释放，需要程序员自主管理。</strong></p>
+<blockquote>
+<p>malloc函数的功能是开辟指定字节大小的内存空间，如果开辟成功就返回该空间的首地址，如果开辟失败就返回一个NULL。传参时只需传入需要开辟的字节个数。</p>
+</blockquote>
+<blockquote>
+<p>calloc函数的功能也是开辟指定大小的内存空间，如果开辟成功就返回该空间的首地址，如果开辟失败就返回一个NULL。calloc函数传参时需要传入开辟的内存用于存放的元素个数和每个元素的大小。calloc函数开辟好内存后会将空间内容中的每一个字节都初始化为0。</p>
+</blockquote>
+<blockquote>
+<p>realloc<br/> 1.根据size申请一段新的空间<br/> 2.对原空间的内容拷贝原空间size个字节大小。(假如说缩容的话，则可能会造成数据丢失).<br/> 3.释放掉原空间(这点很关键)，这块的realloc会有两种处理策略，一个是在原空间上进行操作(扩容或者减容)不去寻找新空间 ，第二种情况是在新空间中开辟一段空间。(因为这是操作系统做决定的，所以我们无法模拟出来)。<br/> 4.在开辟成功的基础上返回新开辟的空间首地址。</p>
+</blockquote>
+<hr/>
+<h1><a id="3C_85"></a>3.C++中动态内存管理</h1>
+<p>C语言内存管理方式在C++中可以继续使用，但有些地方就无能为力而且使用起来比较麻烦，因此C++又提出了自己的内存管理方式：通过new和delete操作符进行动态内存管理。</p>
+<h2><a id="31_newdelete_87"></a>3.1 new/delete操作内置类型</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Test</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br> <span class="hljs-comment">// 动态申请一个int类型的空间</span><br> <span class="hljs-type">int</span>* ptr4 = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span>;<br> <br> <span class="hljs-comment">// 动态申请一个int类型的空间并初始化为10</span><br> <span class="hljs-type">int</span>* ptr5 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>(<span class="hljs-number">10</span>);<br> <br> <span class="hljs-comment">// 动态申请10个int类型的空间</span><br> <span class="hljs-type">int</span>* ptr6 = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span>[<span class="hljs-number">10</span>];<br> <br> <span class="hljs-keyword">delete</span> ptr4;<br> <span class="hljs-keyword">delete</span> ptr5;<br> <span class="hljs-keyword">delete</span>[] ptr6;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：申请和释放单个元素的空间，使用new和delete操作符，申请和释放连续的空间，使用new[]和delete[]</p>
+</blockquote>
+<h2><a id="32_newdelete_109"></a>3.2 new和delete操作自定义类型</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> <span class="hljs-built_in">Test</span>()<br> : _data(<span class="hljs-number">0</span>)<br> &#123;<br> cout&lt;&lt;<span class="hljs-string">&quot;Test():&quot;</span>&lt;&lt;<span class="hljs-keyword">this</span>&lt;&lt;endl;<br> &#125;<br> ~<span class="hljs-built_in">Test</span>()<br> &#123;<br> cout&lt;&lt;<span class="hljs-string">&quot;~Test():&quot;</span>&lt;&lt;<span class="hljs-keyword">this</span>&lt;&lt;endl;<br> &#125;<br> <br><span class="hljs-keyword">private</span>:<br> <span class="hljs-type">int</span> _data;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Test2</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br> <span class="hljs-comment">// 申请单个Test类型的空间</span><br> Test* p1 = (Test*)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in">sizeof</span>(Test));<br> <span class="hljs-built_in">free</span>(p1);<br> <br> <span class="hljs-comment">// 申请10个Test类型的空间</span><br> Test* p2 = (Test*)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in">sizoef</span>(Test) * <span class="hljs-number">10</span>);<br> <span class="hljs-built_in">free</span>(p2);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Test2</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br> <span class="hljs-comment">// 申请单个Test类型的对象</span><br> Test* p1 = <span class="hljs-keyword">new</span> Test;<br> <span class="hljs-keyword">delete</span> p1;<br> <br> <span class="hljs-comment">// 申请10个Test类型的对象</span><br> Test* p2 = <span class="hljs-keyword">new</span> Test[<span class="hljs-number">10</span>];<br> <span class="hljs-keyword">delete</span>[] p2;<br>&#125;<br><br>&gt; 注意：在申请自定义类型的空间时，<span class="hljs-keyword">new</span>会调用构造函数，<span class="hljs-keyword">delete</span>会调用析构函数，而malloc与free不会<br><br><br></code></pre></td></tr></table></figure>
+<hr/>
+<h1><a id="4_operator_newoperator_delete_155"></a>4. operator new与operator delete函数</h1>
+<p>4.1 operator new与operator delete函数（重点）<br/> new和delete是用户进行动态内存申请和释放的操作符，operator new 和operator delete是系统提供的<br/> 全局函数，new在底层调用operator new全局函数来申请空间，delete在底层通过operator delete全局<br/> 函数来释放空间。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment">operator new：该函数实际通过malloc来申请空间，当malloc申请空间成功时直接返回；申请空间失败，</span><br><span class="hljs-comment">尝试执行空 间不足应对措施，如果改应对措施用户设置了，则继续申请，否则抛异常。</span><br><span class="hljs-comment">*/</span><br><span class="hljs-function"><span class="hljs-type">void</span> *__CRTDECL <span class="hljs-keyword">operator</span> <span class="hljs-title">new</span><span class="hljs-params">(<span class="hljs-type">size_t</span> size)</span> _<span class="hljs-title">THROW1</span><span class="hljs-params">(_STD bad_alloc)</span></span><br><span class="hljs-function"></span>&#123;<br> <span class="hljs-comment">// try to allocate size bytes</span><br> <span class="hljs-type">void</span> *p;<br> <span class="hljs-keyword">while</span> ((p = <span class="hljs-built_in">malloc</span>(size)) == <span class="hljs-number">0</span>)<br> <span class="hljs-keyword">if</span> (_callnewh(size) == <span class="hljs-number">0</span>)<br> &#123;<br> <span class="hljs-comment">// report no memory</span><br> <span class="hljs-comment">// 如果申请内存失败了，这里会抛出bad_alloc 类型异常</span><br> <span class="hljs-type">static</span> <span class="hljs-type">const</span> std::bad_alloc nomem;<br> _RAISE(nomem);<br> &#125;<br> <span class="hljs-keyword">return</span> (p);<br>&#125;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">operator delete: 该函数最终是通过free来释放空间的</span><br><span class="hljs-comment">*/</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-keyword">operator</span> <span class="hljs-title">delete</span><span class="hljs-params">(<span class="hljs-type">void</span> *pUserData)</span></span><br><span class="hljs-function"></span>&#123;<br> _CrtMemBlockHeader * pHead;<br> <span class="hljs-built_in">RTCCALLBACK</span>(_RTC_Free_hook, (pUserData, <span class="hljs-number">0</span>));<br> <span class="hljs-keyword">if</span> (pUserData == <span class="hljs-literal">NULL</span>)<br><span class="hljs-keyword">return</span>;<br> _mlock(_HEAP_LOCK); <span class="hljs-comment">/* block other threads */</span><br> __TRY<br> <span class="hljs-comment">/* get a pointer to memory block header */</span><br> pHead = <span class="hljs-built_in">pHdr</span>(pUserData);<br> <span class="hljs-comment">/* verify block type */</span><br> _ASSERTE(_BLOCK_TYPE_IS_VALID(pHead-&gt;nBlockUse));<br> _free_dbg( pUserData, pHead-&gt;nBlockUse );<br> __FINALLY<br> _munlock(_HEAP_LOCK); <span class="hljs-comment">/* release other threads */</span><br> __END_TRY_FINALLY<br> <span class="hljs-keyword">return</span>;<br>&#125;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">free的实现</span><br><span class="hljs-comment">*/</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> free(p) _free_dbg(p, _NORMAL_BLOCK)</span><br><br><br></code></pre></td></tr></table></figure>
+<p>通过上述两个全局函数的实现知道，operator new 实际也是通过malloc来申请空间，如果malloc申请空间<br/> 成功就直接返回，否则执行用户提供的空间不足应对措施，如果用户提供该措施就继续申请，否则就抛异<br/> 常。operator delete 最终是通过free来释放空间的。</p>
+<hr/>
+<h1><a id="5_newdelete_214"></a>5. new和delete的实现原理</h1>
+<h2><a id="51__215"></a>5.1 内置类型</h2>
+<blockquote>
+<p>如果申请的是内置类型的空间，new和malloc，delete和free基本类似，不同的地方是：new/delete申请和释放的是单个元素的空间，new[]和delete[]申请的是连续空间，而且new在申请空间失败时会抛异常，malloc会返回NULL。</p>
+</blockquote>
+<h2><a id="52__218"></a>5.2 自定义类型</h2>
+<p>new的原理</p>
+<ol><li>调用operator new函数申请空间</li><li>在申请的空间上执行构造函数，完成对象的构造</li></ol>
+<p>delete的原理</p>
+<ol><li>在空间上执行析构函数，完成对象中资源的清理工作</li><li>调用operator delete函数释放对象的空间</li></ol>
+<p>new T[N]的原理</p>
+<ol><li>调用operator new[]函数，在operator new[]中实际调用operator new函数完成N个对象空间的申请</li><li>在申请的空间上执行N次构造函数</li></ol>
+<p>delete[]的原理</p>
+<ol><li>在释放的对象空间上执行N次析构函数，完成N个对象中资源的清理</li><li>调用operator delete[]释放空间，实际在operator delete[]中调用operator delete来释放空间</li></ol>
+<hr/>
+<h1><a id="6_newplacementnew_237"></a>6. 定位new表达式(placement-new)</h1>
+<p>定位new表达式是在已分配的原始内存空间中调用构造函数初始化一个对象。<br/> 使用格式：<br/> new (place_address) type或者new (place_address) type(initializer-list)<br/> place_address必须是一个指针，initializer-list是类型的初始化列表<br/> 使用场景：<br/> 定位new表达式在实际中一般是配合内存池使用。因为内存池分配出的内存没有初始化，所以如果是自定义<br/> 类型的对象，需要使用new的定义表达式进行显示调构造函数进行初始化。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> <span class="hljs-built_in">Test</span>()<br> : _data(<span class="hljs-number">0</span>)<br> &#123;<br> cout&lt;&lt;<span class="hljs-string">&quot;Test():&quot;</span>&lt;&lt;<span class="hljs-keyword">this</span>&lt;&lt;endl;<br> &#125;<br> ~<span class="hljs-built_in">Test</span>()<br> &#123;<br> cout&lt;&lt;<span class="hljs-string">&quot;~Test():&quot;</span>&lt;&lt;<span class="hljs-keyword">this</span>&lt;&lt;endl;<br> &#125;<br> <br><span class="hljs-keyword">private</span>:<br> <span class="hljs-type">int</span> _data;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Test</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br> <span class="hljs-comment">// pt现在指向的只不过是与Test对象相同大小的一段空间，还不能算是一个对  //象，因为构造函数没有执行</span><br> Test* pt = (Test*)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in">sizeof</span>(Test));<br> <br> <span class="hljs-keyword">new</span>(pt) Test; <span class="hljs-comment">// 注意：如果Test类的构造函数有参数时，此处需要传参</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<hr/>
+<h1><a id="7__276"></a>7. 常见面试题</h1>
+<h2><a id="71_mallocfreenewdelete_278"></a>7.1 malloc/free和new/delete的区别</h2>
+<blockquote>
+<p>malloc/free和new/delete的共同点是：都是从堆上申请空间，并且需要用户手动释放。不同的地方是：</p>
+<ol><li>malloc和free是函数，new和delete是操作符</li><li>malloc申请的空间不会初始化，new可以初始化</li><li>malloc申请空间时，需要手动计算空间大小并传递，new只需在其后跟上空间的类型即可</li><li>malloc的返回值为void*, 在使用时必须强转，new不需要，因为new后跟的是空间的类型</li><li>malloc申请空间失败时，返回的是NULL，因此使用时必须判空，new不需要，但是new需要捕获异常</li><li>申请自定义类型对象时，malloc/free只会开辟空间，不会调用构造函数与析构函数，而new在申请空间<br/> 后会调用构造函数完成对象的初始化，delete在释放空间前会调用析构函数完成空间中资源的清理</li></ol>
+</blockquote>
+<h2><a id="72__288"></a>7.2 内存泄漏</h2>
+<h3><a id="721__289"></a>7.2.1 什么是内存泄漏，内存泄漏的危害</h3>
+<blockquote>
+<p>什么是内存泄漏：内存泄漏指因为疏忽或错误造成程序未能释放已经不再使用的内存的情况。内存泄漏并不是指内存在物理上的消失，而是应用程序分配某段内存后，因为设计错误，失去了对该段内存的控制，因而造成了内存的浪费。</p>
+</blockquote>
+<blockquote>
+<p>内存泄漏的危害：长期运行的程序出现内存泄漏，影响很大，如操作系统、后台服务等等，出现内存泄漏会导致响应越来越慢，最终卡死。</p>
+</blockquote>
+<h3><a id="722__296"></a>7.2.2 内存泄漏分类（了解）</h3>
+<blockquote>
+<p>C/C++程序中一般我们关心两种方面的内存泄漏： 堆内存泄漏(Heap leak) 堆内存指的是程序执行中依据须要分配通过malloc /<br/> calloc / realloc / new等从堆中分配的一块内存， 用完后必须通过调用相应的 free或者delete<br/> 删掉。假设程序的设计错误导致这部分内存没有被释放，那 么以后这部分空间将无法再被使用，就会产生Heap Leak。 系统资源泄漏<br/> 指程序使用系统分配的资源，比方套接字、文件描述符、管道等没有使用对应的函数释放掉，导致系统<br/> 资源的浪费，严重可导致系统效能减少，系统执行不稳定。</p>
+</blockquote>
+<h3><a id="723__305"></a>7.2.3 如何检测内存泄漏（了解）</h3>
+<blockquote>
+<p>在linux下内存泄漏检测：<a target="_blank" rel="noopener" href="https://blog.csdn.net/gatieme/article/details/51959654">linux下几款内存泄漏检测工具</a><br/> 在windows下使用第三方工具：<a target="_blank" rel="noopener" href="https://blog.csdn.net/GZrhaunt/article/details/56839765">VLD工具说明</a><br/> 其他工具：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/liangxiaofeng/p/4318499.html">内存泄漏工具比较</a></p>
+</blockquote>
+<h3><a id="724_311"></a>7.2.4如何避免内存泄漏</h3>
+<blockquote>
+<ol><li>工程前期良好的设计规范，养成良好的编码规范，申请的内存空间记着匹配的去释放。ps：这个理想状<br/> 态。但是如果碰上异常时，就算注意释放了，还是可能会出问题。需要下一条智能指针来管理才有保<br/> 证。</li><li>采用RAII思想或者智能指针来管理资源。</li><li>有些公司内部规范使用内部实现的私有内存管理库。这套库自带内存泄漏检测的功能选项。</li><li>出问题了使用内存泄漏工具检测。ps：不过很多工具都不够靠谱，或者收费昂贵。 总结一下: 内存泄漏非常常见，解决方案分为两种： 1、事前预防型。如智能指针等。 2、事后查错型。如泄漏检测工具。</li></ol>
+</blockquote>
+<h2><a id="73_4G_321"></a>7.3 如何一次在堆上申请4G的内存？</h2>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/94337144f0cf4fe8a94e41ac52dfc0cc.png" srcset="/img/loading.gif" lazyload><br/> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/2250a6eecbf246fba51ea3f4c9586476.png" srcset="/img/loading.gif" lazyload/></img></p>
+<p>将X86 改成 X64</p>
+<hr/>
+<h1><a id="_330"></a>一些好康的图片，希望你能喜欢</h1>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/e0e33e38942341ef3306d04b16dc01b4.png#pic_center" srcset="/img/loading.gif" lazyload/></p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/c269c81edd09479b889045ceca8ab708.png" srcset="/img/loading.gif" lazyload><br/> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/ba553b2f2ffa459da1e5ae67a9fc5fa8.png" srcset="/img/loading.gif" lazyload><br/> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/838fb15363ba43f49ab3e1763ae8e319.png" srcset="/img/loading.gif" lazyload><br/> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/e24f5e9c7f5743c290442e21e3b04414.png" srcset="/img/loading.gif" lazyload/></img></img></img></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c/" class="category-chain-item">c++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+      
+        <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+      
+        <a href="/tags/c/">#c++</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>C/C++内存管理</div>
+      <div>https://6jackjiang.github.io/2022/05/28/categories/c++/C_C++内存管理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>米兰的小铁匠</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月28日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/01/categories/c++/C++%E7%A8%8B%E5%BA%8F%E5%91%98%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9%E4%B9%8B%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%A8%A1%E6%9D%BF%E6%A6%82%E5%BF%B5%E5%8F%8A%E7%94%A8%E6%B3%95/" title="C++程序员进大厂必备知识点之懒人专用模板概念及用法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C++程序员进大厂必备知识点之懒人专用模板概念及用法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/26/categories/c++/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B8%8B%E7%AF%87%E4%B9%8B%E5%86%8D%E8%B0%88%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%8C%E5%8F%8B%E5%85%83%EF%BC%8C%E5%86%85%E9%83%A8%E7%B1%BB/" title="类和对象下篇之再谈构造函数，友元，内部类">
+                        <span class="hidden-mobile">类和对象下篇之再谈构造函数，友元，内部类</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

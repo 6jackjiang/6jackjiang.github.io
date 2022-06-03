@@ -1,0 +1,774 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="米兰的小铁匠">
+  <meta name="keywords" content="博客,技术博客,计算机,CS">
+  
+    <meta name="description" content="类和对象下篇 再谈构造函数 构造函数体赋值 123456789101112131415class Date&amp;#123;public:    Date(int year, int month, int day)    &amp;#123;        _year &#x3D; year;        _month &#x3D; month;        _day &#x3D; day;    &amp;#125;private:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类和对象下篇之再谈构造函数，友元，内部类">
+<meta property="og:url" content="https://6jackjiang.github.io/2022/05/26/categories/c++/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B8%8B%E7%AF%87%E4%B9%8B%E5%86%8D%E8%B0%88%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%8C%E5%8F%8B%E5%85%83%EF%BC%8C%E5%86%85%E9%83%A8%E7%B1%BB/index.html">
+<meta property="og:site_name" content="米兰的小铁匠">
+<meta property="og:description" content="类和对象下篇 再谈构造函数 构造函数体赋值 123456789101112131415class Date&amp;#123;public:    Date(int year, int month, int day)    &amp;#123;        _year &#x3D; year;        _month &#x3D; month;        _day &#x3D; day;    &amp;#125;private:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/81fdea5148ca41823d3366b82d4348fb.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d3a68bda4dc0fe738484c68a4bec1946.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/ce78920ebcca6366ece00398fed71f99.png#pic_center">
+<meta property="article:published_time" content="2022-05-26T10:49:01.000Z">
+<meta property="article:modified_time" content="2022-06-03T08:36:18.691Z">
+<meta property="article:author" content="米兰的小铁匠">
+<meta property="article:tag" content="开发语言">
+<meta property="article:tag" content="c++">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/81fdea5148ca41823d3366b82d4348fb.png#pic_center">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>类和对象下篇之再谈构造函数，友元，内部类 - 米兰的小铁匠</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"6jackjiang.github.io","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>米兰的小铁匠</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="类和对象下篇之再谈构造函数，友元，内部类"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-26 18:49" pubdate>
+          2022年5月26日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          46 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">类和对象下篇之再谈构造函数，友元，内部类</h1>
+            
+            <div class="markdown-body">
+              
+              <p></p>
+
+<p></p>
+<h1><a id="_2"></a>类和对象下篇</h1>
+<h2><a id="_4"></a>再谈构造函数</h2>
+<h3><a id="_6"></a>构造函数体赋值</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year, <span class="hljs-type">int</span> month, <span class="hljs-type">int</span> day)<br>    &#123;<br>        _year = year;<br>        _month = month;<br>        _day = day;<br>    &#125;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">int</span> _year;<br>    <span class="hljs-type">int</span> _month;<br>    <span class="hljs-type">int</span> _day;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>虽然上述构造函数调用之后，对象中已经有了一个初始值，**但是不能将其称作为类对象成员的初始化，构造 函数体中的语句只能将其称作为赋初值，而不能称作初始化。**因为初始化只能初始化一次，而构造函数体内 可以多次赋值。</p>
+</blockquote>
+<h3><a id="_27"></a>初始化列表</h3>
+<blockquote>
+<p>初始化列表：以一个冒号开始，接着是一个以逗号分隔的数据成员列表，每个"成员变量"后面跟一个放在括 号中的初始值或表达式。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year=<span class="hljs-number">1</span>,<span class="hljs-type">int</span> month=<span class="hljs-number">1</span>,<span class="hljs-type">int</span> day=<span class="hljs-number">1</span>)<br>        :_year(year)<br>        ,_month(month)<br>        ,_day(day)<br>    &#123;<br>        <br>    &#125;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">int</span> _year;<br>    <span class="hljs-type">int</span> _month;<br>    <span class="hljs-type">int</span> _day;<br>    <br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<p><strong>【注意】</strong></p>
+<p>1.每个成员变量在初始化列表<strong>只能出现一次</strong>（初始化只能初始化一次）</p>
+<p>2.类包含一下成员必须在初始化列表初始化：</p>
+<p>​ 1.引用成员变量</p>
+<p>​ 2.自定义类型成员（该类没有默认构造函数）</p>
+<p>​ 3. const 成员变量</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span><br>&#123;<br>	<span class="hljs-keyword">public</span>:<br> 	<span class="hljs-built_in">A</span>(<span class="hljs-type">int</span> a)<br>	 :_a(a)<br> 	&#123;&#125;<br><span class="hljs-keyword">private</span>:<br> 	<span class="hljs-type">int</span> _a;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">B</span>(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> ref)<br>	:_aobj(a)<br> 	,_ref(ref)<br>	,_n(<span class="hljs-number">10</span>)<br> 	&#123;&#125;<br><span class="hljs-keyword">private</span>:<br> 	A _aobj; <span class="hljs-comment">// 没有默认构造函数</span><br> 	<span class="hljs-type">int</span>&amp; _ref; <span class="hljs-comment">// 引用</span><br> 	<span class="hljs-type">const</span> <span class="hljs-type">int</span> _n; <span class="hljs-comment">// const </span><br>&#125;;<br><br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>ps：不用传参的构造函数就是默认构造函数</p>
+</blockquote>
+<p>3.尽量使用初始化列表进行初始化，因为不管你是否使用初始化列表，对于自定义类型成员变量，一定会先使 用初始化列表初始化。</p>
+<p>4.成员变量在类中声明次序就是其在初始化列表中的初始化顺序，与其在初始化列表中的先后次序无关</p>
+<h3><a id="explicit_96"></a>explicit关键字</h3>
+<blockquote>
+<p>构造函数不仅可以构造与初始化对象，对于单个参数的构造函数，还具有类型转换的作用。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> 	<span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year)<br> 	:_year(year)<br> 	&#123;&#125;<br> <br> 	<span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">Date</span><span class="hljs-params">(<span class="hljs-type">int</span> year)</span></span><br><span class="hljs-function"> 	:_year(year)</span><br><span class="hljs-function"> 	&#123;</span>&#125;<br> <br><span class="hljs-keyword">private</span>:<br> 	<span class="hljs-type">int</span> _year;<br> 	<span class="hljs-type">int</span> _month:<br> 	<span class="hljs-type">int</span> _day;<br>&#125;；<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">TestDate</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br> 	<span class="hljs-function">Date <span class="hljs-title">d1</span><span class="hljs-params">(<span class="hljs-number">2018</span>)</span></span>;<br> <br> 	<span class="hljs-comment">// 用一个整形变量给日期类型对象赋值</span><br>	 <span class="hljs-comment">// 实际编译器背后会用2019构造一个无名对象，最后用无名对象给d1对象进行赋值</span><br> 	d1 = <span class="hljs-number">2019</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>上述代码可读性不是很好，用explicit修饰构造函数，将会禁止单参构造函数的隐式转换。</p>
+</blockquote>
+<h3><a id="static_131"></a>static成员</h3>
+<blockquote>
+<p>声明为static的类成员称为类的静态成员，用static修饰的成员变量，称之为静态成员变量；用static修饰的 成员函数，称之为静态成员函数。静态的成员变量一定要在类外进行初始化</p>
+<p>面试题：实现一个类，计算中程序中创建出了多少个类对象。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> 	<span class="hljs-built_in">A</span>() &#123;++_scount;&#125;<br> 	<span class="hljs-built_in">A</span>(<span class="hljs-type">const</span> A&amp;amp; t) &#123;++_scount;&#125;<br> 	<span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title">GetACount</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> _scount;&#125;<br><span class="hljs-keyword">private</span>:<br> 	<span class="hljs-type">static</span> <span class="hljs-type">int</span> _scount;<br> &#125;;<br><span class="hljs-type">int</span> A::s_count = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">TestA</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	cout&amp;lt;&amp;lt;A::<span class="hljs-built_in">GetACount</span>()&amp;lt;&amp;lt;endl;<br>    A a1, a2;<br> 	<span class="hljs-function">A <span class="hljs-title">a3</span><span class="hljs-params">(a1)</span></span>;<br> 	cout&amp;lt;&amp;lt;A::<span class="hljs-built_in">GetACount</span>()&amp;lt;&amp;lt;endl;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<ol><li> <p>静态成员为所有类对象所共享，不属于某个具体的实例</p> </li><li> <p>静态成员变量必须在类外定义，定义时不添加static关键字</p> </li><li> <p>类静态成员即可用类名::静态成员或者对象.静态成员来访问</p> </li><li> <p>静态成员函数没有隐藏的this指针，不能访问任何非静态成员</p> </li><li> <p>静态成员和类的普通成员一样，也有public、protected、private3种访问级别，也可以具有返回值</p> </li></ol>
+</blockquote>
+<h2><a id="C11__164"></a>C++11 的成员初始化新玩法。</h2>
+<p>C++11支持非静态成员变量在声明时进行初始化赋值，但是要注意这里不是初始化，这里是给声明的成员变 量缺省值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>	 <span class="hljs-built_in">B</span>(<span class="hljs-type">int</span> b = <span class="hljs-number">0</span>)<br>	 :_b(b)<br> 	&#123;&#125;<br>	 <span class="hljs-type">int</span> _b;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> 	<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Print</span><span class="hljs-params">()</span></span><br><span class="hljs-function"> 	</span>&#123;<br> 		cout &lt;&lt; a &lt;&lt; endl;<br> 		cout &lt;&lt; b._b&lt;&lt; endl;<br> 		cout &lt;&lt; p &lt;&lt; endl;<br> 	&#125;<br><span class="hljs-keyword">private</span>:<br>	 <span class="hljs-comment">// 非静态成员变量，可以在成员声明时给缺省值。</span><br> 	<span class="hljs-type">int</span> a = <span class="hljs-number">10</span>;<br>	 B b = <span class="hljs-number">20</span>;<br> 	<span class="hljs-type">int</span>* p = (<span class="hljs-type">int</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">4</span>);<br> 	<span class="hljs-type">static</span> <span class="hljs-type">int</span> n;<br>&#125;;<br>	<span class="hljs-type">int</span> A::n = <span class="hljs-number">10</span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br> 	A a;<br> 	a.<span class="hljs-built_in">Print</span>();<br> 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h2><a id="_204"></a>友元</h2>
+<blockquote>
+<p>友元分为：友元函数和友元类 友元提供了一种突破封装的方式，有时提供了便利。但是友元会增加耦合度，破坏了封装，所以友元不宜多 用。</p>
+</blockquote>
+<h3><a id="_208"></a>友元函数</h3>
+<blockquote>
+<p>问题：现在我们尝试去重载operator&lt;&lt;，然后发现我们没办法将operator&lt;&lt;重载成成员函数。因为cout的 输出流对象和隐含的this指针在抢占第一个参数的位置。this指针默认是第一个参数也就是左操作数了。但是 实际使用中cout需要是第一个形参对象，才能正常使用。所以我们要将operator&lt;&lt;重载成全局函数。但是这 样的话，又会导致类外没办法访问成员，那么这里就需要友元来解决。operator&gt;&gt;同理。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> 	<span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year, <span class="hljs-type">int</span> month, <span class="hljs-type">int</span> day)<br> 	: _year(year)<br> 	, _month(month)<br> 	, _day(day)<br> &#123;&#125;<br> <br> ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(ostream&amp; _cout)<br> &#123;<br> 	_cout&lt;&lt;d._year&lt;&lt;<span class="hljs-string">&quot;-&quot;</span>&lt;&lt;d._month&lt;&lt;<span class="hljs-string">&quot;-&quot;</span>&lt;&lt;d._day;<br> 	<span class="hljs-keyword">return</span> _cout;<br> &#125;<br> <br>prvate:<br> 	<span class="hljs-type">int</span> _year;<br>	 <span class="hljs-type">int</span> _month;<br>	 <span class="hljs-type">int</span> _day<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-function">Date <span class="hljs-title">d</span><span class="hljs-params">(<span class="hljs-number">2017</span>, <span class="hljs-number">12</span>, <span class="hljs-number">24</span>)</span></span>;<br>	 d&lt;&lt;cout;<br> 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>友元函数可以直接访问类的私有成员，它是定义在类外部的普通函数，不属于任何类，但需要在类的内部声 明，声明时需要加friend关键字。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span><br>&#123;<br><span class="hljs-keyword">friend</span> ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(ostream&amp; _cout, <span class="hljs-type">const</span> Date&amp; d);<br><span class="hljs-keyword">friend</span> istream&amp; <span class="hljs-keyword">operator</span>&gt;&gt;(istream&amp; _cin, Date&amp; d);<br><span class="hljs-keyword">public</span>:<br> <span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year, <span class="hljs-type">int</span> month, <span class="hljs-type">int</span> day)<br> : _year(year)<br> , _month(month)<br> , _day(day)<br> &#123;&#125;<br> <br><span class="hljs-keyword">private</span>:<br> <span class="hljs-type">int</span> _year;<br> <span class="hljs-type">int</span> _month;<br> <span class="hljs-type">int</span> _day；<br>&#125;;<br>ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(ostream&amp; _cout, <span class="hljs-type">const</span> Date&amp; d)<br>&#123;<br> _cout&lt;&lt;d._year&lt;&lt;<span class="hljs-string">&quot;-&quot;</span>&lt;&lt;d._month&lt;&lt;<span class="hljs-string">&quot;-&quot;</span>&lt;&lt;d._day;<br> <br> <span class="hljs-keyword">return</span> _cout;<br>&#125;<br>istream&amp; <span class="hljs-keyword">operator</span>&gt;&gt;(istream&amp; _cin, Date&amp; d)<br>&#123;<br> _cin&gt;&gt;d._year;<br> _cin&gt;&gt;d._month;<br> _cin&gt;&gt;d._day;<br> <br> <span class="hljs-keyword">return</span> _cin;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br> Date d;<br> cin&gt;&gt;d;<br> cout&lt;&lt;d&lt;&lt;endl;<br> <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<p>说明: 友元函数可访问类的私有和保护成员，但不是类的成员函数</p>
+<p>​ 友元函数不能用const修饰</p>
+<p>​ 友元函数可以在类定义的任何地方声明，不受类访问限定符限制</p>
+<p>​ 一个函数可以是多个类的友元函数</p>
+<p>​ 友元函数的调用与普通函数的调用和原理相同</p>
+<h3><a id="_294"></a>友元类</h3>
+<p>友元类的所有成员函数都可以是另一个类的友元函数，都可以访问另一个类中的非公有成员。</p>
+<p>友元关系是单向的，不具有交换性。</p>
+<p>比如上述Time类和Date类，在Time类中声明Date类为其友元类，那么可以在Date类中直接访问Time 类的私有成员变量，但想在Time类中访问Date类中私有的成员变量则不行。</p>
+<p>友元关系不能传递 如果B是A的友元，C是B的友元，则不能说明C时A的友元。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span>; <span class="hljs-comment">// 前置声明</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Time</span><br>&#123;<br> <span class="hljs-keyword">friend</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span>; <span class="hljs-comment">// 声明日期类为时间类的友元类，则在日期类中就直接访问Time类中的私有成</span><br>员变量<br><span class="hljs-keyword">public</span>:<br> <span class="hljs-built_in">Time</span>(<span class="hljs-type">int</span> hour, <span class="hljs-type">int</span> minute, <span class="hljs-type">int</span> second)<br> : _hour(hour)<br> , _minute(minute)<br> , _second(second)<br> &#123;&#125;<br> <br><span class="hljs-keyword">private</span>:<br> <span class="hljs-type">int</span> _hour;<br> <span class="hljs-type">int</span> _minute;<br> <span class="hljs-type">int</span> _second;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> <span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year = <span class="hljs-number">1900</span>, <span class="hljs-type">int</span> month = <span class="hljs-number">1</span>, <span class="hljs-type">int</span> day = <span class="hljs-number">1</span>)<br> : _year(year)<br> , _month(month)<br> , _day(day)<br> &#123;&#125;<br> <br> <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetTimeOfDate</span><span class="hljs-params">(<span class="hljs-type">int</span> hour, <span class="hljs-type">int</span> minute, <span class="hljs-type">int</span> second)</span></span><br><span class="hljs-function"> </span>&#123;<br> <span class="hljs-comment">// 直接访问时间类私有的成员变量</span><br> <span class="hljs-type">_t</span>._hour = hour;<br> <span class="hljs-type">_t</span>._minute = minute;<br> <span class="hljs-type">_t</span>.second = second;<br> &#125;<br> <br><span class="hljs-keyword">private</span>:<br> <span class="hljs-type">int</span> _year;<br> <span class="hljs-type">int</span> _month;<br> <span class="hljs-type">int</span> _day;<br> Time <span class="hljs-type">_t</span>;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<h2><a id="_351"></a>内部类</h2>
+<h3><a id="_353"></a>概念及特性</h3>
+<p>概念：如果一个类定义在另一个类的内部，这个内部类就叫做内部类。注意此时这个内部类是一个独立的 类，它不属于外部类，更不能通过外部类的对象去调用内部类。外部类对内部类没有任何优越的访问权限。 注意：内部类就是外部类的友元类。注意友元类的定义，内部类可以通过外部类的对象参数来访问外部类中 的所有成员。但是外部类不是内部类的友元。</p>
+<p>特性</p>
+<ol><li>内部类可以定义在外部类的public、protected、private都是可以的。</li><li>注意内部类可以直接访问外部类中的static、枚举成员，不需要外部类的对象/类名。</li><li>sizeof(外部类)=外部类，和内部类没有任何关系。</li></ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span><br>&#123;<br><span class="hljs-keyword">private</span>:<br> <span class="hljs-type">static</span> <span class="hljs-type">int</span> k;<br> <span class="hljs-type">int</span> h;<br><span class="hljs-keyword">public</span>:<br> <span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span><br> &#123;<br> <span class="hljs-keyword">public</span>:<br> <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-type">const</span> A&amp; a)</span></span><br><span class="hljs-function"> </span>&#123;<br> cout &lt;&lt; k &lt;&lt; endl;<span class="hljs-comment">//OK</span><br> cout &lt;&lt; a.h &lt;&lt; endl;<span class="hljs-comment">//OK</span><br> &#125;<br> &#125;;<br>&#125;;<br><span class="hljs-type">int</span> A::k = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br> A::B b;<br> b.<span class="hljs-built_in">foo</span>(<span class="hljs-built_in">A</span>());<br> <br> <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/81fdea5148ca41823d3366b82d4348fb.png#pic_center" srcset="/img/loading.gif" lazyload><br/> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/d3a68bda4dc0fe738484c68a4bec1946.png#pic_center" srcset="/img/loading.gif" lazyload><br/> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/ce78920ebcca6366ece00398fed71f99.png#pic_center" srcset="/img/loading.gif" lazyload/></img></img></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c/" class="category-chain-item">c++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+      
+        <a href="/tags/c/">#c++</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>类和对象下篇之再谈构造函数，友元，内部类</div>
+      <div>https://6jackjiang.github.io/2022/05/26/categories/c++/类和对象下篇之再谈构造函数，友元，内部类/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>米兰的小铁匠</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月26日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/28/categories/c++/C_C++%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" title="C/C++内存管理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C/C++内存管理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/24/categories/c++/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B8%AD%EF%BC%8C%E9%80%9A%E8%BF%87%E6%97%A5%E6%9C%9F%E7%B1%BB%E6%9D%A5%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%EF%BC%8C%E9%87%8D%E8%BD%BD%EF%BC%8C%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%EF%BC%8C%E8%B5%8B%E5%80%BC%E9%87%8D%E8%BD%BD%EF%BC%8C%E5%8F%96%E5%9C%B0%E5%9D%80%E9%87%8D%E8%BD%BD%EF%BC%8C%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" title="类和对象中，通过日期类来深入理解构造函数，析构函数，重载，拷贝构造，赋值重载，取地址重载，操作符重载">
+                        <span class="hidden-mobile">类和对象中，通过日期类来深入理解构造函数，析构函数，重载，拷贝构造，赋值重载，取地址重载，操作符重载</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

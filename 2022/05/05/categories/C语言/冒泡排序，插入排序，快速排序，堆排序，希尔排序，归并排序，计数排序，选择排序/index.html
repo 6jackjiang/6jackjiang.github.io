@@ -1,0 +1,814 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="米兰的小铁匠">
+  <meta name="keywords" content="博客,技术博客,计算机,CS">
+  
+    <meta name="description" content="🎉前言  本人是西安邮电大学一名普通的大二学生，希望这篇关于插入排序的博客对你有用  点个赞嘛   以下动图均来自https:&#x2F;&#x2F;www.r2coding.com&#x2F;#&#x2F;   🚕交换数据函数（SwapData） 这个函数会经常用到 1234567void SwapData(int* pa, int* pb)&amp;#123;	int tmp &#x3D; *pa;	*pa &#x3D; *pb;	*pb &#x3D; tm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="冒泡排序，插入排序，快速排序，堆排序，希尔排序，归并排序，计数排序，选择排序">
+<meta property="og:url" content="https://6jackjiang.github.io/2022/05/05/categories/C%E8%AF%AD%E8%A8%80/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%EF%BC%8C%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%A0%86%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%EF%BC%8C%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%EF%BC%8C%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:site_name" content="米兰的小铁匠">
+<meta property="og:description" content="🎉前言  本人是西安邮电大学一名普通的大二学生，希望这篇关于插入排序的博客对你有用  点个赞嘛   以下动图均来自https:&#x2F;&#x2F;www.r2coding.com&#x2F;#&#x2F;   🚕交换数据函数（SwapData） 这个函数会经常用到 1234567void SwapData(int* pa, int* pb)&amp;#123;	int tmp &#x3D; *pa;	*pa &#x3D; *pb;	*pb &#x3D; tm">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/4850470e413c4c46a77985374335cfb3.gif">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/2c61d6912ab55e7a6971c19d5fe0ed31.gif#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/cc0aa2a9a9e5405ab7b3f6542117d126.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/9bc456806796e6ca0f90e78f78adcac6.gif#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/49ef39dc5f36dc6fab0e197d0f82fcc2.gif#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/86d7175758aab2e28d60caa3395f1bed.gif#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/16d54d6a366cc9cff5c32bfd6d2fdc2f.gif#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/e3d446a0209c8e701bf732236965863d.gif#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/51d22d9ed30e4fe5b7e96855eb73e6c2.gif">
+<meta property="article:published_time" content="2022-05-05T15:33:12.000Z">
+<meta property="article:modified_time" content="2022-06-03T08:36:22.437Z">
+<meta property="article:author" content="米兰的小铁匠">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="排序算法">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/4850470e413c4c46a77985374335cfb3.gif">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>冒泡排序，插入排序，快速排序，堆排序，希尔排序，归并排序，计数排序，选择排序 - 米兰的小铁匠</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"6jackjiang.github.io","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>米兰的小铁匠</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="冒泡排序，插入排序，快速排序，堆排序，希尔排序，归并排序，计数排序，选择排序"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-05 23:33" pubdate>
+          2022年5月5日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          68 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">冒泡排序，插入排序，快速排序，堆排序，希尔排序，归并排序，计数排序，选择排序</h1>
+            
+            <div class="markdown-body">
+              
+              <p></p>
+
+<p></p>
+<hr/>
+<h1><a id="_3"></a>🎉前言</h1>
+<blockquote>
+<p>本人是西安邮电大学一名普通的大二学生，希望这篇关于插入排序的博客对你有用</p>
+</blockquote>
+<p>点个赞嘛</p>
+<p><img alt="请添加图片描述" src="https://img-blog.csdnimg.cn/4850470e413c4c46a77985374335cfb3.gif" srcset="/img/loading.gif" lazyload/></p>
+<blockquote>
+<p>以下动图均来自<a target="_blank" rel="noopener" href="https://www.r2coding.com/#/">https://www.r2coding.com/#/</a></p>
+</blockquote>
+<hr/>
+<h1><a id="SwapData_13"></a>🚕交换数据函数（SwapData）</h1>
+<p>这个函数会经常用到</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">SwapData</span><span class="hljs-params">(<span class="hljs-type">int</span>* pa, <span class="hljs-type">int</span>* pb)</span><br>&#123;<br>	<span class="hljs-type">int</span> tmp = *pa;<br>	*pa = *pb;<br>	*pb = tmp;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<hr/>
+<h1><a id="_keyGetMidi_25"></a>🦽 寻找中间值做key的函数（GetMidi）</h1>
+<p>这个再快排那里会用到</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">GetMidi</span><span class="hljs-params">(<span class="hljs-type">int</span>* a,<span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span><span class="hljs-comment">//寻找中间值做key</span><br>&#123;<br>	<span class="hljs-type">int</span> midi = left + ((right - left) &gt;&gt; <span class="hljs-number">2</span>);<br>	<span class="hljs-keyword">if</span> (a[left] &lt; a[midi])<br>	&#123;<br>		<span class="hljs-keyword">if</span> (a[midi] &lt; a[right])<br>		&#123;<br>			<span class="hljs-keyword">return</span> midi;<br>		&#125;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a[left]&gt;a[right])<br>		&#123;<br>			<span class="hljs-keyword">return</span> left;<br>		&#125;<br>		<span class="hljs-keyword">else</span> <br>		&#123;<br>			<span class="hljs-keyword">return</span> right;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">if</span> (a[midi] &gt; a[right])<br>		&#123;<br>			<span class="hljs-keyword">return</span> midi;<br>		&#125;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a[left] &lt; a[right])<br>		&#123;<br>			<span class="hljs-keyword">return</span> left;<br>		&#125;<br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			<span class="hljs-keyword">return</span> right;<br>		&#125;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<hr/>
+<h1><a id="__64"></a>🚒 堆排序</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_57723028/article/details/124234756">点击这里看-&gt;堆的定义以及堆排序</a></p>
+<hr/>
+<h1><a id="_68"></a>🎈冒泡排序</h1>
+<p>冒泡排序动图解释：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/2c61d6912ab55e7a6971c19d5fe0ed31.gif#pic_center" srcset="/img/loading.gif" lazyload><br/> 冒泡就是每次把最大或者最小的挪到最边<br/> 这个代码不难理解，相信大家初学C语言就了解到了冒泡排序</img></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 冒泡排序</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">BubbleSort</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> n)</span><br>&#123;<br>	<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>	<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>	&#123;<br>		<span class="hljs-type">int</span> exchange = <span class="hljs-number">0</span>;<span class="hljs-comment">//加一个判断条件，比如：如果第x趟是有序的直接结束掉循环，return掉</span><br>		<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; n - i - <span class="hljs-number">1</span>; j++)<br>		&#123;<br>			<span class="hljs-keyword">if</span> (a[j] &gt; a[j + <span class="hljs-number">1</span>])<br>			&#123;<br>				SwapData(&amp;a[j], &amp;a[j + <span class="hljs-number">1</span>]);<br>				exchange = <span class="hljs-number">1</span>;<span class="hljs-comment">//有交换的话置为1</span><br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">if</span> (!exchange)<span class="hljs-comment">//没有交换就返回</span><br>		&#123;<br>			<span class="hljs-keyword">return</span>;<br>		&#125;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h1><a id="_101"></a>🏍️插入排序</h1>
+<p>什么是插入排序</p>
+<blockquote>
+<p>个人理解插入排序类似于打牌</p>
+</blockquote>
+<p><strong>幸运女神在微笑，胜利女神在微笑</strong></p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/cc0aa2a9a9e5405ab7b3f6542117d126.png" srcset="/img/loading.gif" lazyload/></p>
+<hr/>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/9bc456806796e6ca0f90e78f78adcac6.gif#pic_center" srcset="/img/loading.gif" lazyload/></p>
+<p>🎉插入排序代码实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">InsertSort</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> n)</span><span class="hljs-comment">//想象自己在打扑克</span><br>&#123;<br>	<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; i++)<span class="hljs-comment">//先是第一个和第二个开始比较</span><br>	&#123;<br>		<span class="hljs-type">int</span> end = i;<span class="hljs-comment">//end是下标</span><br>		<span class="hljs-type">int</span> tmp = a[end + <span class="hljs-number">1</span>];<br>		<span class="hljs-keyword">while</span> (end &gt;= <span class="hljs-number">0</span> &amp;&amp; tmp &lt; a[end])<br>		&#123;<br>			a[end + <span class="hljs-number">1</span>] = a[end];<br>			end--;<br>		&#125;<br>		a[end + <span class="hljs-number">1</span>] = tmp;<span class="hljs-comment">//用3 1 2 作为测试用例就可以理解为什么是a[end+1]=tmp</span><br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<hr/>
+<h1><a id="_136"></a>🚙希尔排序</h1>
+<blockquote>
+<p>希尔排序和插入排序差不了多少，只是每次比较的间距从1变成了一个变量，这个变量 gap根据数据的数量而定，不过最后gap还是要等于1</p>
+</blockquote>
+<p>动图演示：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/49ef39dc5f36dc6fab0e197d0f82fcc2.gif#pic_center" srcset="/img/loading.gif" lazyload/></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 希尔排序</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">ShellSort</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> n)</span><br>&#123;<br>	<span class="hljs-type">int</span> gap = n;<span class="hljs-comment">//n=2的时候代入一下</span><br>	<span class="hljs-keyword">while</span> (gap &gt; <span class="hljs-number">1</span>)<span class="hljs-comment">//gap=1的时候已经执行一次代码了，然后再判断的。</span><br>	&#123;<br>		gap = gap / <span class="hljs-number">3</span> + <span class="hljs-number">1</span>;<br>		<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n - gap; i++)<br>		&#123;<br>			<span class="hljs-type">int</span> end = i;<br>			<span class="hljs-type">int</span> tmp = a[end + gap];<br>			<span class="hljs-keyword">while</span> (end &gt;= <span class="hljs-number">0</span> &amp;&amp; a[end] &gt; tmp)<br>			&#123;<br>				a[end + gap] = a[end];<br>				end-=gap;<span class="hljs-comment">//记得这里是end-=gap  不是 end--！！！这是希尔排序！！！</span><br>			&#125;<br>			a[end + gap] = tmp;<br>		&#125;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h1><a id="_167"></a>✈️快速排序</h1>
+<h2><a id="1hoare_168"></a>🏎️1.快速排序hoare版本（带哨兵位）</h2>
+<blockquote>
+<p>这个有个小细节就是哪边做key对边先走，比如左边做key 那就右边先走，然后右边找到比key小的数字就挺住，然后左边再走，左边找到比key大的就停住，然后交换两边的数字，然后右边再走，当两边碰到的时候，交换key（这里是左边）和 相遇位置的数字，当然这个是循环版本。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 快速排序hoare版本</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">PartSort1</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span><span class="hljs-comment">//哨兵</span><br>&#123;<br>	<span class="hljs-type">int</span> midi = GetMidi(a, left, right);<br>	SwapData(&amp;a[left], &amp;a[midi]);<br><br>	<span class="hljs-type">int</span> keyi = left;<br>	<span class="hljs-keyword">while</span> (left&lt;right)<br>	&#123;<br>		<span class="hljs-keyword">while</span> (left&lt;right&amp;&amp;a[right]&gt;=a[keyi])<br>		&#123;<br>			right--;<br>		&#125;<br>		<span class="hljs-keyword">while</span>(left &lt; right &amp;&amp; a[left]&lt;=a[keyi])<br>		&#123;<br>			left++;<br>		&#125;<br>		SwapData(&amp;a[left], &amp;a[right]);<br>	&#125;<br><br>	SwapData(&amp;a[left], &amp;a[keyi]);<br><br>	<span class="hljs-keyword">return</span> left;<br>&#125;<br><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">QuickSort</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span><br>&#123;<br>	<span class="hljs-keyword">if</span> (left &gt;= right)<br>	&#123;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> &lt; <span class="hljs-number">5</span>)<br>	&#123;<br>		InsertSort(a+left, right - left + <span class="hljs-number">1</span>);<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-type">int</span> midi = PartSort1(a, left, right);<br>		QuickSort(a, left, midi - <span class="hljs-number">1</span>);<br>		QuickSort(a, midi + <span class="hljs-number">1</span>, right);<br>	&#125;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<hr/>
+<h2><a id="2_218"></a>🍕2快速排序挖坑法</h2>
+<blockquote>
+<p>在这里选择最左边做坑(key)然后从右边开始找比key小的然后a[left] = a[right]，然后从左边开始找找比key大的a[right] = a[left]，最后相遇的时候a[left] = key;//坑的值归位</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">PartSort2</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span><br>&#123;<br>	<span class="hljs-type">int</span> midi = GetMidi(a, left, right);<br>	SwapData(&amp;a[left], &amp;a[midi]);<br><br>	<span class="hljs-type">int</span> key = a[left];<span class="hljs-comment">//坑</span><br>	<span class="hljs-keyword">while</span> (left&lt;right)<br>	&#123;<br>		<span class="hljs-keyword">while</span> (left &lt; right &amp;&amp; a[right] &gt;= key)<span class="hljs-comment">//左边做坑</span><br>		&#123;<br>			right--;<br>		&#125;<br>		a[left] = a[right];<br>		<span class="hljs-keyword">while</span> (left &lt; right &amp;&amp; a[left] &lt;= key)<span class="hljs-comment">//右边做坑</span><br>		&#123;<br>			left++;<br>		&#125;<br>		a[right] = a[left] ;<br>	&#125;<br>	a[left] = key;<span class="hljs-comment">//坑的值归位</span><br><br>	<span class="hljs-keyword">return</span> left;<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">QuickSort</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span><br>&#123;<br>	<span class="hljs-keyword">if</span> (left &gt;= right)<br>	&#123;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> &lt; <span class="hljs-number">5</span>)<br>	&#123;<br>		InsertSort(a+left, right - left + <span class="hljs-number">1</span>);<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-type">int</span> midi = PartSort2(a, left, right);<br>		QuickSort(a, left, midi - <span class="hljs-number">1</span>);<br>		QuickSort(a, midi + <span class="hljs-number">1</span>, right);<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<hr/>
+<h2><a id="3_265"></a>🚒3.快速排序前后指针法</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">PartSort3</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span><br>&#123;<br>	<span class="hljs-type">int</span> midi = GetMidi(a, left, right);<br>	SwapData(&amp;a[left], &amp;a[midi]);<br><br>	<span class="hljs-type">int</span> keyi = left;<br>	<span class="hljs-type">int</span> cur = left;<br>	<span class="hljs-type">int</span> pro = left + <span class="hljs-number">1</span>;<span class="hljs-comment">//pro 先走</span><br>	<span class="hljs-keyword">while</span> (pro&lt;=right)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (a[pro] &lt; a[keyi] &amp;&amp; a[++cur] != a[pro])<br>		&#123;<br>			SwapData(&amp;a[pro], &amp;a[cur]);<br>		&#125;<br>		pro++;<br>	&#125;<br>	SwapData(&amp;a[keyi],&amp; a[cur]);<br><br>	<span class="hljs-keyword">return</span> cur;<br>&#125;<br><span class="hljs-type">void</span> <span class="hljs-title function_">QuickSort</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span><br>&#123;<br>	<span class="hljs-keyword">if</span> (left &gt;= right)<br>	&#123;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> &lt; <span class="hljs-number">5</span>)<br>	&#123;<br>		InsertSort(a+left, right - left + <span class="hljs-number">1</span>);<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-type">int</span> midi = PartSort3(a, left, right);<br>		QuickSort(a, left, midi - <span class="hljs-number">1</span>);<br>		QuickSort(a, midi + <span class="hljs-number">1</span>, right);<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<hr/>
+<h2><a id="4_308"></a>🍺4.快速排序非递归法</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">QuickSortNonR</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span><br>&#123;<br>	ST st;<br>	StackInit(&amp;st);<br>	<span class="hljs-keyword">if</span> (left &lt; right)<span class="hljs-comment">//先进后出</span><br>	&#123;<br>		StackPush(&amp;st, left);<br>		StackPush(&amp;st, right);<br>	&#125;<br>	<span class="hljs-keyword">while</span> (!StackEmpty(&amp;st))<br>	&#123;<br>		right = StackTop(&amp;st);<br>		StackPop(&amp;st);<br>		left = StackTop(&amp;st);<br>		StackPop(&amp;st);<br>		<span class="hljs-type">int</span> midi=PartSort3(a, left, right);<br><br>		<span class="hljs-keyword">if</span> (left &lt; midi )<br>		&#123;<br>			StackPush(&amp;st, left);<br>			StackPush(&amp;st,midi - <span class="hljs-number">1</span>);<br>		&#125;<br>		<span class="hljs-keyword">if</span> (midi + <span class="hljs-number">1</span> &lt; right)<br>		&#123;<br>			StackPush(&amp;st, midi+<span class="hljs-number">1</span>);<br>			StackPush(&amp;st, right);<br>		&#125;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<hr/>
+<h1><a id="_343"></a>🚙归并排序</h1>
+<blockquote>
+<p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。</p>
+</blockquote>
+<blockquote>
+<p>算法思想：1.把长度为n的输入序列分成两个长度为n/2的子序列；2. 对这两个子序列分别采用归并排序；3. 将两个排序好的子序列合并成一个最终的排序序列。</p>
+</blockquote>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/86d7175758aab2e28d60caa3395f1bed.gif#pic_center" srcset="/img/loading.gif" lazyload/></p>
+<blockquote>
+<p>这个是递归版本：</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> _MergeSort(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> begin, <span class="hljs-type">int</span> end,<span class="hljs-type">int</span>* tmp)<span class="hljs-comment">//先分成最小规模子问题然后再解决</span><br>&#123;<br>	<span class="hljs-keyword">if</span> (begin &gt;= end)<br>	&#123;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br>	<span class="hljs-type">int</span> midi = begin + ((end-begin)&gt;&gt;<span class="hljs-number">1</span>);<br>	_MergeSort(a, begin, midi, tmp);<br>	_MergeSort(a, midi+<span class="hljs-number">1</span>, end, tmp);<br><br>	<span class="hljs-type">int</span> begin1 = begin;<br>	<span class="hljs-type">int</span> end1 = midi;<br>	<span class="hljs-type">int</span> begin2 = midi + <span class="hljs-number">1</span>;<br>	<span class="hljs-type">int</span> end2 = end;<br>	<span class="hljs-type">int</span> index = begin;<span class="hljs-comment">//合并两个有序数组</span><br><br>	<span class="hljs-keyword">while</span>(begin1&lt;=end1&amp;&amp;begin2&lt;=end2)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (a[begin1] &lt;= a[begin2])<br>		&#123;<br>			tmp[index++] = a[begin1++];<br>		&#125;<br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			tmp[index++] = a[begin2++];<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">while</span> (begin1&lt;=end1)<br>	&#123;<br>		tmp[index++] = a[begin1++];<br>	&#125;<br><br>	<span class="hljs-keyword">while</span> (begin2&lt;=end2)<br>	&#123;<br>		tmp[index++] = a[begin2++];<br>	&#125;<br><br>	<span class="hljs-built_in">memcpy</span>(a + begin, tmp + begin, (end - begin + <span class="hljs-number">1</span>) * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<br>&#125;<br><span class="hljs-comment">//归并排序</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">MergeSort</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> n)</span><br>&#123;  <br>	<span class="hljs-type">int</span>* tmp = (<span class="hljs-type">int</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>) * n);<br>	assert(tmp);<br>	_MergeSort(a, <span class="hljs-number">0</span>, n<span class="hljs-number">-1</span>,tmp);<span class="hljs-comment">//传闭区间好控制一点点</span><br>	<span class="hljs-built_in">free</span>(tmp);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>还有这个非递归版的归并排序：</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">MergeSortNonR</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> n)</span><br>&#123;<br>	<span class="hljs-type">int</span>* tmp = (<span class="hljs-type">int</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>) * n);<br>	assert(tmp);<br>	<span class="hljs-type">int</span> gap = <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">while</span> (gap&lt;n)<br>	&#123;<br>		<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i += <span class="hljs-number">2</span>*gap)<br>		&#123;<br>			<span class="hljs-type">int</span> begin1 = i;<br>			<span class="hljs-type">int</span> end1 = i + gap - <span class="hljs-number">1</span>;<br>			<span class="hljs-type">int</span> begin2 = i + gap;<br>			<span class="hljs-type">int</span> end2 = i + <span class="hljs-number">2</span> * gap - <span class="hljs-number">1</span>;<br>			<span class="hljs-keyword">if</span> (end1 &gt;= n)<br>			&#123;<br>				end1 = n - <span class="hljs-number">1</span>;<br>			&#125;<br>			<span class="hljs-keyword">if</span> (begin2 &gt;= n)<br>			&#123;<br>				begin2 = n;<br>				end2 = n - <span class="hljs-number">1</span>;<br>			&#125;<br>			<span class="hljs-keyword">if</span> (begin2&lt;n &amp;&amp; end2 &gt;= n)<br>			&#123;<br>				end2 = n - <span class="hljs-number">1</span>;<br>			&#125;<br>			<span class="hljs-type">int</span> index = i;<br>			<span class="hljs-keyword">while</span> (begin1&lt;=end1 &amp;&amp; begin2&lt;=end2)<br>			&#123;<br>				<span class="hljs-keyword">if</span> (a[begin1] &lt;= a[begin2])<br>				&#123;<br>					tmp[index++] = a[begin1++];<br>				&#125;<br>				<span class="hljs-keyword">else</span><br>				&#123;<br>					tmp[index++] = a[begin2++];<br>				&#125;<br>			&#125;<br>			<span class="hljs-keyword">while</span> (begin1&lt;=end1)<br>			&#123;<br>				tmp[index++]=a[begin1++];<br>			&#125;<br>			<span class="hljs-keyword">while</span> (begin2&lt;=end2)<br>			&#123;<br>				tmp[index++] = a[begin2++];<br>			&#125;<br>		&#125;<br>		assert(tmp);<br>		<span class="hljs-built_in">memcpy</span>(a, tmp, n * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<br>		gap *= <span class="hljs-number">2</span>;<br>	&#125;<br>	<span class="hljs-built_in">free</span>(tmp);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h1><a id="_461"></a>🎄计数排序</h1>
+<blockquote>
+<p>计数排序统计小于等于该元素值的元素的个数i，于是该元素就放在目标数组的索引i位（i≥0）。</p>
+</blockquote>
+<blockquote>
+<p>计数排序基于一个假设，待排序数列的所有数均为整数，且出现在（0，k）的区间之内。<br/> 如果 k（待排数组的最大值） 过大则会引起较大的空间复杂度，一般是用来排序 0 到 100 之间的数字的最好的算法，但是它不适合按字母顺序排序人名。<br/> 计数排序不是比较排序，排序的速度快于任何比较排序算法。<br/> 算法思想：</p>
+</blockquote>
+<blockquote>
+<p>找出待排序的数组中最大和最小的元素；<br/> 统计数组中每个值为 i 的元素出现的次数，存入数组 C 的第 i 项；<br/> 对所有的计数累加（从 C 中的第一个元素开始，每一项和前一项相加）；<br/> 向填充目标数组：将每个元素 i 放在新数组的第 C[i] 项，每放一个元素就将 C[i] 减去 1；</p>
+</blockquote>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/16d54d6a366cc9cff5c32bfd6d2fdc2f.gif#pic_center" srcset="/img/loading.gif" lazyload/></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">CountSort</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> n)</span><br>&#123;<br>	<span class="hljs-type">int</span> max = a[<span class="hljs-number">0</span>];<br>	<span class="hljs-type">int</span> min = a[<span class="hljs-number">0</span>];<br>	<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (a[i] &lt; min)<br>		&#123;<br>			min = a[i];<br>		&#125;<br>		<span class="hljs-keyword">if</span> (a[i] &gt; max)<br>		&#123;<br>			max = a[i];<br>		&#125;<br>	&#125;<br>	<span class="hljs-type">int</span> range = (max - min + <span class="hljs-number">1</span>);<br>	<span class="hljs-type">int</span>* tmp = (<span class="hljs-type">int</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>)*range);<br>	assert(tmp);<br>	<span class="hljs-built_in">memset</span>(tmp, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>) * range);<span class="hljs-comment">//把tmp数组初始化为0 </span><br>	<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;<br>	<span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<span class="hljs-comment">//最后把tmp中的值赋给a,控制a的下标</span><br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>	&#123;<br>		tmp[a[i] - min]++;<br>	&#125;<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; range; i++)<br>	&#123;<br>		<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; tmp[i]; j++)<br>		&#123;<br>			<span class="hljs-comment">//a[count++] = (tmp[j] + min);这是错误写法</span><br>			<span class="hljs-comment">//a[count++] = (tmp[i] + min); 这是错误写法</span><br>			a[count++] = i + min;<span class="hljs-comment">//下标+min才是原来的数字</span><br>		&#125;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<hr/>
+<h1><a id="__519"></a>💖 选择排序</h1>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/e3d446a0209c8e701bf732236965863d.gif#pic_center" srcset="/img/loading.gif" lazyload/></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">SelectSort</span><span class="hljs-params">(<span class="hljs-type">int</span>* a, <span class="hljs-type">int</span> n)</span><br>&#123;<br>	<span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<span class="hljs-comment">//控制最左边和最右边的边界</span><br>	<span class="hljs-type">int</span> right = n - <span class="hljs-number">1</span>;<span class="hljs-comment">//控制最左边和最右边的边界</span><br>	<br>	<span class="hljs-keyword">while</span> (left &lt; right)<br>	&#123;<br>		<span class="hljs-type">int</span> mini = left;<br>		<span class="hljs-type">int</span> maxi = left;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = left; i &lt;= right; i++)<br>		&#123;<br>			<span class="hljs-keyword">if</span> (a[i] &lt; a[mini])<br>			&#123;<br>				mini = i;<br>			&#125;<br>			<span class="hljs-keyword">if</span> (a[i] &gt; a[maxi])<br>			&#123;<br>				maxi = i;<br>			&#125;<br>		&#125;<br>		SwapData(&amp;a[left], &amp;a[mini]);<br>		<span class="hljs-keyword">if</span> (maxi == left)<span class="hljs-comment">//如果第一个数是最大的话就没交换到mini的位置上去了</span><br>		&#123;<br>			maxi = mini;<br>		&#125;<br>		SwapData(&amp;a[right], &amp;a[maxi]);<br>		left++;<br>		right--;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<hr/>
+<h1><a id="_556"></a>结语</h1>
+<blockquote>
+<p>点赞评论呗<br/> <img alt="请添加图片描述" src="https://img-blog.csdnimg.cn/51d22d9ed30e4fe5b7e96855eb73e6c2.gif" srcset="/img/loading.gif" lazyload/></p>
+</blockquote>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+      
+        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+      
+        <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">#排序算法</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>冒泡排序，插入排序，快速排序，堆排序，希尔排序，归并排序，计数排序，选择排序</div>
+      <div>https://6jackjiang.github.io/2022/05/05/categories/C语言/冒泡排序，插入排序，快速排序，堆排序，希尔排序，归并排序，计数排序，选择排序/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>米兰的小铁匠</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月5日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/10/categories/%E7%AC%94%E8%AE%B0/%E6%B5%85%E6%B5%85%E5%9C%B0%E8%AE%B2%E4%B8%80%E4%B8%8B%E5%BC%95%E7%94%A8%E5%90%A7/" title="浅浅地讲一下引用吧">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">浅浅地讲一下引用吧</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/17/categories/C%E8%AF%AD%E8%A8%80/%E5%A0%86%E7%9A%84%E5%AE%9A%E4%B9%89%E4%BB%A5%E5%8F%8A%E5%A0%86%E6%8E%92%E5%BA%8F/" title="堆的定义以及堆排序">
+                        <span class="hidden-mobile">堆的定义以及堆排序</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,741 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="米兰的小铁匠">
+  <meta name="keywords" content="博客,技术博客,计算机,CS">
+  
+    <meta name="description" content="目录 在正式讲内容之前先说一说扫雷游戏的规则 首先看一下test.c： 接下来是game.h：  接下来是game.c：       在正式讲内容之前先说一说扫雷游戏的规则 游戏规则很简单，点击方格，如果是地雷，游戏失败，找到所有地雷游戏胜利   .刚开始需要碰运气，只要点开一个区域，就可以正式开始了。  3 根据现有情况，判断出一定有雷的位置。   4 进一步计算，因为“2”右边的“1”已经有从">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言实现简易版的扫雷游戏">
+<meta property="og:url" content="https://6jackjiang.github.io/2021/11/13/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93%E7%89%88%E7%9A%84%E6%89%AB%E9%9B%B7%E6%B8%B8%E6%88%8F/index.html">
+<meta property="og:site_name" content="米兰的小铁匠">
+<meta property="og:description" content="目录 在正式讲内容之前先说一说扫雷游戏的规则 首先看一下test.c： 接下来是game.h：  接下来是game.c：       在正式讲内容之前先说一说扫雷游戏的规则 游戏规则很简单，点击方格，如果是地雷，游戏失败，找到所有地雷游戏胜利   .刚开始需要碰运气，只要点开一个区域，就可以正式开始了。  3 根据现有情况，判断出一定有雷的位置。   4 进一步计算，因为“2”右边的“1”已经有从">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/a23bea71b340722ca48938869c0a2c6b.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/0007193babf3612c04ae37d6bf990de2.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/00421d670c7982b914b08aafd47d6a88.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/55a502e8dec6817ef46879c4de9a2f3e.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b7a9d610376dedeba6fcb06950e738cf.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/9ecd6430f931f5b58df2ec03edfc3d95.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/1bd678dc8adbd993f966b9228b73aea6.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b4ef18cc3f7822a0be1cb66eea558329.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/c762a245c4e92eaef92714150d2f9ee3.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/590a7a900aa9dfdff0fea8212345e6a2.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/73f61d66d85eec80c7ca3a8fe8dd3b77.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/a4e0bb7a06f5bf9307c052852b458844.png">
+<meta property="article:published_time" content="2021-11-12T16:41:16.000Z">
+<meta property="article:modified_time" content="2022-06-03T08:36:41.355Z">
+<meta property="article:author" content="米兰的小铁匠">
+<meta property="article:tag" content="c语言">
+<meta property="article:tag" content="开发语言">
+<meta property="article:tag" content="后端">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/a23bea71b340722ca48938869c0a2c6b.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>C语言实现简易版的扫雷游戏 - 米兰的小铁匠</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"6jackjiang.github.io","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>米兰的小铁匠</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="C语言实现简易版的扫雷游戏"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-11-13 00:41" pubdate>
+          2021年11月13日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          46 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">C语言实现简易版的扫雷游戏</h1>
+            
+            <div class="markdown-body">
+              
+              <p id="main-toc"><strong>目录</strong></p>
+<p id="%E5%9C%A8%E6%AD%A3%E5%BC%8F%E8%AE%B2%E5%86%85%E5%AE%B9%E4%B9%8B%E5%89%8D%E5%85%88%E8%AF%B4%E4%B8%80%E8%AF%B4%E6%89%AB%E9%9B%B7%E6%B8%B8%E6%88%8F%E7%9A%84%E8%A7%84%E5%88%99-toc" style="margin-left:0px;"><a href="#%E5%9C%A8%E6%AD%A3%E5%BC%8F%E8%AE%B2%E5%86%85%E5%AE%B9%E4%B9%8B%E5%89%8D%E5%85%88%E8%AF%B4%E4%B8%80%E8%AF%B4%E6%89%AB%E9%9B%B7%E6%B8%B8%E6%88%8F%E7%9A%84%E8%A7%84%E5%88%99">在正式讲内容之前先说一说扫雷游戏的规则</a></p>
+<p id="%E9%A6%96%E5%85%88%E7%9C%8B%E4%B8%80%E4%B8%8Btest.c%EF%BC%9A-toc" style="margin-left:0px;"><a href="#%E9%A6%96%E5%85%88%E7%9C%8B%E4%B8%80%E4%B8%8Btest.c%EF%BC%9A">首先看一下test.c：</a></p>
+<p id="%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%98%AFgame.h%EF%BC%9A-toc" style="margin-left:0px;"><a href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%98%AFgame.h%EF%BC%9A">接下来是game.h：</a></p>
+<p id="%C2%A0%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%98%AFgame.c%EF%BC%9A-toc" style="margin-left:0px;"><a href="#%C2%A0%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%98%AFgame.c%EF%BC%9A"> 接下来是game.c：</a></p>
+<hr id="hr-toc"/>
+<p></p>
+<p style="text-align:center;"><img alt="" src="https://img-blog.csdnimg.cn/img_convert/a23bea71b340722ca48938869c0a2c6b.png" srcset="/img/loading.gif" lazyload/></p>
+<p></p>
+<p id="%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%98%AFgame.h%EF%BC%9A-toc" style="margin-left:0px;"></p>
+<p id="%C2%A0%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%98%AFgame.c%EF%BC%9A-toc" style="margin-left:0px;"></p>
+<h1 id="%E5%9C%A8%E6%AD%A3%E5%BC%8F%E8%AE%B2%E5%86%85%E5%AE%B9%E4%B9%8B%E5%89%8D%E5%85%88%E8%AF%B4%E4%B8%80%E8%AF%B4%E6%89%AB%E9%9B%B7%E6%B8%B8%E6%88%8F%E7%9A%84%E8%A7%84%E5%88%99">在正式讲内容之前先说一说扫雷游戏的规则</h1>
+<p>游戏规则很简单，点击方格，如果是地雷，游戏失败，找到所有地雷游戏胜利</p>
+<p style="text-align:center;"><img alt="" src="https://img-blog.csdnimg.cn/img_convert/0007193babf3612c04ae37d6bf990de2.png" srcset="/img/loading.gif" lazyload/></p>
+<ul><li> <p>.刚开始需要碰运气，只要点开一个区域，就可以正式开始了。</p> <p style="text-align:center;"><img alt="" src="https://img-blog.csdnimg.cn/img_convert/00421d670c7982b914b08aafd47d6a88.png" srcset="/img/loading.gif" lazyload/></p> </li><li>3 <p>根据现有情况，判断出一定有雷的位置。</p> <p style="text-align:center;"><img alt="" src="https://img-blog.csdnimg.cn/img_convert/55a502e8dec6817ef46879c4de9a2f3e.png" srcset="/img/loading.gif" lazyload/></p> <p></p> </li><li>4 <p>进一步计算，因为“2”右边的“1”已经有从属的雷了，所以右边的“2”的正下方没有雷，因此可以判断出左边有两颗雷，满足两个“2”。</p> <p style="text-align:center;"><img alt="" src="https://img-blog.csdnimg.cn/img_convert/b7a9d610376dedeba6fcb06950e738cf.png" srcset="/img/loading.gif" lazyload/></p> </li><li>5 <p>红圈表明的“1”已经有一颗确定的雷了，这时只需要把鼠标放在“1”上，按住右键不放，再点一下左键，“1”周围的其他方块就全被点开了。这个小技巧对于提升速度非常有帮助。</p> <p style="text-align:center;"><img alt="" src="https://img-blog.csdnimg.cn/img_convert/9ecd6430f931f5b58df2ec03edfc3d95.png" srcset="/img/loading.gif" lazyload/></p> </li><li>6 <p>左上角的“1”旁边必须有一颗雷，可能在红圈圈住的两个块中，目前还无法确定。但是不论在两个中的哪一个，都从属于“3”，因此“3”周围已经有了三颗雷，“3”左下角的方块可以确定没有雷。</p> <p style="text-align:center;"><img alt="" src="https://img-blog.csdnimg.cn/img_convert/1bd678dc8adbd993f966b9228b73aea6.png" srcset="/img/loading.gif" lazyload/></p> </li><li>7 <p>红圈框住的位置肯定有一颗雷，因为“3”周围必须有三颗雷。不论在两个中的哪一个，都从属于“3旁边的“2”，这样“2”就满足两颗雷的条件了。因此“2”左下角的块是没有雷的。</p> <p style="text-align:center;"><img alt="" src="https://img-blog.csdnimg.cn/img_convert/b4ef18cc3f7822a0be1cb66eea558329.png" srcset="/img/loading.gif" lazyload/></p> </li><li>8 <p>这样一来，“3”下面的两个块可以确定都是有雷的。</p> <p style="text-align:center;"><img alt="" src="https://img-blog.csdnimg.cn/img_convert/c762a245c4e92eaef92714150d2f9ee3.png" srcset="/img/loading.gif" lazyload/></p> </li><li>9 <p>把这些有雷的地方标出来，就打开了一片新天地。</p> <p style="text-align:center;"><img alt="" src="https://img-blog.csdnimg.cn/img_convert/590a7a900aa9dfdff0fea8212345e6a2.png" srcset="/img/loading.gif" lazyload/></p> </li><li>10 <p>再根据现有的条件把确定有雷的地方表明，点开其他的地方。这时我们发现刚才左上角遗留的问题解决了。</p> <p style="text-align:center;"><img alt="" src="https://img-blog.csdnimg.cn/img_convert/73f61d66d85eec80c7ca3a8fe8dd3b77.png" srcset="/img/loading.gif" lazyload/></p> </li><li>11 <p>重复上面的各种方法，不断推理出，最后就能完成扫雷</p> <p style="text-align:center;"><img alt="" src="https://img-blog.csdnimg.cn/img_convert/a4e0bb7a06f5bf9307c052852b458844.png" srcset="/img/loading.gif" lazyload/></p> </li></ul>
+<p></p>
+<p> 好了，规则已经讲完了，现在来说一说怎么实现的吧：</p>
+<p><strong>首先还是得创建三个文件夹，分别为game.c 游戏需要的具体函数的实现 game.h （所要用的头文件）test.c（游戏的逻辑，菜单，以及函数顺序调用）。</strong></p>
+<h1 id="%E9%A6%96%E5%85%88%E7%9C%8B%E4%B8%80%E4%B8%8Btest.c%EF%BC%9A"><strong>首先看一下test.c：</strong></h1>
+<p><strong>游戏大概的逻辑就是布置雷，把棋盘打印出来，然后玩家自己扫雷，这部分代码不是很难理解</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;game.h&quot;</span></span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">game</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">char</span> mine[ROWS][COLS] = &#123; <span class="hljs-number">0</span> &#125;;<span class="hljs-comment">//存放布置雷的信息 0无雷 1有雷</span><br>	<span class="hljs-type">char</span> show[ROWS][COLS] = &#123; <span class="hljs-number">0</span> &#125;;<span class="hljs-comment">//展示给用户看并且存放排查出的雷的信息</span><br>	<br>	<span class="hljs-built_in">InitBoard</span>(mine, ROWS, COLS, <span class="hljs-string">&#x27;0&#x27;</span>);<br>	<span class="hljs-built_in">InitBoard</span>(show, ROWS, COLS, <span class="hljs-string">&#x27;*&#x27;</span>);<br><br>	<span class="hljs-comment">//布置雷</span><br>	<span class="hljs-built_in">SetMine</span>(mine, ROW, COL);<br>	<span class="hljs-comment">//打印棋盘</span><br>	<span class="hljs-comment">//DisplayBoard(mine, ROW, COL);</span><br>	<span class="hljs-built_in">DisplayBoard</span>(show, ROW, COL);<br>	<span class="hljs-comment">//排雷</span><br>	<span class="hljs-built_in">FindMine</span>(mine,show, ROW, COL);<br>&#125;<br><span class="hljs-comment">//游戏菜单界面</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">menu</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;************\n&quot;</span>);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;***1.开始***\n&quot;</span>);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;***0.退出***\n&quot;</span>);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;************\n&quot;</span>);<br>&#125;<br><span class="hljs-comment">//选择玩或不玩</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> input = <span class="hljs-number">0</span>;   <br>	<span class="hljs-built_in">srand</span>((<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span>)<span class="hljs-built_in">time</span>(<span class="hljs-literal">NULL</span>));<br>	<span class="hljs-keyword">do</span><br>	&#123;<br>		<span class="hljs-built_in">menu</span>();<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请选择-&gt;;&quot;</span>);<br>		<span class="hljs-built_in">scanf_s</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;input);<br>		<span class="hljs-keyword">switch</span> (input)<br>		&#123;<br>		<span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>			<span class="hljs-comment">//扫雷</span><br>			<span class="hljs-built_in">game</span>();<br>			<span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,input);<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;即将退出游戏\n&quot;</span>);<br>			<span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">default</span>:<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;输入错误,请重新输入:\n&quot;</span>);<br>			<span class="hljs-keyword">break</span>;<br>		&#125;<br>	&#125; <span class="hljs-keyword">while</span> (input);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">test</span>();<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%98%AFgame.h%EF%BC%9A">接下来是game.h：</h1>
+<p>          我将所使用到的函数和代码段都写入了代码里应该不难理解</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;time.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;Windows.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ROW 9<span class="hljs-comment">//打印出来的棋盘大小</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> COL 9<span class="hljs-comment">//打印出来的棋盘大小</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ROWS ROW+2<span class="hljs-comment">//实际棋盘大小，为了防止越界</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> COLS COL+2<span class="hljs-comment">//实际棋盘大小，为了防止越界</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> EASY_COUNT 10<span class="hljs-comment">//简单模式10个雷然后根据自己的需要调整大小</span></span><br><br><span class="hljs-comment">//初始化棋盘</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">InitBoard</span><span class="hljs-params">(<span class="hljs-type">char</span> board[ROWS][COLS], <span class="hljs-type">int</span> rows, <span class="hljs-type">int</span> cols, <span class="hljs-type">char</span> set)</span></span>;<br><span class="hljs-comment">//打印棋盘</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">DisplayBoard</span><span class="hljs-params">(<span class="hljs-type">char</span> mine[ROWS][COLS], <span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col)</span></span>;<br><span class="hljs-comment">//布置雷</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetMine</span><span class="hljs-params">(<span class="hljs-type">char</span> mine[ROWS][COLS], <span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col)</span></span>;<br><span class="hljs-comment">//找雷</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">FindMine</span><span class="hljs-params">(<span class="hljs-type">char</span> mine[ROWS][COLS], <span class="hljs-type">char</span> show[ROWS][COLS], <span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col)</span></span>;<br></code></pre></td></tr></table></figure>
+<h1 id="%C2%A0%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%98%AFgame.c%EF%BC%9A"> 接下来是game.c：</h1>
+<p>扫雷游戏有一个功能是，点开一个位置，如果周围都没有雷的话就会展开那一片，我们这里用递归来实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//将棋盘展开的函数</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Open</span><span class="hljs-params">(<span class="hljs-type">char</span> mine[ROWS][COLS], <span class="hljs-type">char</span> show[ROWS][COLS],<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> y)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> n = <span class="hljs-built_in">get_mine_count</span>(mine, x, y);<br>	<span class="hljs-keyword">if</span> (n != <span class="hljs-number">0</span>)<br>	&#123;<br>		show[x][y] = <span class="hljs-string">&#x27;0&#x27;</span> + n;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (show[x][y] != <span class="hljs-string">&#x27; &#x27;</span>)<br>	&#123;<br>		show[x][y] = <span class="hljs-string">&#x27; &#x27;</span>;<br>		<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span> (i = x - <span class="hljs-number">1</span>; i &lt;= x + <span class="hljs-number">1</span>; i++)<br>		&#123;<br>			<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;<br>			<span class="hljs-keyword">for</span> (j = y - <span class="hljs-number">1</span>; j &lt;= y + <span class="hljs-number">1</span>; j++)<br>			&#123;<br>				<span class="hljs-built_in">Open</span>(mine, show, i, j);<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>完整代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;game.h&quot;</span></span><br><span class="hljs-comment">//初始化棋盘：全部为&#x27;*&#x27;</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">InitBoard</span><span class="hljs-params">(<span class="hljs-type">char</span> board[ROWS][COLS], <span class="hljs-type">int</span> rows, <span class="hljs-type">int</span> cols, <span class="hljs-type">char</span> set)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>	<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; rows; i++)<br>	&#123;<br>		<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; cols; j++)<br>		&#123;<br>			board[i][j] = set;<br>		&#125;<br>	&#125;<br>&#125;<br><span class="hljs-comment">// 显示应该给用户显示的界面‘*’</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">DisplayBoard</span><span class="hljs-params">(<span class="hljs-type">char</span> board[ROWS][COLS], <span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>	<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt;= row; i++)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d|&quot;</span>, i);<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;-|&quot;</span>);<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i &lt;= row; i++)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d|&quot;</span>, i );<br>		<span class="hljs-keyword">for</span> (j = <span class="hljs-number">1</span>; j &lt;= col; j++)<br>		&#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c|&quot;</span>, board[i][j]);<br>		&#125;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>		<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt;col+<span class="hljs-number">1</span>; j++)<br>		&#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;-|&quot;</span>);<br><br>		&#125;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>	&#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetMine</span><span class="hljs-params">(<span class="hljs-type">char</span> board[ROWS][COLS], <span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> count = EASY_COUNT;<br>	<span class="hljs-keyword">while</span> (count)<br>	&#123;<br>		<span class="hljs-type">int</span> x = <span class="hljs-built_in">rand</span>() % row + <span class="hljs-number">1</span>;<br>		<span class="hljs-type">int</span> y = <span class="hljs-built_in">rand</span>() % col + <span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">if</span> (board[x][y] == <span class="hljs-string">&#x27;0&#x27;</span>)<br>		&#123;<br>			board[x][y] = <span class="hljs-string">&#x27;1&#x27;</span>;<br>			count--;<br>		&#125;<br>	&#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title">get_mine_count</span><span class="hljs-params">(<span class="hljs-type">char</span> mine[ROWS][COLS], <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">return</span> mine[x + <span class="hljs-number">1</span>][y] +<br>		mine[x - <span class="hljs-number">1</span>][y] +<br>		mine[x][y + <span class="hljs-number">1</span>] +<br>		mine[x][y - <span class="hljs-number">1</span>] +<br>		mine[x - <span class="hljs-number">1</span>][y - <span class="hljs-number">1</span>] +<br>		mine[x - <span class="hljs-number">1</span>][y + <span class="hljs-number">1</span>] +<br>		mine[x + <span class="hljs-number">1</span>][y - <span class="hljs-number">1</span>] +<br>		mine[x + <span class="hljs-number">1</span>][y + <span class="hljs-number">1</span>] -<br>		<span class="hljs-number">8</span> * <span class="hljs-string">&#x27;0&#x27;</span>;<br>&#125;<br><span class="hljs-comment">//将棋盘展开的函数</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Open</span><span class="hljs-params">(<span class="hljs-type">char</span> mine[ROWS][COLS], <span class="hljs-type">char</span> show[ROWS][COLS],<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> y)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> n = <span class="hljs-built_in">get_mine_count</span>(mine, x, y);<br>	<span class="hljs-keyword">if</span> (n != <span class="hljs-number">0</span>)<br>	&#123;<br>		show[x][y] = <span class="hljs-string">&#x27;0&#x27;</span> + n;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (show[x][y] != <span class="hljs-string">&#x27; &#x27;</span>)<br>	&#123;<br>		show[x][y] = <span class="hljs-string">&#x27; &#x27;</span>;<br>		<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span> (i = x - <span class="hljs-number">1</span>; i &lt;= x + <span class="hljs-number">1</span>; i++)<br>		&#123;<br>			<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;<br>			<span class="hljs-keyword">for</span> (j = y - <span class="hljs-number">1</span>; j &lt;= y + <span class="hljs-number">1</span>; j++)<br>			&#123;<br>				<span class="hljs-built_in">Open</span>(mine, show, i, j);<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">FindMine</span><span class="hljs-params">(<span class="hljs-type">char</span> mine[ROWS][COLS], <span class="hljs-type">char</span> show[ROWS][COLS], <span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> x = <span class="hljs-number">0</span>;<br>	<span class="hljs-type">int</span> y = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入你要查询的坐标-&gt;&quot;</span>);<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;x, &amp;y);<br>		<span class="hljs-built_in">Sleep</span>(<span class="hljs-number">500</span>);<br>		<span class="hljs-keyword">if</span> (x &gt;= <span class="hljs-number">1</span> &amp;&amp; x &lt;= row &amp;&amp; y &gt;= <span class="hljs-number">1</span> &amp;&amp; y &lt;= col)<br>		&#123;<br>			<span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;1&#x27;</span> == mine[x][y])<br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;很遗憾，你无了\n&quot;</span>);<br>				<span class="hljs-built_in">Sleep</span>(<span class="hljs-number">500</span>);<br>				<span class="hljs-built_in">DisplayBoard</span>(mine, row, col);<br>				<span class="hljs-keyword">break</span>;<br>			&#125;<br>			<span class="hljs-keyword">else</span><br>			&#123;<br>				<span class="hljs-comment">//计算坐标x，y周围有几个雷</span><br>				<span class="hljs-built_in">Open</span>(mine,show,x,y);<br>				<span class="hljs-built_in">DisplayBoard</span>(show, row, col);<br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;输入坐标非法，无法排雷，请重新输入\n&quot;</span>);<br>		&#125;<br><br>		<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>		<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>;<br>		<span class="hljs-type">int</span> flag = <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i &lt;= row; i++)<br>		&#123;<br>			<span class="hljs-keyword">for</span> (j = <span class="hljs-number">1</span>; j &lt;= col; j++)<br>			&#123;<br>				<span class="hljs-keyword">if</span> (show[i][j] == <span class="hljs-string">&#x27;*&#x27;</span>)<br>				&#123;<br>					flag++;<br>				&#125;<br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">if</span> (flag == EASY_COUNT)<span class="hljs-comment">//棋盘全部展开后扫描玩家找的雷的个数是否复合实际雷的个数</span><br>		&#123;<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;恭喜你,你赢了!\n&quot;</span>);<br>			<span class="hljs-built_in">DisplayBoard</span>(mine, row, col);<br>			<span class="hljs-keyword">break</span>;<br>		&#125;<br>	&#125;<br>	<br>	<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>由于我要去睡觉了，就先写到这里了，如有需要可以直接拿走，如有不懂的地方可以私信我，我们一起探讨！！！</p>
+<p id="main-toc"></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+      
+        <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+      
+        <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>C语言实现简易版的扫雷游戏</div>
+      <div>https://6jackjiang.github.io/2021/11/13/categories/C语言/C语言实现简易版的扫雷游戏/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>米兰的小铁匠</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年11月13日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/18/categories/C%E8%AF%AD%E8%A8%80/%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" title="这是一个无向图的深度优先搜索">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">这是一个无向图的深度优先搜索</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/08/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%B8%89%E5%AD%90%E6%A3%8B%EF%BC%88%E4%BA%95%E5%AD%97%E6%A3%8B%EF%BC%89%E5%B0%8F%E6%B8%B8%E6%88%8F/" title="C语言实现三子棋（井字棋）小游戏">
+                        <span class="hidden-mobile">C语言实现三子棋（井字棋）小游戏</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

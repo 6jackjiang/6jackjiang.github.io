@@ -1,0 +1,5168 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="米兰的小铁匠">
+  <meta name="keywords" content="博客,技术博客,计算机,CS">
+  
+    <meta name="description" content="米兰的小铁匠的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="米兰的小铁匠">
+<meta property="og:url" content="https://6jackjiang.github.io/index.html">
+<meta property="og:site_name" content="米兰的小铁匠">
+<meta property="og:description" content="米兰的小铁匠的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="米兰的小铁匠">
+<meta property="article:tag" content="博客">
+<meta property="article:tag" content="技术博客">
+<meta property="article:tag" content="计算机">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>米兰的小铁匠</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"6jackjiang.github.io","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>米兰的小铁匠</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="米兰的小铁匠的博客"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/06/01/categories/c++/C++%E7%A8%8B%E5%BA%8F%E5%91%98%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9%E4%B9%8B%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%A8%A1%E6%9D%BF%E6%A6%82%E5%BF%B5%E5%8F%8A%E7%94%A8%E6%B3%95/" target="_self">
+          C++程序员进大厂必备知识点之懒人专用模板概念及用法
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/01/categories/c++/C++%E7%A8%8B%E5%BA%8F%E5%91%98%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9%E4%B9%8B%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%A8%A1%E6%9D%BF%E6%A6%82%E5%BF%B5%E5%8F%8A%E7%94%A8%E6%B3%95/" target="_self">
+        <div>
+          前言 C++值得用一生去学习，本人是个C++萌新，欢迎大家和我讨论交流。  什么是模板 个人理解：  模板就是给你一个大致的解决方案，如果自己想要解决的实际问题和这个模板有关系的话，自己根据模板的解决方案解决自己的问题。   函数模板是一个蓝图，它本身并不是函数，是编译器用使用方式产生特定具体类型函数的模具。 所以其实模板就是将本来应该我们做的重复的事情交给了编译器   在编译器编译阶段，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-01 13:54" pubdate>
+              2022-06-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c/" class="category-chain-item">c++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/28/categories/c++/C_C++%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" target="_self">
+          C/C++内存管理
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/28/categories/c++/C_C++%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" target="_self">
+        <div>
+          1. C&#x2F;C++内存分布  我们先来看下面的一段代码和相关问题  1234567891011121314151617int globalVar &#x3D; 1;static int staticGlobalVar &#x3D; 1;void Test()&amp;#123; static int staticVar &#x3D; 1; int localVar &#x3D; 1;  int num1[10] &#x3D; &amp;#123;1, 2,
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-28 15:05" pubdate>
+              2022-05-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c/" class="category-chain-item">c++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/26/categories/c++/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B8%8B%E7%AF%87%E4%B9%8B%E5%86%8D%E8%B0%88%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%8C%E5%8F%8B%E5%85%83%EF%BC%8C%E5%86%85%E9%83%A8%E7%B1%BB/" target="_self">
+          类和对象下篇之再谈构造函数，友元，内部类
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/26/categories/c++/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B8%8B%E7%AF%87%E4%B9%8B%E5%86%8D%E8%B0%88%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%8C%E5%8F%8B%E5%85%83%EF%BC%8C%E5%86%85%E9%83%A8%E7%B1%BB/" target="_self">
+        <div>
+          类和对象下篇 再谈构造函数 构造函数体赋值 123456789101112131415class Date&amp;#123;public:    Date(int year, int month, int day)    &amp;#123;        _year &#x3D; year;        _month &#x3D; month;        _day &#x3D; day;    &amp;#125;private:
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-26 18:49" pubdate>
+              2022-05-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c/" class="category-chain-item">c++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/24/categories/c++/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B8%AD%EF%BC%8C%E9%80%9A%E8%BF%87%E6%97%A5%E6%9C%9F%E7%B1%BB%E6%9D%A5%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%EF%BC%8C%E9%87%8D%E8%BD%BD%EF%BC%8C%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%EF%BC%8C%E8%B5%8B%E5%80%BC%E9%87%8D%E8%BD%BD%EF%BC%8C%E5%8F%96%E5%9C%B0%E5%9D%80%E9%87%8D%E8%BD%BD%EF%BC%8C%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" target="_self">
+          类和对象中，通过日期类来深入理解构造函数，析构函数，重载，拷贝构造，赋值重载，取地址重载，操作符重载
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/24/categories/c++/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B8%AD%EF%BC%8C%E9%80%9A%E8%BF%87%E6%97%A5%E6%9C%9F%E7%B1%BB%E6%9D%A5%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%EF%BC%8C%E9%87%8D%E8%BD%BD%EF%BC%8C%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%EF%BC%8C%E8%B5%8B%E5%80%BC%E9%87%8D%E8%BD%BD%EF%BC%8C%E5%8F%96%E5%9C%B0%E5%9D%80%E9%87%8D%E8%BD%BD%EF%BC%8C%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" target="_self">
+        <div>
+          类的六个默认成员函数  如果一个类中什么成员都没有，简称为空类。空类中什么都没有吗？并不是的，任何一个类在我们不写的情 况下，都会自动生成下面6个默认成员函数。 class Date&amp;#123;&amp;#125;;  构造函数 构造函数的特性: ​ 构造函数是特殊的成员函数，需要注意的是，构造函数的虽然名称叫构造，但是需要注意的是构造函数的主 要任务并不是开空间创建对象，而是初始化对象。 其特
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-24 19:27" pubdate>
+              2022-05-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c/" class="category-chain-item">c++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/23/categories/python/Python%20%E4%B8%8B%E6%A0%87%E5%BC%82%E5%B8%B8/" target="_self">
+          Python 下标异常
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/23/categories/python/Python%20%E4%B8%8B%E6%A0%87%E5%BC%82%E5%B8%B8/" target="_self">
+        <div>
+          输入一个非空字符串和一个索引值，输出字符串中，该索引值对应的字符。若发现异常，则输出“输入下标有误” 输入格式: 输入一个非空的字符串，再输入一个索引值（Python中可以是正向索引，也可以是反向索引）。 输出格式: 输出字符串中，该索引值对应的字符。若发现异常（如输入的索引值太大或太小，超出字符串的索引值范围；如输入的索引值为非整数等），则输出“输入下标有误” 输入样例: 在这里给出一组输入。例
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-23 15:29" pubdate>
+              2022-05-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/23/categories/python/python%20%E6%B1%82%E6%9F%90%E6%9C%88%E7%9A%84%E5%A4%A9%E6%95%B0/" target="_self">
+          python 求某月的天数
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/23/categories/python/python%20%E6%B1%82%E6%9F%90%E6%9C%88%E7%9A%84%E5%A4%A9%E6%95%B0/" target="_self">
+        <div>
+          7-1 求某月的天数 分数 10 作者 usx程序设计类课程组 单位 绍兴文理学院 输入年份year、月份month，判断该月的天数。闰年：能被4整除但不能被100整除或者能被400整除的年份是闰年。 输入格式: 测试数据有多组，处理到文件尾。对于每组测试，输入两个整数，表示年份year和月份month。 输出格式: 对于每组测试，输出对应年月的天数。 输入样例: 2020 2 2020 4 输出
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-23 15:18" pubdate>
+              2022-05-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/16/categories/c++/C++%E4%B9%8Bthis%E6%8C%87%E9%92%88/" target="_self">
+          C++之this指针
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/16/categories/c++/C++%E4%B9%8Bthis%E6%8C%87%E9%92%88/" target="_self">
+        <div>
+          this 指针 this指针的引出 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950class Time&amp;#123;public:Time(int year &#x3D; 1, int month &#x3D; 1, int day &#x3D; 1)&amp;#123;	_year &#x3D; year
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-16 15:45" pubdate>
+              2022-05-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c/" class="category-chain-item">c++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+              <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+            
+              <a href="/tags/visual-studio/">#visual studio</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/12/categories/%E7%AC%94%E8%AE%B0/C++%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E2%80%94%E2%80%94%E4%B8%8A%E7%AF%87/" target="_self">
+          C++类和对象——上篇
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/12/categories/%E7%AC%94%E8%AE%B0/C++%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E2%80%94%E2%80%94%E4%B8%8A%E7%AF%87/" target="_self">
+        <div>
+          😁前言  这篇博客主要带大家初步 认识类和对象   💖什么是类 🎄 类的引入  C语言中，结构体中只能定义变量，在C++中，结构体不仅可以定义变量，还可以定义函数  🍕类的定义   声明和定义全部放在类体中，需要注意：成员函数如果在类中定义，编译器可能会将其当成内联函数处 理。 2.一般情况下采用上图的方式  ✈️ 类的作用域 类定义了一个新的作用域，类的所有成员都在类的作用域中。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-12 22:47" pubdate>
+              2022-05-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/10/categories/%E7%AC%94%E8%AE%B0/%E6%B5%85%E6%B5%85%E5%9C%B0%E8%AE%B2%E4%B8%80%E4%B8%8B%E5%BC%95%E7%94%A8%E5%90%A7/" target="_self">
+          浅浅地讲一下引用吧
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/10/categories/%E7%AC%94%E8%AE%B0/%E6%B5%85%E6%B5%85%E5%9C%B0%E8%AE%B2%E4%B8%80%E4%B8%8B%E5%BC%95%E7%94%A8%E5%90%A7/" target="_self">
+        <div>
+          🎄 前言 开启C++之路，希望看了这篇文章之后可以帮助你理解引用    💖 何为引用 		引用简单理解一下就是起别名   比如 宇智波鼬，有人叫鼬，有人叫鼬神，有人叫一打七，佐助就叫他欧尼酱    再比如宇智波佐助，有人叫他佐助，有人叫他二柱子，有人叫他啥是gay，鼬就叫他愚蠢的欧豆豆    🍺深入理解引用    上图我们可以看到，b是a的引用，a和b的值不仅一样，就连地址也是一样的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-10 21:38" pubdate>
+              2022-05-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/05/categories/C%E8%AF%AD%E8%A8%80/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%EF%BC%8C%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%A0%86%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%EF%BC%8C%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%EF%BC%8C%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" target="_self">
+          冒泡排序，插入排序，快速排序，堆排序，希尔排序，归并排序，计数排序，选择排序
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/05/categories/C%E8%AF%AD%E8%A8%80/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%EF%BC%8C%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%A0%86%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%EF%BC%8C%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%EF%BC%8C%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" target="_self">
+        <div>
+          🎉前言  本人是西安邮电大学一名普通的大二学生，希望这篇关于插入排序的博客对你有用  点个赞嘛   以下动图均来自https:&#x2F;&#x2F;www.r2coding.com&#x2F;#&#x2F;   🚕交换数据函数（SwapData） 这个函数会经常用到 1234567void SwapData(int* pa, int* pb)&amp;#123;	int tmp &#x3D; *pa;	*pa &#x3D; *pb;	*pb &#x3D; tm
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-05 23:33" pubdate>
+              2022-05-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+              <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+            
+              <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">#排序算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/04/17/categories/C%E8%AF%AD%E8%A8%80/%E5%A0%86%E7%9A%84%E5%AE%9A%E4%B9%89%E4%BB%A5%E5%8F%8A%E5%A0%86%E6%8E%92%E5%BA%8F/" target="_self">
+          堆的定义以及堆排序
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/04/17/categories/C%E8%AF%AD%E8%A8%80/%E5%A0%86%E7%9A%84%E5%AE%9A%E4%B9%89%E4%BB%A5%E5%8F%8A%E5%A0%86%E6%8E%92%E5%BA%8F/" target="_self">
+        <div>
+          🚗前言  本人是西安邮电大学的一个普通的 大学生，如果这篇文章对你有帮助的话请给我点个赞吧，球球了。    🎉堆的概念 直接上图   其实可以把堆看成一个完全二叉树，并且用数组实现。 左右孩子和双亲的关系就是这样的： leftchild&#x3D;parent*2+1； rightchild&#x3D;parent *2+2； parent &#x3D; （child-1）&#x2F;2；  ✈️堆的代码实现 heap.h
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-17 19:57" pubdate>
+              2022-04-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/04/15/categories/%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%8F%89%E6%A0%91%E8%AF%A6%E8%A7%A3/" target="_self">
+          二叉树详解
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/04/15/categories/%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%8F%89%E6%A0%91%E8%AF%A6%E8%A7%A3/" target="_self">
+        <div>
+          ✈️前言 	本人是西安邮电大学的一名普通的大学生，以下是我对于二叉树的理解。     希望对大家有帮助     🚂什么是二叉树   二叉树（Binary tree）是树形结构的一个重要类型。许多实际问题抽象出来的数据结构往往是二叉树形式，即使是一般的树也能简单地转换为二叉树，而且二叉树的存储结构及其算法都较为简单，因此二叉树显得特别重要。二叉树特点是每个节点最多只能有两棵子树，且有左右之
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-15 14:42" pubdate>
+              2022-04-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/03/25/categories/C%E8%AF%AD%E8%A8%80/%E7%9C%8B%E4%BA%86%E8%BF%99%E7%AF%87%E5%85%B3%E4%BA%8E%E6%A0%88%E7%9A%84%E6%96%87%E7%AB%A0%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%8E%BB%E7%BB%99%E5%BC%82%E6%80%A7%E8%AE%B2%E4%BA%86/" target="_self">
+          看了这篇关于栈的文章就可以去给异性讲了
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/25/categories/C%E8%AF%AD%E8%A8%80/%E7%9C%8B%E4%BA%86%E8%BF%99%E7%AF%87%E5%85%B3%E4%BA%8E%E6%A0%88%E7%9A%84%E6%96%87%E7%AB%A0%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%8E%BB%E7%BB%99%E5%BC%82%E6%80%A7%E8%AE%B2%E4%BA%86/" target="_self">
+        <div>
+          🎈前言 这篇文章男女通用，看懂了就去给异性讲吧。     🎈什么是栈 可以把栈当成是弹夹，只能从栈顶放入数据和取出数据，而且每次取出的时候都是从栈顶取，先进后出后进先出 🎈动图演示栈 🎈链表实现栈：  🎈线性表实现栈：   🎈栈的具体实现 🎈stak.h 定义函数，结构体，所需要的头文件 12345678910111213141516171819202122#pragma o
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-25 17:03" pubdate>
+              2022-03-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/03/25/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%AC%AC%E4%B8%80%E9%A2%98%E2%80%94%E2%80%94%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" target="_self">
+          力扣刷题笔记之第一题——两数之和
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/25/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%AC%AC%E4%B8%80%E9%A2%98%E2%80%94%E2%80%94%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" target="_self">
+        <div>
+          前言 本人是西安邮电大学的一名普通的大二学生，这是我在力扣上刷题的笔记   题目描述 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。 你可以按任意顺序返回答案。 示例 1： 输入：nums &#x3D; [2,7,11
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-25 14:29" pubdate>
+              2022-03-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+              <a href="/tags/leetcode/">#leetcode</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/03/24/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8A%9B%E6%89%A3leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" target="_self">
+          力扣leetcode刷题笔记之消失的数字
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/24/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8A%9B%E6%89%A3leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" target="_self">
+        <div>
+          🚙前言 本人是西安邮电大学计科专业一名普通的大学生，这是我在力扣上的刷题笔记，希望对大家有帮助。   🚗题目描述  数组nums包含从0到n的所有整数，但其中缺了一个。请编写代码找出那个缺失的整数。你有办法在O(n)时间内完成吗？ 注意：本题相对书上原题稍作改动 示例 1： 输入：[3,0,1] 输出：2 示例 2： 输入：[9,6,4,2,3,5,7,0,1] 输出：8 来源：力扣
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-24 09:27" pubdate>
+              2022-03-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/leetcode/">#leetcode</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/03/22/categories/C%E8%AF%AD%E8%A8%80/%E8%B6%85%E8%AF%A6%E8%A7%A3%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%8F%8C%E5%90%91%E5%B8%A6%E5%A4%B4%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E3%80%82/" target="_self">
+          超详解——数据结构之双向带头循环链表。
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/22/categories/C%E8%AF%AD%E8%A8%80/%E8%B6%85%E8%AF%A6%E8%A7%A3%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%8F%8C%E5%90%91%E5%B8%A6%E5%A4%B4%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E3%80%82/" target="_self">
+        <div>
+          🎃 前言 本人是西安邮电大学计科专业的一个普通学生，以下是本人对于带头双向循环链表的理解。  先上图  带头双向循环链表的 头节点（head）不存数据,因为如果数据是char类型的话，存放的数据多了 ，怎么表示？表示不了啊   🍺带你理解链表 如果大家对于链表还不是很熟悉的话，请点击传送门，那里有对于单链表的简单解释👉 传送门  🎄结构体创建结点 prev：指向上一个结点 next
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-22 09:28" pubdate>
+              2022-03-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+              <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/03/17/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8A%9B%E6%89%A3leetcode%20%E9%93%BE%E8%A1%A8%E7%9A%84%E4%B8%AD%E9%97%B4%E7%BB%93%E7%82%B9%20%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E8%A7%A3%E6%B3%95/" target="_self">
+          力扣leetcode 链表的中间结点 快慢指针解法
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/17/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8A%9B%E6%89%A3leetcode%20%E9%93%BE%E8%A1%A8%E7%9A%84%E4%B8%AD%E9%97%B4%E7%BB%93%E7%82%B9%20%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E8%A7%A3%E6%B3%95/" target="_self">
+        <div>
+          🧨前言    本人目前是西安邮电大学计算机科学与技术专业一位普通的大学生,Q：1243032591 🧧如果大家觉得这篇文章有帮助的话给我点个免费的赞呗，如果能关注就更好了🧧    🎇题目描述  给定一个头结点为 head 的非空单链表，返回链表的中间结点。 如果有两个中间结点，则返回第二个中间结点。 示例 1： 输入：[1,2,3,4,5] 输出：此列表中的结点 3 (序列化形式：
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-17 14:42" pubdate>
+              2022-03-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
+            
+              <a href="/tags/leetcode/">#leetcode</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/03/16/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8A%9B%E6%89%A3%EF%BC%88LeetCode%EF%BC%89%E4%B9%8B%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%E7%9A%84%E9%A2%98%E8%A7%A3/" target="_self">
+          力扣（LeetCode）之反转链表的题解
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/16/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8A%9B%E6%89%A3%EF%BC%88LeetCode%EF%BC%89%E4%B9%8B%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%E7%9A%84%E9%A2%98%E8%A7%A3/" target="_self">
+        <div>
+          🎈前言：  本人目前是西安邮电大学计算机科学与技术专业一位普通的大学生,Q：1243032591 🧧如果大家觉得这篇文章有帮助的话给我点个免费的赞呗，如果能关注就更好了🧧     🎄题目内容： 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。 示例 1：  输入：head &#x3D; [1,2,3,4,5] 输出：[5,4,3,2,1] 示例 2：  输入：head &#x3D;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-16 09:27" pubdate>
+              2022-03-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+              <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
+            
+              <a href="/tags/leetcode/">#leetcode</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/03/14/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/leetcode%20%E5%8A%9B%E6%89%A3.26.%20%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%88%E5%8A%A8%E5%9B%BE%E8%AF%A6%E8%A7%A3%EF%BC%89/" target="_self">
+          leetcode 力扣.26. 删除有序数组中的重复项（动图详解）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/14/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/leetcode%20%E5%8A%9B%E6%89%A3.26.%20%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%88%E5%8A%A8%E5%9B%BE%E8%AF%A6%E8%A7%A3%EF%BC%89/" target="_self">
+        <div>
+          ✨前言  本人目前是西安邮电大学计算机科学与技术专业一位普通的大学生,Q：1243032591 🧧如果大家觉得这篇文章有帮助的话给我点个免费的赞呗，如果能关注就更好了🧧     🎄题目描述  给你一个 升序排列 的数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。元素的 相对顺序 应该保持 一致 。 由于在某些语言中不能改变数组的长度
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-14 09:35" pubdate>
+              2022-03-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+              <a href="/tags/leetcode/">#leetcode</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/03/13/categories/C%E8%AF%AD%E8%A8%80/%E5%B8%A6%E4%BD%A0%E7%90%86%E8%A7%A3%E5%8D%95%E9%93%BE%E8%A1%A8%EF%BC%88%E5%A6%82%E6%9E%9C%E5%AF%B9%E4%BD%A0%E6%9C%89%E5%B8%AE%E5%8A%A9%E7%9A%84%E8%AF%9D%E8%AF%B7%E7%82%B9%E8%B5%9E%E5%91%97%EF%BC%89/" target="_self">
+          带你理解单链表（如果对你有帮助的话请点赞呗）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/13/categories/C%E8%AF%AD%E8%A8%80/%E5%B8%A6%E4%BD%A0%E7%90%86%E8%A7%A3%E5%8D%95%E9%93%BE%E8%A1%A8%EF%BC%88%E5%A6%82%E6%9E%9C%E5%AF%B9%E4%BD%A0%E6%9C%89%E5%B8%AE%E5%8A%A9%E7%9A%84%E8%AF%9D%E8%AF%B7%E7%82%B9%E8%B5%9E%E5%91%97%EF%BC%89/" target="_self">
+        <div>
+          🧨前言  本人目前是西安邮电大学计算机科学与技术专业一位普通的大学生,Q：1243032591 🧧我的码云主页点击这里🧧  这篇文章是我关于单链表写的文章，如果大家对于单链表的概念还不是很熟的话请点击这里 👉个人对于单链表的简单理解 按照我之前写代码的惯例，这次依旧分为三个文件 Sqlist.c Sqlist.h test.c   🚂Sqlist.h(函数声明，并且引用头文件和创
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-13 15:00" pubdate>
+              2022-03-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+              <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/03/12/categories/C%E8%AF%AD%E8%A8%80/%E5%AF%B9%E4%BA%8E%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AE%80%E5%8D%95%E8%A7%A3%E9%87%8A/" target="_self">
+          对于单链表的简单解释
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/12/categories/C%E8%AF%AD%E8%A8%80/%E5%AF%B9%E4%BA%8E%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AE%80%E5%8D%95%E8%A7%A3%E9%87%8A/" target="_self">
+        <div>
+          前言 本人目前也只是一个普通的大学生，所以难免会有错误，如有错误请指出，感谢！！！ 如果大家有什么疑问或者见解可交流：q:1243032591  提示：以下是本篇文章正文内容，下面案例可供参考 一、🎈链表是什么？ 先上图片：  链表刚开始是挺难理解的，相信大家一定听过学校老师讲链表了，我说一下我个人的理解： 个人对于链表的理解就是类似于火车🚂，一个节点连着一个节点，就像火车🚂 一
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-12 17:25" pubdate>
+              2022-03-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/visual-studio/">#visual studio</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/03/11/categories/C%E8%AF%AD%E8%A8%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/" target="_self">
+          数据结构之顺序表的增删查改
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/11/categories/C%E8%AF%AD%E8%A8%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/" target="_self">
+        <div>
+          前言 这是我对于数据结构顺序表的增删查改理解以及代码实现 首先分为三个文件。   一、Seqlist.h 1234567891011121314151617181920212223242526272829#pragma once#include&lt;stdio.h&gt;#include&lt;assert.h&gt;#include&lt;stdlib.h&gt;typedef int
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-11 10:17" pubdate>
+              2022-03-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/27/categories/C%E8%AF%AD%E8%A8%80/%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E7%90%86%E8%A7%A3/" target="_self">
+          对于数据在内存中的理解
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/27/categories/C%E8%AF%AD%E8%A8%80/%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E7%90%86%E8%A7%A3/" target="_self">
+        <div>
+          说明：结构体向最长的char对齐，前两个位段元素一共4+2位，不足8位，合起来占1字节，最后一个单独1字节，一共3字节。另外，#define执行的是查找替换， sizeof(struct _Record_Struct) * MAX_SIZE这个语句其实是3*2+3，结果为9，故选D。    puc是一个char数组，每次跳转一个字节，结构体不是，它只有第一个元素单独享用一字节，其他三个元素一起
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-27 12:44" pubdate>
+              2022-02-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/27/categories/C%E8%AF%AD%E8%A8%80/%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BC%96%E8%AF%91/" target="_self">
+          程序的编译
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/27/categories/C%E8%AF%AD%E8%A8%80/%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BC%96%E8%AF%91/" target="_self">
+        <div>
+          
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-27 12:36" pubdate>
+              2022-02-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/27/categories/C%E8%AF%AD%E8%A8%80/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" target="_self">
+          动态内存管理
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/27/categories/C%E8%AF%AD%E8%A8%80/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" target="_self">
+        <div>
+          C 库函数 void *malloc(size_t size) 分配所需的内存空间，并返回一个指向它的指针。 声明 下面是 malloc() 函数的声明。 void *malloc(size_t size) 参数 size – 内存块的大小，以字节为单位。 返回值 该函数返回一个指针 ，指向已分配大小的内存。如果请求失败，则返回 NULL。 实例 下面的实例演示了 malloc() 函数的用法。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-27 12:28" pubdate>
+              2022-02-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/27/categories/C%E8%AF%AD%E8%A8%80/%E5%AE%8F%E5%AE%9A%E4%B9%89%E5%92%8C%E5%87%BD%E6%95%B0/" target="_self">
+          宏定义和函数
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/27/categories/C%E8%AF%AD%E8%A8%80/%E5%AE%8F%E5%AE%9A%E4%B9%89%E5%92%8C%E5%87%BD%E6%95%B0/" target="_self">
+        <div>
+          以下资源来自比特就业课：   #define执行查找替换，#if可以区分是否编译，#undef可以反定义，也就是取消#define宏定义的东西，#end并没有这玩意，只有#endif，故选D。    前三个是常用宏，分别是：打印所在文件、打印编译时间、打印编译日期。除此之外，还有__LINE__（行号）、FUNCTION（函数名）等宏，而__MAIN__并不存在，故选D    概念性问题，这个做法
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-27 12:18" pubdate>
+              2022-02-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/visual-studio/">#visual studio</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/11/categories/C%E8%AF%AD%E8%A8%80/%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0%E2%80%94%E9%80%9A%E8%AE%AF%E5%BD%95%EF%BC%88%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%8C%E8%87%AA%E8%A1%8C%E8%BD%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%BD%B1%E9%99%A2%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%89%E2%80%94C%E8%AF%AD%E8%A8%80%E8%AF%BE%E8%AE%BE%EF%BC%88%E4%B8%87%E8%83%BD%E6%A8%A1%E6%9D%BF%EF%BC%89%E2%80%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E7%94%A8%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE/" target="_self">
+          双向循环链表实现—通讯录（学生管理系统，自行车管理系统，影院管理系统）—C语言课设（万能模板）—数据结构—用文件存储数据
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/11/categories/C%E8%AF%AD%E8%A8%80/%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0%E2%80%94%E9%80%9A%E8%AE%AF%E5%BD%95%EF%BC%88%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%8C%E8%87%AA%E8%A1%8C%E8%BD%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%BD%B1%E9%99%A2%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%89%E2%80%94C%E8%AF%AD%E8%A8%80%E8%AF%BE%E8%AE%BE%EF%BC%88%E4%B8%87%E8%83%BD%E6%A8%A1%E6%9D%BF%EF%BC%89%E2%80%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E7%94%A8%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE/" target="_self">
+        <div>
+          大家好，如果觉得我这篇文章写的不错并且对你有帮助的话就关注一下呗。 这是我关于双向循环链表的博客，可以点进去康康啦  编译器是VS2019，依旧是分为三个文件 我先把三个文件的原码放出来，然后对于函数 一 一 解释。 申请空间 1234567891011121314struct Contact* BuyNewNode(char* name, int age, char* sex, char* te
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-11 19:34" pubdate>
+              2022-02-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+              <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/25/categories/c++/6-1%20%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E7%9F%A9%E5%BD%A2%E7%B1%BB%EF%BC%88C++%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%89%20(10%20%E5%88%86)/" target="_self">
+          6-1 定义一个矩形类（C++构造函数） (10 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/01/25/categories/c++/6-1%20%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E7%9F%A9%E5%BD%A2%E7%B1%BB%EF%BC%88C++%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%89%20(10%20%E5%88%86)/" target="_self">
+        <div>
+          设计一个名为Rectangle的矩形类，这个类包括：两个名为width和height的double数据域，它们分别表示矩形的宽和高。width和height的默认值都为1.该类包括矩形类的无参构造函数（默认构造函数）；一个width和height为指定值的矩形构造函数；一个名为getArea( )的函数返回矩形的面积；一个名为getPerimeter( )的函数返回矩形的周长。请实现这个类。 类名
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-25 23:45" pubdate>
+              2022-01-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c/" class="category-chain-item">c++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E5%87%A0%E4%BD%95%E5%AD%A6/">#几何学</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/25/categories/c++/C++6-2%20%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2Triangle%E7%B1%BB%EF%BC%88C++%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%89%20(10%20%E5%88%86)/" target="_self">
+          C++6-2 设计一个三角形Triangle类（C++构造函数） (10 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/01/25/categories/c++/C++6-2%20%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E4%B8%89%E8%A7%92%E5%BD%A2Triangle%E7%B1%BB%EF%BC%88C++%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%89%20(10%20%E5%88%86)/" target="_self">
+        <div>
+          6-2 设计一个三角形Triangle类（C++构造函数） (10 分) 设计一个三角形Triangle类。这个类包括： 两个名为width和height的double型数据域，它们分别表示三角形的底宽和高。一个为width和height指定初值的构造函数。 一个名为getArea()的方法返回这个三角形的面积。 类名为： Triangle 裁判测试程序样例： #include  using na
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-25 23:44" pubdate>
+              2022-01-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c/" class="category-chain-item">c++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/25/categories/C%E8%AF%AD%E8%A8%80/strtok%E5%87%BD%E6%95%B0%EF%BC%8C%E5%AE%9E%E7%8E%B0memcpy%E8%BF%98%E6%9C%89memmove/" target="_self">
+          strtok函数，实现memcpy还有memmove
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/01/25/categories/C%E8%AF%AD%E8%A8%80/strtok%E5%87%BD%E6%95%B0%EF%BC%8C%E5%AE%9E%E7%8E%B0memcpy%E8%BF%98%E6%9C%89memmove/" target="_self">
+        <div>
+          前期提醒：这是比特鹏哥上课讲的内容，鹏哥讲的非常好，大家可以了解一下。  先来讲一讲strtok函数：  1234567891011121314151617181920212223int main()&amp;#123;	const char* p &#x3D; &quot;@.#&quot;;	char arr[] &#x3D; &quot;zpengwei@yeah.net#hehe&quot;;	char buf[5
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-25 23:30" pubdate>
+              2022-01-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/25/categories/C%E8%AF%AD%E8%A8%80/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%86%85%E5%AD%98%E5%87%BD%E6%95%B0%E5%B0%8F%E8%AE%B0/" target="_self">
+          字符串和内存函数小记
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/01/25/categories/C%E8%AF%AD%E8%A8%80/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%86%85%E5%AD%98%E5%87%BD%E6%95%B0%E5%B0%8F%E8%AE%B0/" target="_self">
+        <div>
+          strtok函数： 在这里插入代码片for这里插入代码片 (str &#x3D; strtok(buf, p); str !&#x3D; NULL; str&#x3D;strtok(NULL, p)) &#x2F;&#x2F;	&amp;#123; &#x2F;&#x2F;		printf(&quot;%s\n&quot;, str); &#x2F;&#x2F;	&amp;#125;  for (str &#x3D; strtok(buf, p); str !&#x3D; NULL; str&#x3D;strtok(NULL, p)) &#x2F;&#x2F; { &#x2F;&#x2F;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-25 22:59" pubdate>
+              2022-01-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/24/categories/C%E8%AF%AD%E8%A8%80/%E6%A8%A1%E4%BB%BFqsort%E7%9A%84%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" target="_self">
+          模仿qsort的功能实现一个通用的冒泡排序
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/01/24/categories/C%E8%AF%AD%E8%A8%80/%E6%A8%A1%E4%BB%BFqsort%E7%9A%84%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" target="_self">
+        <div>
+          目录  1.什么是冒泡排序 ：  1.什么是冒泡排序 ：  动图看完之后总结一下吧：        比较相邻的元素。如果第一个比第二个大，就交换他们两个。        对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。        针对所有的元素重复以上的步骤，除了最后一个。        持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-24 13:07" pubdate>
+              2022-01-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/linq/">#linq</a>
+            
+              <a href="/tags/p2p/">#p2p</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/24/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%20qsort%E5%BA%93%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%EF%BC%9A/" target="_self">
+          C语言 qsort库函数使用方式：
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/01/24/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%20qsort%E5%BA%93%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%EF%BC%9A/" target="_self">
+        <div>
+          首先引用stdlib.h头文件。 C 库函数 void qsort(void *base, size_t nitems, size_t size, int (*compar)(const void *, const void*)) 对数组进行排序。 参数 base -- 指向要排序的数组的第一个元素的指针。nitems -- 由 base 指向的数组中元素的个数。size -- 数组中每个元素的大
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-24 12:59" pubdate>
+              2022-01-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/12/19/categories/C%E8%AF%AD%E8%A8%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E3%80%82/" target="_self">
+          数据结构之双向循环链表。
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/12/19/categories/C%E8%AF%AD%E8%A8%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E3%80%82/" target="_self">
+        <div>
+          上面是双向循环链表的物理结构。 代码实现如下： list.h（函数的声明和头文件的引用） test.c（函数之间的调用关系） list.c（每个函数功能的具体实现） #pragma once #include&lt;stdio.h&gt; #include&lt;assert.h&gt; #include&lt;malloc.h&gt; #include&lt;stdlib.h&gt; #
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-12-19 23:44" pubdate>
+              2021-12-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+              <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
+            
+              <a href="/tags/list/">#list</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/30/categories/C%E8%AF%AD%E8%A8%80/%E6%95%B0%E6%8D%AE%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%AD%98%E5%82%A8%EF%BC%8C%E8%B6%85%E8%AF%A6%E8%A7%A3/" target="_self">
+          数据在内存中的存储，超详解
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/30/categories/C%E8%AF%AD%E8%A8%80/%E6%95%B0%E6%8D%AE%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%AD%98%E5%82%A8%EF%BC%8C%E8%B6%85%E8%AF%A6%E8%A7%A3/" target="_self">
+        <div>
+          目录 关于整形提升  浮点数的存储方式    我将自己对于数据在内存中的存储的理解写一篇博客以供大家参考。 我觉得还是边写代码边解释吧，这样可以边看代码边想问题，比较方便一点。 关于整形提升   先来解释以下上边的这个代码，数字在内存中的存储，存储的是二进制补码 -1的原码： 10000000000000000000000000000001 -1的反码： 111111111111111111111
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-30 16:32" pubdate>
+              2021-11-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/25/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E6%89%93%E5%8D%B0%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/" target="_self">
+          C语言实现打印杨辉三角
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/25/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E6%89%93%E5%8D%B0%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/" target="_self">
+        <div>
+          1234567891011121314151617181920212223242526#define _CRT_SECURE_NO_WARNINGS 1#include&lt;stdio.h&gt;int main(void)&amp;#123;	int i &#x3D; 0;	int j &#x3D; 0;	int a[10][10] &#x3D; &amp;#123; 0 &amp;#125;;	for (i &#x3D; 0; i &lt; 10; i+
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-25 23:25" pubdate>
+              2021-11-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/24/categories/C%E8%AF%AD%E8%A8%80/%E7%AE%80%E5%8D%95%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B%E5%9B%BE%E4%B8%AD%E5%B7%A6%E4%B8%8A%E8%A7%92%E7%9A%84%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E6%AD%BB%E5%BE%AA%E7%8E%AF%E3%80%82/" target="_self">
+          简单解释一下图中左上角的代码执行结果为什么是死循环。
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/24/categories/C%E8%AF%AD%E8%A8%80/%E7%AE%80%E5%8D%95%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B%E5%9B%BE%E4%B8%AD%E5%B7%A6%E4%B8%8A%E8%A7%92%E7%9A%84%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E6%AD%BB%E5%BE%AA%E7%8E%AF%E3%80%82/" target="_self">
+        <div>
+          
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-24 21:30" pubdate>
+              2021-11-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/19/categories/C%E8%AF%AD%E8%A8%80/PTA%207-3%20%E6%89%BE%E5%87%BA%E6%80%BB%E5%88%86%E6%9C%80%E9%AB%98%E7%9A%84%E5%AD%A6%E7%94%9F%20(10%20%E5%88%86)/" target="_self">
+          PTA 7-3 找出总分最高的学生 (10 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/19/categories/C%E8%AF%AD%E8%A8%80/PTA%207-3%20%E6%89%BE%E5%87%BA%E6%80%BB%E5%88%86%E6%9C%80%E9%AB%98%E7%9A%84%E5%AD%A6%E7%94%9F%20(10%20%E5%88%86)/" target="_self">
+        <div>
+          给定N个学生的基本信息，包括学号（由5个数字组成的字符串）、姓名（长度小于10的不包含空白字符的非空字符串）和3门课程的成绩（[0,100]区间内的整数），要求输出总分最高学生的姓名、学号和总分。 输入格式： 输入在一行中给出正整数N（≤10）。随后N行，每行给出一位学生的信息，格式为“学号 姓名 成绩1 成绩2 成绩3”，中间以空格分隔。 输出格式： 在一行中输出总分最高学生的姓名、学号和总分，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-19 23:53" pubdate>
+              2021-11-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/19/categories/C%E8%AF%AD%E8%A8%80/7-4%20%E9%80%9A%E8%AE%AF%E5%BD%95%E7%9A%84%E5%BD%95%E5%85%A5%E4%B8%8E%E6%98%BE%E7%A4%BA%20(10%20%E5%88%86)/" target="_self">
+          7-4 通讯录的录入与显示 (10 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/19/categories/C%E8%AF%AD%E8%A8%80/7-4%20%E9%80%9A%E8%AE%AF%E5%BD%95%E7%9A%84%E5%BD%95%E5%85%A5%E4%B8%8E%E6%98%BE%E7%A4%BA%20(10%20%E5%88%86)/" target="_self">
+        <div>
+          通讯录中的一条记录包含下述基本信息：朋友的姓名、出生日期、性别、固定电话号码、移动电话号码。 本题要求编写程序，录入N条记录，并且根据要求显示任意某条记录。 输入格式： 输入在第一行给出正整数N（≤10）；随后N行，每行按照格式姓名 生日 性别 固话 手机给出一条记录。其中姓名是不超过10个字符、不包含空格的非空字符串；生日按yyyy&#x2F;mm&#x2F;dd的格式给出年月日；性别用M表示“男”、F表示“女”；
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-19 23:52" pubdate>
+              2021-11-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/19/categories/C%E8%AF%AD%E8%A8%80/PTA%20C%E8%AF%AD%E8%A8%80%E7%BB%93%E6%9E%84%E4%BD%93%207-5%20%E5%A4%8D%E6%95%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%20(15%20%E5%88%86)/" target="_self">
+          PTA C语言结构体 7-5 复数四则运算 (15 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/19/categories/C%E8%AF%AD%E8%A8%80/PTA%20C%E8%AF%AD%E8%A8%80%E7%BB%93%E6%9E%84%E4%BD%93%207-5%20%E5%A4%8D%E6%95%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%20(15%20%E5%88%86)/" target="_self">
+        <div>
+          本题要求编写程序，计算2个复数的和、差、积、商。 输入格式： 输入在一行中按照a1 b1 a2 b2的格式给出2个复数C1&#x3D;a1+b1i和C2&#x3D;a2+b2i的实部和虚部。题目保证C2不为0。 输出格式： 分别在4行中按照(a1+b1i) 运算符 (a2+b2i) &#x3D; 结果的格式顺序输出2个复数的和、差、积、商，数字精确到小数点后1位。如果结果的实部或者虚部为0，则不输出。如果结果为0，则输出0.0
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-19 23:43" pubdate>
+              2021-11-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/19/categories/python/PTA%20Python%206-9%20sdut-%E6%B1%82%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E7%9A%84%E5%B9%B3%E5%9D%87%E5%80%BC%20(10%20%E5%88%86)/" target="_self">
+          PTA Python 6-9 sdut-求嵌套列表的平均值 (10 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/19/categories/python/PTA%20Python%206-9%20sdut-%E6%B1%82%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E7%9A%84%E5%B9%B3%E5%9D%87%E5%80%BC%20(10%20%E5%88%86)/" target="_self">
+        <div>
+          Avg是一个求平均值的函数。它的参数是嵌套列表，求每个元素的平均值。每个元素是列表，至少有1个值。 函数接口定义：  Avg(lst) lst是一个二维嵌套列表，该函数返回值是每个元素的平均值组成的列表。 裁判测试程序样例：  &#x2F;* 请在这里填写答案 *&#x2F;  lst&#x3D;eval(input())result&#x3D;Avg(lst)for value in result:    prin
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-19 23:40" pubdate>
+              2021-11-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/19/categories/python/PTA%20python%206-4%20%E6%95%B4%E6%95%B0%E6%95%B0%E4%BD%8D%E5%92%8C%EF%BC%88%E9%AB%98%E6%95%99%E7%A4%BE%EF%BC%8C%E3%80%8APython%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%BA%94%E7%94%A8%E3%80%8B%E4%B9%A0%E9%A2%988-3%EF%BC%89%20(4%20%E5%88%86)/" target="_self">
+          PTA python 6-4 整数数位和（高教社，《Python编程基础及应用》习题8-3） (4 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/19/categories/python/PTA%20python%206-4%20%E6%95%B4%E6%95%B0%E6%95%B0%E4%BD%8D%E5%92%8C%EF%BC%88%E9%AB%98%E6%95%99%E7%A4%BE%EF%BC%8C%E3%80%8APython%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%BA%94%E7%94%A8%E3%80%8B%E4%B9%A0%E9%A2%988-3%EF%BC%89%20(4%20%E5%88%86)/" target="_self">
+        <div>
+          编写一个函数，该函数接受一个正整数作为参数，返回该整数的各位数字之和。 函数接口定义： def digitSum(v) v为输入整数（正整数）； 函数返回一个整数，其值为v的各位数字之和。 裁判测试程序样例： a &#x3D; int(input()) print(digitSum(a)) 输入样例： 291 结尾无空行 输出样例： 12 结尾无空行 123456def digitSum(v):    su
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-19 23:36" pubdate>
+              2021-11-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/19/categories/python/PTA%20python%206-10%20%E5%88%A4%E6%96%AD%E7%B4%A0%E6%95%B0%E5%87%BD%E6%95%B0%20(9%20%E5%88%86)/" target="_self">
+          PTA python 6-10 判断素数函数 (9 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/19/categories/python/PTA%20python%206-10%20%E5%88%A4%E6%96%AD%E7%B4%A0%E6%95%B0%E5%87%BD%E6%95%B0%20(9%20%E5%88%86)/" target="_self">
+        <div>
+          写一个函数isPrime(n)用于判断一个数字n是不是素数，用户输入一个正整数，在一行内输出不大于该数的所有素数，各数后面用一个空格分隔。 写一个函数isPrime(n)用于判断一个数字n是不是素数，用户输入一个正整数，在一行内输出不大于该数的所有素数，各数后面用一个空格分隔。 写一个函数isPrime(n)用于判断一个数字n是不是素数，用户输入一个正整数，在一行内输出不大于该数的所有素数，各数后
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-19 23:33" pubdate>
+              2021-11-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/18/categories/python/python%207-6%20%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%20(10%20%E5%88%86)/" target="_self">
+          python 7-6 删除重复元素 (10 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/18/categories/python/python%207-6%20%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%20(10%20%E5%88%86)/" target="_self">
+        <div>
+          对于给定的数列，要求把其中的重复元素删去再从小到大输出。 输入格式: 首先输入一个正整数T，表示测试数据的组数，然后是T组测试数据。每组测试数据先输入一个整数n（1≤n≤100），再输入n个整数。 输出格式: 对于每组测试，从小到大输出删除重复元素之后的结果，每两个数据之间留一个空格。 输入样例: 1 10 1 2 2 2 3 3 1 5 4 5  输出样例: 1 2 3 4 5 12345678
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-18 15:45" pubdate>
+              2021-11-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/18/categories/python/Python%207-5%20%E7%BB%9F%E8%AE%A1%E5%AD%97%E7%AC%A6%E4%B8%AA%E6%95%B0%20(10%20%E5%88%86)/" target="_self">
+          Python 7-5 统计字符个数 (10 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/18/categories/python/Python%207-5%20%E7%BB%9F%E8%AE%A1%E5%AD%97%E7%AC%A6%E4%B8%AA%E6%95%B0%20(10%20%E5%88%86)/" target="_self">
+        <div>
+          输入若干的字符串，每个字符串中只包含数字字符和大小写英文字母，统计字符串中有出现的不同字符的出现次数。 输入格式: 测试数据有多组，处理到文件尾。每组测试输入一个字符串（不超过80个字符）。 输出格式: 对于每组测试，按字符串中有出现的字符的ASCII码升序逐行输出不同的字符及其个数（两个数据之间留一个空格），每两组测试数据之间留一空行，输出格式参照输出样例。 输入样例: 12123 A1c1B
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-18 15:42" pubdate>
+              2021-11-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/18/categories/C%E8%AF%AD%E8%A8%80/7-137%20%E8%AE%A1%E7%AE%97%E5%B7%A5%E8%B5%84%20(25%20%E5%88%86)%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/" target="_self">
+          7-137 计算工资 (25 分)（C语言）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/18/categories/C%E8%AF%AD%E8%A8%80/7-137%20%E8%AE%A1%E7%AE%97%E5%B7%A5%E8%B5%84%20(25%20%E5%88%86)%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89/" target="_self">
+        <div>
+          某公司员工的工资计算方法如下：一周内工作时间不超过40小时，按正常工作时间计酬；超出40小时的工作时间部分，按正常工作时间报酬的1.5倍计酬。员工按进公司时间分为新职工和老职工，进公司不少于5年的员工为老职工，5年以下的为新职工。新职工的正常工资为30元&#x2F;小时，老职工的正常工资为50元&#x2F;小时。请按该计酬方式计算员工的工资。 输入格式： 输入在一行中给出2个正整数，分别为某员工入职年数和周工作时间，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-18 15:35" pubdate>
+              2021-11-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/18/categories/C%E8%AF%AD%E8%A8%80/%E8%BF%99%E6%98%AF%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/" target="_self">
+          这是广度优先遍历
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/18/categories/C%E8%AF%AD%E8%A8%80/%E8%BF%99%E6%98%AF%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/" target="_self">
+        <div>
+          12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667#include&lt;stdio.h&gt;int main(void)&amp;#123;	int i &#x3D; 0, j &#x3D; 0, n &#x3D; 0, m &#x3D; 0,
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-18 15:33" pubdate>
+              2021-11-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">#排序算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/18/categories/C%E8%AF%AD%E8%A8%80/%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" target="_self">
+          这是一个无向图的深度优先搜索
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/18/categories/C%E8%AF%AD%E8%A8%80/%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" target="_self">
+        <div>
+          &#x2F;&#x2F;这是一个无向图的深度优先搜索 #include&lt;stdio.h&gt; int book[101] &#x3D; &amp;#123; 0 &amp;#125;; int e[101][101] &#x3D; &amp;#123; 0 &amp;#125;; int sum &#x3D; 0; int n &#x3D; 0; int d[101] &#x3D; &amp;#123; 0 &amp;#125;; void dfs(int cur)&#x2F;&#x2F;当前顶点的编号 &amp;#123;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-18 15:23" pubdate>
+              2021-11-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93%E7%89%88%E7%9A%84%E6%89%AB%E9%9B%B7%E6%B8%B8%E6%88%8F/" target="_self">
+          C语言实现简易版的扫雷游戏
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/13/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93%E7%89%88%E7%9A%84%E6%89%AB%E9%9B%B7%E6%B8%B8%E6%88%8F/" target="_self">
+        <div>
+          目录 在正式讲内容之前先说一说扫雷游戏的规则 首先看一下test.c： 接下来是game.h：  接下来是game.c：       在正式讲内容之前先说一说扫雷游戏的规则 游戏规则很简单，点击方格，如果是地雷，游戏失败，找到所有地雷游戏胜利   .刚开始需要碰运气，只要点开一个区域，就可以正式开始了。  3 根据现有情况，判断出一定有雷的位置。   4 进一步计算，因为“2”右边的“1”已经有从
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 00:41" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/08/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%B8%89%E5%AD%90%E6%A3%8B%EF%BC%88%E4%BA%95%E5%AD%97%E6%A3%8B%EF%BC%89%E5%B0%8F%E6%B8%B8%E6%88%8F/" target="_self">
+          C语言实现三子棋（井字棋）小游戏
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/08/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%B8%89%E5%AD%90%E6%A3%8B%EF%BC%88%E4%BA%95%E5%AD%97%E6%A3%8B%EF%BC%89%E5%B0%8F%E6%B8%B8%E6%88%8F/" target="_self">
+        <div>
+          目录   我写这个小游戏创建了三个文件就像这样： test.c的全部内容如下： 初始化棋盘： 展示棋盘： 玩家下棋：  电脑下棋： 判断输赢还是平局： game.c的全部内容如下： 最终运行结果  系统头文件用&lt;&gt;比如 : #include&lt;stdio.h&gt; 自己写的头文件用&quot;&quot;比如 : #include&quot;game.h&quot;  我建议写的代码量大的话可以自己创建一个头文件
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-08 18:05" pubdate>
+              2021-11-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/03/categories/C%E8%AF%AD%E8%A8%80/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%86%E5%BA%8F%EF%BC%88%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%EF%BC%89/" target="_self">
+          字符串逆序（递归实现）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/03/categories/C%E8%AF%AD%E8%A8%80/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%86%E5%BA%8F%EF%BC%88%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%EF%BC%89/" target="_self">
+        <div>
+          内容编写一个函数 reverse_string(char * string)（递归实现） 实现：将参数字符串中的字符反向排列，不是逆序打印。 “*” 有三种含义： 1 相乘：2*2&#x3D;4； 2 定义一个指针变量： 例 int a&#x3D;10；  int* p &#x3D; &amp;a；（注意： int* 是一个整体，我刚开始一直以为 *p 是一个整体，这个一定要理解） 3  *p &#x3D;10；（这个相当于根据a的地址
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-03 21:15" pubdate>
+              2021-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">#排序算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/29/categories/C%E8%AF%AD%E8%A8%80/%E7%8C%9C%E6%95%B0%E5%AD%97%E5%B0%8F%E6%B8%B8%E6%88%8F%20%EF%BC%88C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%EF%BC%89/" target="_self">
+          猜数字小游戏 （C语言实现）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/29/categories/C%E8%AF%AD%E8%A8%80/%E7%8C%9C%E6%95%B0%E5%AD%97%E5%B0%8F%E6%B8%B8%E6%88%8F%20%EF%BC%88C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%EF%BC%89/" target="_self">
+        <div>
+          如有需要自取 代码如下： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#define _CRT_SECURE_NO_WARNINGS 1#include &lt;stdio.h&gt;#include &lt;math
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-29 21:05" pubdate>
+              2021-10-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/visualstudio/">#visualstudio</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/23/categories/python/PTA%20Python%207-1%20%E7%BB%9F%E8%AE%A1%E4%B8%8D%E5%90%8C%E6%95%B0%E5%AD%97%E5%AD%97%E7%AC%A6%E7%9A%84%E4%B8%AA%E6%95%B0%20(10%20%E5%88%86)/" target="_self">
+          PTA Python 7-1 统计不同数字字符的个数 (10 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/23/categories/python/PTA%20Python%207-1%20%E7%BB%9F%E8%AE%A1%E4%B8%8D%E5%90%8C%E6%95%B0%E5%AD%97%E5%AD%97%E7%AC%A6%E7%9A%84%E4%B8%AA%E6%95%B0%20(10%20%E5%88%86)/" target="_self">
+        <div>
+          输入只包含数字字符的字符串，统计串中不同字符的出现次数。 输入格式: 测试数据有多组，处理到文件尾。对于每组测试，输入一个字符串（不超过80个字符）。 输出格式: 对于每组测试，按字符串中出现字符的ASCII码升序逐个输出不同的字符及其个数（两者之间留一个空格），每组输出之后空一行，输出格式参照输出样例。 输入样例: 12123  输出样例: 1 2 2 2 3 1  代码如下： 12345678
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-23 17:09" pubdate>
+              2021-10-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/22/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%20%E8%A7%A3%E5%AF%86%E5%9B%9E%E6%96%87%E2%80%94%E2%80%94%E6%A0%88/" target="_self">
+          C语言 解密回文——栈
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/22/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%20%E8%A7%A3%E5%AF%86%E5%9B%9E%E6%96%87%E2%80%94%E2%80%94%E6%A0%88/" target="_self">
+        <div>
+          回文序列是指正读反读均相同的字符序列，如“abba”和“abdba”均是回文，但“good”不是回文。试写一个算法判定给定的字符串是否为回文序列 12345678910111213141516171819202122232425262728293031323334353637#define _CRT_SECURE_NO_WARNINGS 1#include &lt;stdio.h&gt;#incl
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-22 19:56" pubdate>
+              2021-10-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/15/categories/%E7%AC%94%E8%AE%B0/%E5%AF%B9%E4%BA%8E%E6%9C%AA%E6%9D%A5%E7%9A%84%E7%AE%80%E5%8D%95%E8%A7%84%E5%88%92/" target="_self">
+          对于未来的简单规划
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/15/categories/%E7%AC%94%E8%AE%B0/%E5%AF%B9%E4%BA%8E%E6%9C%AA%E6%9D%A5%E7%9A%84%E7%AE%80%E5%8D%95%E8%A7%84%E5%88%92/" target="_self">
+        <div>
+          本人是一名计科专业大二学生，学校是西安市的普通一本。近一年的目标是把C语言重头再来稳固复习一遍然后向c++方向发展。学习编程还得多刷题，从易到难一步一步慢慢来，每天分配三个小时来学习编程，最想进入的还是华为，腾讯这类的大公司，哔哩哔哩也是一个不错的选择。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-15 23:11" pubdate>
+              2021-10-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6/">#自动驾驶</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/14/categories/python/python%207-8%20%E5%AF%B9%E4%BA%8E%E7%BB%99%E5%AE%9A%E7%9A%84%E6%AD%A3%E6%95%B4%E6%95%B0N%EF%BC%8C%E6%B1%82%E5%AE%83%E7%9A%84%E4%BD%8D%E6%95%B0%E5%8F%8A%E5%85%B6%E5%90%84%E4%BD%8D%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C%E3%80%82%20(15%20%E5%88%86)/" target="_self">
+          python 7-8 对于给定的正整数N，求它的位数及其各位数字之和。 (15 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/14/categories/python/python%207-8%20%E5%AF%B9%E4%BA%8E%E7%BB%99%E5%AE%9A%E7%9A%84%E6%AD%A3%E6%95%B4%E6%95%B0N%EF%BC%8C%E6%B1%82%E5%AE%83%E7%9A%84%E4%BD%8D%E6%95%B0%E5%8F%8A%E5%85%B6%E5%90%84%E4%BD%8D%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C%E3%80%82%20(15%20%E5%88%86)/" target="_self">
+        <div>
+          python python 7-8 对于给定的正整数N，求它的位数及其各位数字之和。 (15 分) python 7-8 对于给定的正整数N，求它的位数及其各位数字之和。 (15 分) python 7-8 对于给定的正整数N，求它的位数及其各位数字之和。 (15 分) 给定的正整数N，求它的位数及其各位数字之和。  给定的正整数N，求它的位数及其各位数字之和。 给定的正整数N，求它的位数及其各位
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-14 13:08" pubdate>
+              2021-10-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/14/categories/python/python%207-4%20%E8%BE%93%E5%87%BA%E4%B8%80%E4%B8%AA%E6%95%B0%E7%9A%84%E5%9B%A0%E5%AD%90%20(22%20%E5%88%86)/" target="_self">
+          python 7-4 输出一个数的因子 (22 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/14/categories/python/python%207-4%20%E8%BE%93%E5%87%BA%E4%B8%80%E4%B8%AA%E6%95%B0%E7%9A%84%E5%9B%A0%E5%AD%90%20(22%20%E5%88%86)/" target="_self">
+        <div>
+          输入一个正整数n，输出包含n的所有正因子的列表，注意输出格式，两个数之间用逗号隔开并空一格。 输入格式: 输入一个正整数n。 输出格式: 输出包含n的所有正整数列表，两个数之间用逗号隔开并空一格 输入样例1: 在这里给出一组输入。例如： 1 结尾无空行 输出样例1: 在这里给出相应的输出。例如： [1] 结尾无空行 输入样例2: 在这里给出一组输入。例如： 100 结尾无空行 输出样例2: 在这里
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-14 13:06" pubdate>
+              2021-10-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/14/categories/C%E8%AF%AD%E8%A8%80/7-4%20%E9%80%89%E6%8B%A9%E6%B3%95%E6%8E%92%E5%BA%8F%20(15%20%E5%88%86)C%E8%AF%AD%E8%A8%80%E7%89%88/" target="_self">
+          7-4 选择法排序 (15 分)C语言版
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/14/categories/C%E8%AF%AD%E8%A8%80/7-4%20%E9%80%89%E6%8B%A9%E6%B3%95%E6%8E%92%E5%BA%8F%20(15%20%E5%88%86)C%E8%AF%AD%E8%A8%80%E7%89%88/" target="_self">
+        <div>
+          本题要求将给定的n个整数从大到小排序后输出。 输入格式： 输入第一行给出一个不超过10的正整数n。第二行给出n个整数，其间以空格分隔。 输出格式： 在一行中输出从大到小有序的数列，相邻数字间有一个空格，行末不得有多余空格。 输入样例： 4 5 1 7 6 结尾无空行 输出样例： 7 6 5 1 结尾无空行 123456789101112131415161718192021222324# inclu
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-14 13:02" pubdate>
+              2021-10-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/14/categories/python/7-10%20%E6%B1%82%E6%89%80%E6%9C%89N%E4%BD%8D%E7%9A%84%E7%B4%A0%E6%95%B0%E5%92%8C%20(15%20%E5%88%86)/" target="_self">
+          7-10 求所有N位的素数和 (15 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/14/categories/python/7-10%20%E6%B1%82%E6%89%80%E6%9C%89N%E4%BD%8D%E7%9A%84%E7%B4%A0%E6%95%B0%E5%92%8C%20(15%20%E5%88%86)/" target="_self">
+        <div>
+          输入一个正整数n(n&gt;&#x3D;2)，输出所有n位的素数和，如n&#x3D;2，即输出的是10-99之间的所有素数的和。 输入格式: 一个正整数n(n&gt;&#x3D;2) 输出格式: 输出所有n位的素数和 输入样例: 2 结尾无空行 输出样例: 10-99之间所有的素数和&#x3D;1043 结尾无空行 1234567891011121314151617def f(n):    i &#x3D; 3    while i*i &lt;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-14 12:55" pubdate>
+              2021-10-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/11/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%207-1%20%E6%B1%82%E7%9F%A9%E9%98%B5%E5%90%84%E8%A1%8C%E5%85%83%E7%B4%A0%E4%B9%8B%E5%92%8C%20(20%20%E5%88%86)/" target="_self">
+          C语言 7-1 求矩阵各行元素之和 (20 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/11/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%207-1%20%E6%B1%82%E7%9F%A9%E9%98%B5%E5%90%84%E8%A1%8C%E5%85%83%E7%B4%A0%E4%B9%8B%E5%92%8C%20(20%20%E5%88%86)/" target="_self">
+        <div>
+          本题要求编写程序，求一个给定的m×n矩阵各行元素之和。 输入格式： 输入第一行给出两个正整数m和n（1≤m,n≤6）。随后m行，每行给出n个整数，其间 以空格分隔。 输出格式： 每行输出对应矩阵行元素之和。 输入样例： 3 2 6 3 1 -8 3 12 结尾无空行 输出样例： 9 -7 15 结尾无空行 代码如下： 1234567891011121314151617181920212223242
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-11 22:53" pubdate>
+              2021-10-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">#线性代数</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/11/categories/python/7-3%20%E7%BB%9F%E8%AE%A1%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%97%E8%A1%A8%E4%B8%AD%E6%AF%8F%E4%B8%AA%E5%AD%97%E6%AF%8D%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0%EF%BC%88%E9%AB%98%E6%95%99%E7%A4%BE%EF%BC%8C%E3%80%8APython%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%BA%94%E7%94%A8%E3%80%8B%E4%B9%A0%E9%A2%986-8%EF%BC%89%20(4%20%E5%88%86)/" target="_self">
+          7-3 统计字符串列表中每个字母出现的次数（高教社，《Python编程基础及应用》习题6-8） (4 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/11/categories/python/7-3%20%E7%BB%9F%E8%AE%A1%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%97%E8%A1%A8%E4%B8%AD%E6%AF%8F%E4%B8%AA%E5%AD%97%E6%AF%8D%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0%EF%BC%88%E9%AB%98%E6%95%99%E7%A4%BE%EF%BC%8C%E3%80%8APython%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%BA%94%E7%94%A8%E3%80%8B%E4%B9%A0%E9%A2%986-8%EF%BC%89%20(4%20%E5%88%86)/" target="_self">
+        <div>
+          统计字符串列表中每个字母出现的次数。 编写程序，使用eval()函数读入一个仅包含字符串对象的列表，然后统计该列表中每个字母出现的次数。 列表中的字符串对象仅包含小写英文字母。 输入格式: 一个仅包括字符串对象的列表，且全部字符串对象中仅出现小写英文字母。 输出格式: 字母,次数 ... 字母,次数 (注意按a-z的顺序输出) 输入样例: [&quot;aaab&quot;, &quot;cccdz&quot;] 结尾无空行 输出样例:
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-11 22:52" pubdate>
+              2021-10-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/10/categories/python/7-5%20%E7%BB%9F%E8%AE%A1%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D%E4%B8%AA%E6%95%B0%E5%8F%8A%E5%8D%95%E8%AF%8D%E7%9A%84%E5%B9%B3%E5%9D%87%E9%95%BF%E5%BA%A6%EF%BC%88%E9%AB%98%E6%95%99%E7%A4%BE%EF%BC%8C%E3%80%8APython%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%BA%94%E7%94%A8%E3%80%8B%E4%B9%A0%E9%A2%987-7%EF%BC%89%20(3%20%E5%88%86)/" target="_self">
+          7-5 统计输入字符串中的单词个数及单词的平均长度（高教社，《Python编程基础及应用》习题7-7） (3 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/10/categories/python/7-5%20%E7%BB%9F%E8%AE%A1%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D%E4%B8%AA%E6%95%B0%E5%8F%8A%E5%8D%95%E8%AF%8D%E7%9A%84%E5%B9%B3%E5%9D%87%E9%95%BF%E5%BA%A6%EF%BC%88%E9%AB%98%E6%95%99%E7%A4%BE%EF%BC%8C%E3%80%8APython%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%BA%94%E7%94%A8%E3%80%8B%E4%B9%A0%E9%A2%987-7%EF%BC%89%20(3%20%E5%88%86)/" target="_self">
+        <div>
+          编写一个程序，接受用户输入的一行英文句子（假设该句子仅由英文单词及空格构成，不包括逗号等符号），统计并输出该行句子包含的单词个数及单词的平均长度。 输入格式: 单词1 单词2 .... 单词n 输出格式: 单词个数,单词平均长度（保留两位小数） 输入样例: aaa bbb ccccccccccc 结尾无空行 输出样例: 3,5.67 结尾无空行 代码如下 12345lst &#x3D; input().sp
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 16:05" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+              <a href="/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">#自然语言处理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/10/categories/python/PTA%20python%207-9%20%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%AF%BE%E7%A8%8B%E5%90%8D%E7%A7%B0%E5%8F%8A%E8%80%83%E5%88%86%E7%AD%89%E4%BF%A1%E6%81%AF%E5%B9%B6%E8%AE%A1%E7%AE%97%20(15%20%E5%88%86)/" target="_self">
+          PTA python 7-9 键盘输入学习的课程名称及考分等信息并计算 (15 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/10/categories/python/PTA%20python%207-9%20%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%AF%BE%E7%A8%8B%E5%90%8D%E7%A7%B0%E5%8F%8A%E8%80%83%E5%88%86%E7%AD%89%E4%BF%A1%E6%81%AF%E5%B9%B6%E8%AE%A1%E7%AE%97%20(15%20%E5%88%86)/" target="_self">
+        <div>
+          键盘输入学习的课程名称及考分等信息，屏幕输出得分最高的课程及成绩，得分最低的课程及成绩，以及平均分(保留2位小数)。 输入格式: 键盘输入学习的课程名称及考分等信息，信息间采用空格分隔，每个课程一行，空行回车结束录入。 输出格式: 屏幕输出得分最高的课程及成绩，得分最低的课程及成绩，以及平均分(保留2位小数)。 输入样例: 示例格式如下： 数学 90  语文 95  英语 86  物理 84  生
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 15:57" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/10/categories/python/python%20%EF%BC%9A%207-5%20%E8%8F%B2%E5%A7%90%E6%B8%B8%E6%B3%B3%20-%20%E5%AE%9E%E9%AA%8C3%20%E7%AE%80%E5%8D%95%E7%9A%84%E8%AE%A1%E7%AE%97%E5%8F%8A%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%20-%E3%80%8APython%E7%BC%96%E7%A8%8B%E5%AE%9E%E9%AA%8C%E3%80%8B/" target="_self">
+          python ： 7-5 菲姐游泳 - 实验3 简单的计算及输入输出 -《Python编程实验》
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/10/categories/python/python%20%EF%BC%9A%207-5%20%E8%8F%B2%E5%A7%90%E6%B8%B8%E6%B3%B3%20-%20%E5%AE%9E%E9%AA%8C3%20%E7%AE%80%E5%8D%95%E7%9A%84%E8%AE%A1%E7%AE%97%E5%8F%8A%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%20-%E3%80%8APython%E7%BC%96%E7%A8%8B%E5%AE%9E%E9%AA%8C%E3%80%8B/" target="_self">
+        <div>
+          游泳奥运冠军菲姐刻苦训练，从早上a时b分开始下水训练，直到当天的c时d分结束。请编程计算：菲姐当天一共训练多少小时多少分钟？ 输入格式: 一行之内输入以空格分隔的4个非负整数，分别对应a,b,c,d。其中，0 ≤a&lt;c ≤24；b和d均不大于60。 输出格式: h:m。其中，整数h表示小时数，整数m表示分钟数,m应小于60。 输入样例: 6 30 23 20 结尾无空行 输出样例: 16:
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 10:45" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/7-5%20%E6%89%BE%E5%AE%8C%E6%95%B0%20(20%20%E5%88%86)/" target="_self">
+          7-5 找完数 (20 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/7-5%20%E6%89%BE%E5%AE%8C%E6%95%B0%20(20%20%E5%88%86)/" target="_self">
+        <div>
+          所谓完数就是该数恰好等于除自身外的因子之和。例如：6&#x3D;1+2+3，其中1、2、3为6的因子。本题要求编写程序，找出任意两正整数m和n之间的所有完数。 输入格式： 输入在一行中给出2个正整数m和n（1&lt;m≤n≤10000），中间以空格分隔。 输出格式： 逐行输出给定范围内每个完数的因子累加形式的分解式，每个完数占一行，格式为“完数 &#x3D; 因子1 + 因子2 + ... + 因子k”，其中完数和因
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 10:39" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/7-4%20%E6%B1%82%E7%AC%A6%E5%90%88%E7%BB%99%E5%AE%9A%E6%9D%A1%E4%BB%B6%E7%9A%84%E6%95%B4%E6%95%B0%E9%9B%86%20(20%20%E5%88%86)%20C%E8%AF%AD%E8%A8%80%20%E5%AE%9E%E7%8E%B0/" target="_self">
+          7-4 求符合给定条件的整数集 (20 分) C语言 实现
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/7-4%20%E6%B1%82%E7%AC%A6%E5%90%88%E7%BB%99%E5%AE%9A%E6%9D%A1%E4%BB%B6%E7%9A%84%E6%95%B4%E6%95%B0%E9%9B%86%20(20%20%E5%88%86)%20C%E8%AF%AD%E8%A8%80%20%E5%AE%9E%E7%8E%B0/" target="_self">
+        <div>
+          给定不超过6的正整数A，考虑从A开始的连续4个数字。请输出所有由它们组成的无重复数字的3位数。 输入格式： 输入在一行中给出A。 输出格式： 输出满足条件的的3位数，要求从小到大，每行6个整数。整数间以空格分隔，但行末不能有多余空格。 输入样例： 2 结尾无空行 输出样例： 234 235 243 245 253 254 324 325 342 345 352 354 423 425 432 4
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 10:36" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/%E8%8B%B1%E6%96%87%E5%8D%95%E8%AF%8D%EF%BC%88%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%89%E9%95%BF%E5%BA%A6%E6%8E%92%E5%BA%8F/" target="_self">
+          英文单词（字符串）长度排序
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/%E8%8B%B1%E6%96%87%E5%8D%95%E8%AF%8D%EF%BC%88%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%89%E9%95%BF%E5%BA%A6%E6%8E%92%E5%BA%8F/" target="_self">
+        <div>
+          1234567891011121314151617181920212223242526272829303132333435#include &lt;stdio.h&gt;#include &lt;string.h&gt;int main(void)&amp;#123;    char str[20][10],t[20],str1[10];    int i,j,n&#x3D;0;    while(1)	&amp;#123
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 10:30" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/7-1%20%E6%89%93%E5%8D%B0%E4%B9%9D%E4%B9%9D%E5%8F%A3%E8%AF%80%E8%A1%A8%20(20%20%E5%88%86)%20C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/" target="_self">
+          7-1 打印九九口诀表 (20 分) C语言实现
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/7-1%20%E6%89%93%E5%8D%B0%E4%B9%9D%E4%B9%9D%E5%8F%A3%E8%AF%80%E8%A1%A8%20(20%20%E5%88%86)%20C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/" target="_self">
+        <div>
+          下面是一个完整的下三角九九口诀表： 1*1&#x3D;1    1*2&#x3D;2   2*2&#x3D;4    1*3&#x3D;3   2*3&#x3D;6   3*3&#x3D;9    1*4&#x3D;4   2*4&#x3D;8   3*4&#x3D;12  4*4&#x3D;16   1*5&#x3D;5   2*5&#x3D;10  3*5&#x3D;15  4*5&#x3D;20  5*5&#x3D;25   1*6&#x3D;6   2*6&#x3D;12  3*6&#x3D;18  4*6&#x3D;24  5*6&#x3D;30  6*6&#x3D;36   1*7&#x3D;7
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 10:25" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/7-4%20%E8%AE%A1%E7%AE%97%E5%AD%98%E6%AC%BE%E5%88%A9%E6%81%AF%20(25%20%E5%88%86)%20C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/" target="_self">
+          7-4 计算存款利息 (25 分) C语言实现
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/7-4%20%E8%AE%A1%E7%AE%97%E5%AD%98%E6%AC%BE%E5%88%A9%E6%81%AF%20(25%20%E5%88%86)%20C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/" target="_self">
+        <div>
+          本题目要求计算存款利息，计算公式为interest&#x3D;money×(1+rate)year−money，其中interest为存款到期时的利息（税前），money是存款金额，year是存期，rate是年利率。 输入格式： 输入在一行中顺序给出三个正实数money、year和rate，以空格分隔。 输出格式： 在一行中按“interest &#x3D; 利息”的格式输出，其中利息保留两位小数。 输入样例： 10
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 10:16" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/7-2%20%E6%B1%82%E6%95%B4%E6%95%B0%E5%9D%87%E5%80%BC%20(25%20%E5%88%86)%20C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/" target="_self">
+          7-2 求整数均值 (25 分) C语言实现
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/7-2%20%E6%B1%82%E6%95%B4%E6%95%B0%E5%9D%87%E5%80%BC%20(25%20%E5%88%86)%20C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/" target="_self">
+        <div>
+          本题要求编写程序，计算4个整数的和与平均值。题目保证输入与输出均在整型范围内。 输入格式: 输入在一行中给出4个整数，其间以空格分隔。 输出格式: 在一行中按照格式“Sum &#x3D; 和; Average &#x3D; 平均值”顺序输出和与平均值，其中平均值精确到小数点后一位。 输入样例: 1 2 3 4 结尾无空行 输出样例: Sum &#x3D; 10; Average &#x3D; 2.5 结尾无空行 12345678# in
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 10:15" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/7-1%20%E8%AE%A1%E7%AE%97%E6%91%84%E6%B0%8F%E6%B8%A9%E5%BA%A6%20(25%20%E5%88%86)C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/" target="_self">
+          7-1 计算摄氏温度 (25 分)C语言实现
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/10/categories/C%E8%AF%AD%E8%A8%80/7-1%20%E8%AE%A1%E7%AE%97%E6%91%84%E6%B0%8F%E6%B8%A9%E5%BA%A6%20(25%20%E5%88%86)C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/" target="_self">
+        <div>
+          给定一个华氏温度F，本题要求编写程序，计算对应的摄氏温度C。计算公式：C&#x3D;5×(F−32)&#x2F;9。题目保证输入与输出均在整型范围内。 输入格式: 输入在一行中给出一个华氏温度。 输出格式: 在一行中按照格式“Celsius &#x3D; C”输出对应的摄氏温度C的整数值。 输入样例: 150 结尾无空行 输出样例: Celsius &#x3D; 65 结尾无空行 代码如下： 12345678910# include&amp;l
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 10:13" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/09/categories/python/7-2%20%E6%89%BE%E5%87%BA%E8%82%87%E4%BA%8B%E8%80%85%EF%BC%8C%E5%BE%AA%E7%8E%AF%E4%B8%8E%E5%B8%83%E5%B0%94%E9%80%BB%E8%BE%91%EF%BC%88%E9%AB%98%E6%95%99%E7%A4%BE%EF%BC%8C%E3%80%8APython%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%BA%94%E7%94%A8%E3%80%8B%E4%B9%A0%E9%A2%986-6%EF%BC%89%20(6%20%E5%88%86)/" target="_self">
+          7-2 找出肇事者，循环与布尔逻辑（高教社，《Python编程基础及应用》习题6-6） (6 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/09/categories/python/7-2%20%E6%89%BE%E5%87%BA%E8%82%87%E4%BA%8B%E8%80%85%EF%BC%8C%E5%BE%AA%E7%8E%AF%E4%B8%8E%E5%B8%83%E5%B0%94%E9%80%BB%E8%BE%91%EF%BC%88%E9%AB%98%E6%95%99%E7%A4%BE%EF%BC%8C%E3%80%8APython%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%BA%94%E7%94%A8%E3%80%8B%E4%B9%A0%E9%A2%986-6%EF%BC%89%20(6%20%E5%88%86)/" target="_self">
+        <div>
+          在视线不太好的黑夜一司机撞伤行人之后逃逸，有3个目击者记住了该车的部分车号特征。 甲说：“车牌号的前两位相同，且末位数是奇数”；乙说：“车牌号的后两位加起来等于5”； 丙说：“车牌号是一个N位数，并且能被3整除”。请你写一个程序，该程序接受一个正整数N(&gt;&#x3D;3), 找出肇事车可能的车牌号。 输入格式: 一个&gt;&#x3D;3的正整数 输出格式: 全部可能的车牌号（一行一个，按递增序） 输入样例：
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-09 16:41" pubdate>
+              2021-10-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/09/categories/python/PTA%207-1%20%E5%A5%96%E9%87%91%E8%AE%A1%E7%AE%97%EF%BC%8C%E5%BE%AA%E7%8E%AF%E4%B8%8E%E5%A4%9A%E5%88%86%E6%94%AF%EF%BC%88%E9%AB%98%E6%95%99%E7%A4%BE%EF%BC%8C%E3%80%8APython%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%BA%94%E7%94%A8%E3%80%8B%E4%B9%A0%E9%A2%986-5%EF%BC%89%20(4%20%E5%88%86)/" target="_self">
+          PTA 7-1 奖金计算，循环与多分支（高教社，《Python编程基础及应用》习题6-5） (4 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/09/categories/python/PTA%207-1%20%E5%A5%96%E9%87%91%E8%AE%A1%E7%AE%97%EF%BC%8C%E5%BE%AA%E7%8E%AF%E4%B8%8E%E5%A4%9A%E5%88%86%E6%94%AF%EF%BC%88%E9%AB%98%E6%95%99%E7%A4%BE%EF%BC%8C%E3%80%8APython%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%BA%94%E7%94%A8%E3%80%8B%E4%B9%A0%E9%A2%986-5%EF%BC%89%20(4%20%E5%88%86)/" target="_self">
+        <div>
+          企业发放的奖金根据利润提成。利润低于或等于100,000元的，奖金可提10%；利润高于100,000元，低于200,000（100,000 &lt; p &lt;&#x3D;200,000）时，100,000元及以内部分按10%提成，高于100,000元的部分，可提成7.5%； 200,000 &lt; p &lt;&#x3D; 400,000时，200,000元及其以内的部分仍按上述办法提成（下同），高于200
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-09 16:34" pubdate>
+              2021-10-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/09/categories/C%E8%AF%AD%E8%A8%80/PTA%20C%E8%AF%AD%E8%A8%80%207-3%20%E8%AE%A1%E7%AE%97%E5%B9%B3%E5%9D%87%E6%88%90%E7%BB%A9%20(15%20%E5%88%86)/" target="_self">
+          PTA C语言 7-3 计算平均成绩 (15 分)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/09/categories/C%E8%AF%AD%E8%A8%80/PTA%20C%E8%AF%AD%E8%A8%80%207-3%20%E8%AE%A1%E7%AE%97%E5%B9%B3%E5%9D%87%E6%88%90%E7%BB%A9%20(15%20%E5%88%86)/" target="_self">
+        <div>
+          给定N个学生的基本信息，包括学号（由5个数字组成的字符串）、姓名（长度小于10的不包含空白字符的非空字符串）和成绩（[0,100]区间内的整数），要求计算他们的平均成绩，并顺序输出平均线以下的学生名单。 输入格式： 输入在一行中给出正整数N（≤10）。随后N行，每行给出一位学生的信息，格式为“学号 姓名 成绩”，中间以空格分隔。 输出格式： 首先在一行中输出平均成绩，保留2位小数。然后按照输入顺
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-09 14:07" pubdate>
+              2021-10-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/09/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%20%E8%87%AA%E8%A1%8C%E8%BD%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" target="_self">
+          C语言课程设计 自行车管理系统
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/09/categories/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%20%E8%87%AA%E8%A1%8C%E8%BD%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" target="_self">
+        <div>
+          12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-09 13:59" pubdate>
+              2021-10-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/09/categories/C%E8%AF%AD%E8%A8%80/PTA%207-4%20%E6%B1%82%E5%A5%87%E6%95%B0%E5%92%8C%20(15%20%E5%88%86)C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/" target="_self">
+          PTA 7-4 求奇数和 (15 分)C语言实现
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/09/categories/C%E8%AF%AD%E8%A8%80/PTA%207-4%20%E6%B1%82%E5%A5%87%E6%95%B0%E5%92%8C%20(15%20%E5%88%86)C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/" target="_self">
+        <div>
+          12345678910111213141516171819#include&lt;stdio.h&gt;int main(void)&amp;#123;    int n,i&#x3D;0,j,s&#x3D;0;while(1)&amp;#123;    scanf(&quot;%d&quot;,&amp;n);    if(n&lt;&#x3D;0) break;    else if(n%2!&#x3D;0&amp;&amp;n&gt;0)&amp;#12
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-09 13:45" pubdate>
+              2021-10-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/">#c语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

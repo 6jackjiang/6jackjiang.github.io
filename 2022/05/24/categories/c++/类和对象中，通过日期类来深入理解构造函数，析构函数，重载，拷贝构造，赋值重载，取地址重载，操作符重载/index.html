@@ -1,0 +1,835 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="米兰的小铁匠">
+  <meta name="keywords" content="博客,技术博客,计算机,CS">
+  
+    <meta name="description" content="类的六个默认成员函数  如果一个类中什么成员都没有，简称为空类。空类中什么都没有吗？并不是的，任何一个类在我们不写的情 况下，都会自动生成下面6个默认成员函数。 class Date&amp;#123;&amp;#125;;  构造函数 构造函数的特性: ​ 构造函数是特殊的成员函数，需要注意的是，构造函数的虽然名称叫构造，但是需要注意的是构造函数的主 要任务并不是开空间创建对象，而是初始化对象。 其特">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类和对象中，通过日期类来深入理解构造函数，析构函数，重载，拷贝构造，赋值重载，取地址重载，操作符重载">
+<meta property="og:url" content="https://6jackjiang.github.io/2022/05/24/categories/c++/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B8%AD%EF%BC%8C%E9%80%9A%E8%BF%87%E6%97%A5%E6%9C%9F%E7%B1%BB%E6%9D%A5%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%EF%BC%8C%E9%87%8D%E8%BD%BD%EF%BC%8C%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%EF%BC%8C%E8%B5%8B%E5%80%BC%E9%87%8D%E8%BD%BD%EF%BC%8C%E5%8F%96%E5%9C%B0%E5%9D%80%E9%87%8D%E8%BD%BD%EF%BC%8C%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/index.html">
+<meta property="og:site_name" content="米兰的小铁匠">
+<meta property="og:description" content="类的六个默认成员函数  如果一个类中什么成员都没有，简称为空类。空类中什么都没有吗？并不是的，任何一个类在我们不写的情 况下，都会自动生成下面6个默认成员函数。 class Date&amp;#123;&amp;#125;;  构造函数 构造函数的特性: ​ 构造函数是特殊的成员函数，需要注意的是，构造函数的虽然名称叫构造，但是需要注意的是构造函数的主 要任务并不是开空间创建对象，而是初始化对象。 其特">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/1735dc60d5048100141af6a9a859e5b3.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/add3d9b430980f86b7b0ab9e6f43a253.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/96a6d71cc9338fdf8f1228a9c0f2ee25.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/620c235af9596ac1f112f5a618151ec9.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d48b7e0f81a7cf8192f262762eca7677.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/19e97366f97697eaa33e0bab31d87e19.png#pic_center">
+<meta property="article:published_time" content="2022-05-24T11:27:31.000Z">
+<meta property="article:modified_time" content="2022-06-03T08:36:19.572Z">
+<meta property="article:author" content="米兰的小铁匠">
+<meta property="article:tag" content="开发语言">
+<meta property="article:tag" content="c++">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/1735dc60d5048100141af6a9a859e5b3.png#pic_center">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>类和对象中，通过日期类来深入理解构造函数，析构函数，重载，拷贝构造，赋值重载，取地址重载，操作符重载 - 米兰的小铁匠</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"6jackjiang.github.io","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>米兰的小铁匠</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="类和对象中，通过日期类来深入理解构造函数，析构函数，重载，拷贝构造，赋值重载，取地址重载，操作符重载"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-24 19:27" pubdate>
+          2022年5月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          93 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">类和对象中，通过日期类来深入理解构造函数，析构函数，重载，拷贝构造，赋值重载，取地址重载，操作符重载</h1>
+            
+            <div class="markdown-body">
+              
+              <hr/>
+<hr/>
+<p></p>
+
+<p></p>
+<h1><a id="_5"></a>类的六个默认成员函数</h1>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/1735dc60d5048100141af6a9a859e5b3.png#pic_center" srcset="/img/loading.gif" lazyload/></p>
+<p>如果一个类中什么成员都没有，简称为空类。空类中什么都没有吗？并不是的，任何一个类在我们不写的情 况下，都会自动生成下面6个默认成员函数。</p>
+<p><code>class Date&#123;&#125;;</code></p>
+<p><img alt="image-20220523230651717" src="https://img-blog.csdnimg.cn/img_convert/add3d9b430980f86b7b0ab9e6f43a253.png" srcset="/img/loading.gif" lazyload/></p>
+<h2><a id="_21"></a>构造函数</h2>
+<p>构造函数的特性:</p>
+<p>​ 构造函数是特殊的成员函数，需要注意的是，构造函数的虽然名称叫构造，但是需要注意的是构造函数的主 要任务并不是开空间创建对象，而是初始化对象。</p>
+<p>其特征如下：</p>
+<ol><li>函数名与类名相同。</li><li>无返回值。</li><li>对象实例化时编译器自动调用对应的构造函数。</li><li>构造函数可以重载。</li><li>如果类中没有显式定义构造函数，则C++编译器会自动生成一个无参的默认构造函数，一旦用户显式定 义编译器将不再生成。</li><li>无参的构造函数和全缺省的构造函数都称为默认构造函数，并且默认构造函数只能有一个。注意：无参 构造函数、全缺省构造函数、我们没写编译器默认生成的构造函数，都可以认为是默认成员函数</li><li>关于编译器生成的默认成员函数，很多童鞋会有疑惑：在我们不实现构造函数的情况下，编译器会生成 默认的构造函数。但是看起来默认构造函数又没什么用？d对象调用了编译器生成的默认构造函数，但 是d对象year/month/_day，依旧是随机值。也就说在这里编译器生成的默认构造函数并没有什么卵 用？？ 解答：C++把类型分成内置类型(基本类型)和自定义类型。内置类型就是语法已经定义好的类型：如 int/char…，自定义类型就是我们使用class/struct/union自己定义的类型，看看下面的程序，就会发现 编译器生成默认的构造函数会对自定类型成员_t调用的它的默认成员函数</li><li>成员变量的命名风格</li></ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 我们看看这个函数，是不是很僵硬？</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> 	<span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year)<br> 	&#123;<br> 		<span class="hljs-comment">// 这里的year到底是成员变量，还是函数形参？</span><br> 		year = year;<br> 	&#125;<br><span class="hljs-keyword">private</span>:<br> <span class="hljs-type">int</span> year;<br>&#125;;<br><span class="hljs-comment">// 所以我们一般都建议这样</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> 	<span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year)<br> 	&#123;<br> 		_year = year;<br>	&#125;<br> <span class="hljs-keyword">private</span>:<br> 	<span class="hljs-type">int</span> _year;<br>&#125;;<br><span class="hljs-comment">// 或者这样。</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> <span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year)<br> &#123;<br> m_year = year;<br> &#125;<br><span class="hljs-keyword">private</span>:<br> <span class="hljs-type">int</span> m_year;<br>&#125;;<br><span class="hljs-comment">// 其他方式也可以的，主要看公司要求。一般都是加个前缀或者后缀标识区分就行。</span><br><br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>其实总结一下就是容易区分变量名，不容易搞混。</p>
+</blockquote>
+<p>日期类中的构造函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//Date.h</span><br><span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year = <span class="hljs-number">1</span>, <span class="hljs-type">int</span> month = <span class="hljs-number">1</span>, <span class="hljs-type">int</span> day = <span class="hljs-number">1</span>);<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 全缺省的构造函数定义 Date.cpp</span><br>Date::<span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year , <span class="hljs-type">int</span> month ,<span class="hljs-type">int</span> day )<br>&#123;<br>	<span class="hljs-keyword">if</span> (year &gt;= <span class="hljs-number">1</span> &amp;&amp;<br>		month &lt;= <span class="hljs-number">12</span> &amp;&amp; month &gt;= <span class="hljs-number">1</span> &amp;&amp;<br>		day &gt;= <span class="hljs-number">1</span> &amp;&amp; day &lt;= <span class="hljs-built_in">GetMonthDay</span>(year, month))<br>	&#123;<br>		_year = year;<br>		_month = month;<br>		_day = day;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;日期非法&quot;</span> &lt;&lt; endl;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p><strong>注意 当函数的声明和定义分离时，缺省值在声明给，定义不用给！！！</strong></p>
+<h2><a id="_117"></a>析构函数</h2>
+<p>概念</p>
+<p>前面通过构造函数的学习，我们知道一个对象时怎么来的，那一个对象又是怎么没呢的？ 析构函数：与构造函数功能相反，析构函数不是完成对象的销毁，局部对象销毁工作是由编译器完成的。而 对象在销毁时会自动调用析构函数，完成类的一些资源清理工作。</p>
+<p>特性</p>
+<p>析构函数是特殊的成员函数。 其特征如下:</p>
+<p>​ 1.析构函数名是在类名前加上字符 ~。</p>
+<p>​ 2.无参数无返回值。</p>
+<p>​ 3.一个类有且只有一个析构函数。若未显式定义，系统会自动生成默认的析构函数。</p>
+<p>​ 4.对象生命周期结束时，C++编译系统系统自动调用析构函数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> DataType;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SeqList</span><br>&#123; <br><span class="hljs-keyword">public</span> :<br> 	<span class="hljs-built_in">SeqList</span> (<span class="hljs-type">int</span> capacity = <span class="hljs-number">10</span>)<br> 	&#123;<br> 		_pData = (DataType*)<span class="hljs-built_in">malloc</span>(capacity * <span class="hljs-built_in">sizeof</span>(DataType));<br> 		<span class="hljs-built_in">assert</span>(_pData);<br> <br> 		_size = <span class="hljs-number">0</span>;<br> 		_capacity = capacity;<br> 	&#125;<br> <br> 	~<span class="hljs-built_in">SeqList</span>()<br> 	&#123;<br> 		<span class="hljs-keyword">if</span> (_pData)<br>	 	&#123;<br> 			<span class="hljs-built_in">free</span>(_pData ); <span class="hljs-comment">// 释放堆上的空间</span><br> 			_pData = <span class="hljs-literal">NULL</span>; <span class="hljs-comment">// 将指针置为空</span><br> 			_capacity = <span class="hljs-number">0</span>;<br> 			_size = <span class="hljs-number">0</span>;<br>		&#125;<br> 	&#125;<br> <br><span class="hljs-keyword">private</span> :<br> 	<span class="hljs-type">int</span>* _pData ;<br>    <span class="hljs-type">size_t</span> _size;<br> 	<span class="hljs-type">size_t</span> _capacity;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<p>​ 5.关于编译器自动生成的析构函数，是否会完成一些事情呢？下面的程序我们会看到，编译器生成的默认 析构函数， 对会自定类型成员调用它的析构函数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">String</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> 	<span class="hljs-built_in">String</span>(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* str = <span class="hljs-string">&quot;jack&quot;</span>)<br> 	&#123;<br> 		_str = (<span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in">strlen</span>(str) + <span class="hljs-number">1</span>);<br> 		<span class="hljs-built_in">strcpy</span>(_str, str);<br> 	&#125;<br> 	~<span class="hljs-built_in">String</span>()<br> 	&#123;<br> 		cout &lt;&lt; <span class="hljs-string">&quot;~String()&quot;</span> &lt;&lt; endl;<br> 		<span class="hljs-built_in">free</span>(_str);<br> 	&#125;<br><span class="hljs-keyword">private</span>:<br> 	<span class="hljs-type">char</span>* _str;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span><br>	&#123;<br>		<span class="hljs-keyword">private</span>:<br>		String _name;<br> 		<span class="hljs-type">int</span> _age;<br>	&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br> 	Person p;<br> 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h2><a id="_199"></a>拷贝构造函数</h2>
+<p>拷贝构造函数也是特殊的成员函数，其特征如下：</p>
+<ol><li>拷贝构造函数是构造函数的一个重载形式。</li><li>拷贝构造函数的参数只有一个且必须使用引用传参，使用传值方式会引发无穷递归调用。</li></ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 拷贝构造函数Date.h</span><br>  <span class="hljs-comment">// d2(d1)</span><br>	<span class="hljs-built_in">Date</span>(<span class="hljs-type">const</span> Date&amp; d);<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"> Date::<span class="hljs-built_in">Date</span>(<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-comment">//Date.cpp</span><br>&#123;<br>	_year = d._year;<br>	_month = d._month;<br>	_day = d._day;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<pre><code class="hljs">	3.若未显示定义，系统生成默认的拷贝构造函数。 默认的拷贝构造函数对象按内存存储按字节序完成拷 贝，这种拷			贝我们叫做浅拷贝，或者值拷贝。
+</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> 	<span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year = <span class="hljs-number">1900</span>, <span class="hljs-type">int</span> month = <span class="hljs-number">1</span>, <span class="hljs-type">int</span> day = <span class="hljs-number">1</span>)<br> 	&#123;<br> 		_year = year;<br>		 _month = month;<br>		 _day = day;<br> 	&#125;<br><span class="hljs-keyword">private</span>:<br>	 <span class="hljs-type">int</span> _year;<br>	 <span class="hljs-type">int</span> _month;<br> 	<span class="hljs-type">int</span> _day;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br> 	Date d1;<br>    <span class="hljs-comment">// 这里d2调用的默认拷贝构造完成拷贝，d2和d1的值也是一样的。</span><br>	<span class="hljs-function">Date <span class="hljs-title">d2</span><span class="hljs-params">(d1)</span></span>;<br> 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<p>​ 4.那么编译器生成的默认拷贝构造函数已经可以完成字节序的值拷贝了，我们还需要自己实现吗？当然像 日期类这样 的类是没必要的。那么下面的类呢？验证一下试试？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//这里会发现下面的程序会崩溃掉,这里就需要深拷贝去解决。</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">String</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br> 	<span class="hljs-built_in">String</span>(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* str = <span class="hljs-string">&quot;jack&quot;</span>)<br> 	&#123;<br> 		_str = (<span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in">strlen</span>(str) + <span class="hljs-number">1</span>);<br> 		<span class="hljs-built_in">strcpy</span>(_str, str);<br>	 &#125;<br> 	~<span class="hljs-built_in">String</span>()<br> 	&#123;<br> 		cout &lt;&lt; <span class="hljs-string">&quot;~String()&quot;</span> &lt;&lt; endl;<br> 		<span class="hljs-built_in">free</span>(_str);<br> 	&#125;<br><span class="hljs-keyword">private</span>:<br>	 <span class="hljs-type">char</span>* _str;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br> 	<span class="hljs-function">String <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">&quot;hello&quot;</span>)</span></span>;<br>	 <span class="hljs-function">String <span class="hljs-title">s2</span><span class="hljs-params">(s1)</span></span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h2><a id="_279"></a>操作符重载</h2>
+<blockquote>
+<p>C++为了增强代码的可读性引入了运算符重载，运算符重载是具有特殊函数名的函数，也具有其返回值类 型，函数名字以及参数列表，其返回值类型与参数列表与普通的函数类似。</p>
+</blockquote>
+<blockquote>
+<p>函数名字为：关键字operator后面接需要重载的运算符符号。</p>
+<p>函数原型：返回值类型 operator操作符(参数列表)</p>
+<p>注意： 不能通过连接其他符号来创建新的操作符：比如operator@</p>
+<pre><code class="hljs">  	重载操作符必须有一个类类型或者枚举类型的操作数
+</code></pre>
+<p>​ 用于内置类型的操作符，其含义不能改变，例如：内置的整型+，不 能改变其含义</p>
+<p>​ 作为类成员的重载函数时，其形参看起来比操作数数目少1成员函数的 操作符有一个默认的形参this，限定 为第一个形参 .</p>
+<p>​ .*、:: 、sizeof 、?: 、. 注意以上5个运算符不能重载。这个经常在笔试选择题中出现。</p>
+</blockquote>
+<h3><a id="_299"></a>+=重载</h3>
+<blockquote>
+<p>改变自己的值</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Date&amp; <span class="hljs-keyword">operator</span>+=(<span class="hljs-type">int</span> day);<span class="hljs-comment">//声明</span><br><br>Date&amp; Date::  <span class="hljs-keyword">operator</span>+=(<span class="hljs-type">int</span> day)<span class="hljs-comment">//定义</span><br>&#123;<br>	<span class="hljs-keyword">if</span> (day &lt; <span class="hljs-number">0</span>)<span class="hljs-comment">//小于零相当于减正数 &gt;0好算</span><br>	&#123;<br>		<span class="hljs-built_in">return</span> (*<span class="hljs-keyword">this</span>) -= (-day);<br>	&#125;<br><br>	_day += day;<span class="hljs-comment">//先加一下</span><br><br>	<span class="hljs-keyword">while</span> (_day&gt;<span class="hljs-built_in">GetMonthDay</span>(_year,_month))<br>	&#123;<br>		_day -= <span class="hljs-built_in">GetMonthDay</span>(_year, _month);;<span class="hljs-comment">//看这个月的天数能不能抵消</span><br>		++_month;<br>		<span class="hljs-keyword">if</span> (_month ==<span class="hljs-number">13</span>)<br>		&#123;<br>			_year++;<br>			_month = <span class="hljs-number">1</span>;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="_331"></a>+操作符重载</h3>
+<blockquote>
+<p>不改变自己的值</p>
+<p>写+= 然后+复用+= 因为+=是引用返回，效率能高一点</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Date <span class="hljs-keyword">operator</span>+(<span class="hljs-type">int</span> day)<span class="hljs-type">const</span>;<span class="hljs-comment">//声明</span><br><br>Date Date:: <span class="hljs-keyword">operator</span>+(<span class="hljs-type">int</span> day)<span class="hljs-type">const</span><span class="hljs-comment">//定义</span><br>&#123;<br>	<span class="hljs-function">Date <span class="hljs-title">d</span><span class="hljs-params">(*<span class="hljs-keyword">this</span>)</span></span>;<span class="hljs-comment">//因为不改变自身的值所以复制一份，然后返回复制的拿份的值(因为函数结束变量会销毁)</span><br>	d += day;<br>	<span class="hljs-keyword">return</span> d;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="_348"></a>-=重载</h3>
+<blockquote>
+<p>改变自己的值</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Date&amp; <span class="hljs-keyword">operator</span>-=(<span class="hljs-type">int</span> day);<span class="hljs-comment">//声明</span><br><br>Date&amp; Date:: <span class="hljs-keyword">operator</span>-=(<span class="hljs-type">int</span> day)<span class="hljs-comment">//定义</span><br>&#123;<br>	<span class="hljs-keyword">if</span> (day &lt; <span class="hljs-number">0</span>)<br>	&#123;<br>		<span class="hljs-built_in">return</span> (*<span class="hljs-keyword">this</span>) +=(-day);<br>	&#125;<br>	_day -= day;<span class="hljs-comment">//先减一下</span><br>	<span class="hljs-keyword">while</span> (_day&lt;<span class="hljs-built_in">GetMonthDay</span>(_year,_month))<br>	&#123;<br>		--_month;<br>		<span class="hljs-keyword">if</span> (_month == <span class="hljs-number">0</span>)<br>		&#123;<br>			_year--;<br>			_month = <span class="hljs-number">12</span>;<br>		&#125;<br>		_day += <span class="hljs-built_in">GetMonthDay</span>(_year, _month);<br>	&#125;<br>	<span class="hljs-keyword">return</span>*<span class="hljs-keyword">this</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="_378"></a>-操作符重载</h3>
+<blockquote>
+<p>不改变自己的值</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Date <span class="hljs-keyword">operator</span>-(<span class="hljs-type">int</span> day)<span class="hljs-type">const</span>;<span class="hljs-comment">//声明</span><br><br>Date Date::  <span class="hljs-keyword">operator</span>-(<span class="hljs-type">int</span> day)<span class="hljs-type">const</span><br>&#123;<br>	<span class="hljs-function">Date <span class="hljs-title">d</span><span class="hljs-params">(*<span class="hljs-keyword">this</span>)</span></span>;<br>	d -= day;<br>	<span class="hljs-keyword">return</span> d;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="_395"></a>前置++重载</h3>
+<blockquote>
+<p>先加再用</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Date&amp; Date:: <span class="hljs-keyword">operator</span>++()<br>&#123;<br>	*<span class="hljs-keyword">this</span> += <span class="hljs-number">1</span>;<span class="hljs-comment">//调用一个+=函数</span><br>	<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="_409"></a>后置++重载</h3>
+<blockquote>
+<p>先用再加</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 后置++ 先用再+  传一个int变量用来区分前置后置 有 int 就是后置</span><br>Date  Date:: <span class="hljs-keyword">operator</span>++(<span class="hljs-type">int</span>)<span class="hljs-comment">//先把自己的值拷贝给tmp，然后返回tmp，用tmp，。</span><br>&#123;<br>	<span class="hljs-function">Date <span class="hljs-title">tmp</span><span class="hljs-params">(*<span class="hljs-keyword">this</span>)</span></span>;<br>	*<span class="hljs-keyword">this</span> += <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">return</span> tmp;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="___427"></a>前置 - -重载</h3>
+<blockquote>
+<p>先减再用</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Date&amp; Date:: <span class="hljs-keyword">operator</span>--()<br>&#123;<br>	*<span class="hljs-keyword">this</span> -= <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="___441"></a>后置- - 重载</h3>
+<blockquote>
+<p>先用再减</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Date Date:: <span class="hljs-keyword">operator</span>--(<span class="hljs-type">int</span>)<br>&#123;<br>	<span class="hljs-function">Date <span class="hljs-title">tmp</span><span class="hljs-params">(*<span class="hljs-keyword">this</span>)</span></span>;<br>	*<span class="hljs-keyword">this</span> -= <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">return</span> tmp;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>比较运算符重载只需要写一个等于和一个小于（大于和等于也可以），其余的复用就行了，看我代码就可以理解</p>
+</blockquote>
+<h3><a id="_460"></a>&gt;重载</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span>&gt;(<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span><br>	&#123;<br>		<span class="hljs-keyword">return</span> !(*<span class="hljs-keyword">this</span> &lt;= d);<br>	&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="_471"></a>&lt;重载</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">bool</span> Date:: <span class="hljs-keyword">operator</span> &lt; (<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span><br>&#123;<br>	<span class="hljs-keyword">if</span> ((_year &lt; d._year) ||<br>		(_year == d._year &amp;&amp; _month &lt; d._month) ||<br>		(_year == d._year &amp;&amp; _month == d._month &amp;&amp; _day &lt; d._day))<br>	&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="_489"></a>&gt;=重载</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &gt;= (<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span><br>	&#123;<br>		<span class="hljs-keyword">return</span> !(*<span class="hljs-keyword">this</span> &lt; d);<br>	&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="_500"></a>&lt;=重载</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt;= (<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span><br>	&#123;<br>		<span class="hljs-built_in">return</span> ((*<span class="hljs-keyword">this</span> &lt; d) || (*<span class="hljs-keyword">this</span> == d));<br>	&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="_511"></a>==重载</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">bool</span> Date:: <span class="hljs-keyword">operator</span>==(<span class="hljs-type">const</span> Date&amp; d) <span class="hljs-type">const</span><br>&#123;<br>	<span class="hljs-built_in">return</span> ((_year == d._year) &amp;&amp;<br>		(_month == d._month) &amp;&amp;<br>		(_day == d._day));<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="_524"></a>！=重载</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> != (<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span><br>&#123;<br>	<span class="hljs-keyword">return</span> !(*<span class="hljs-keyword">this</span> == d);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3><a id="___535"></a>赋值运算符 = 重载</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Date&amp; Date::<span class="hljs-keyword">operator</span>=(<span class="hljs-type">const</span> Date&amp; d)<br>&#123;<br>	<span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> != &amp;d)<span class="hljs-comment">//防止自己给自己赋值</span><br>	&#123;<br>		_year = d._year;<br>		_month = d._month;<br>		_day = d._day;<br>	&#125;<br>	<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h2><a id="const_556"></a>const成员函数</h2>
+<blockquote>
+<p>在不改变类成员变量的情况下我们一般给类的成员函数加const</p>
+<p>可由于this指针是隐藏的，所以我们在函数名后面加const</p>
+<p>就像这样：void Print()const；</p>
+<p>日期类我给能加const的函数都加了</p>
+</blockquote>
+<h2><a id="const_566"></a>取地址及const取地址操作符重载</h2>
+<p>这两个默认成员函数一般不用重新定义 ，编译器默认会生成。</p>
+<p>这两个运算符一般不需要重载，使用编译器生成的默认取地址的重载即可，只有特殊情况，才需要重载，比 如不想让别人获取到指定的内容！</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Date* Date:: <span class="hljs-keyword">operator</span> &amp;()<span class="hljs-comment">//一般像这种短的函数写在类里当内联函数处理</span><br>&#123;<br>    <span class="hljs-comment">//return this;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>&#125;<br><br><span class="hljs-type">const</span> Date* Date:: <span class="hljs-keyword">operator</span> &amp;()<span class="hljs-type">const</span><span class="hljs-comment">//如果是const变量就调用这个函数</span><br>&#123;<br>    <span class="hljs-comment">//return this;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h1><a id="_588"></a>日期类的实现</h1>
+<h2><a id="Dateh_594"></a>Date.h</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Date</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-comment">// 获取某年某月的天数√</span><br>	<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">GetMonthDay</span><span class="hljs-params">(<span class="hljs-type">int</span> year, <span class="hljs-type">int</span> month)</span></span>;<br>	<span class="hljs-comment">// 全缺省的构造函数√</span><br>	<span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year = <span class="hljs-number">1</span>, <span class="hljs-type">int</span> month = <span class="hljs-number">1</span>, <span class="hljs-type">int</span> day = <span class="hljs-number">1</span>);<br>	<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Print</span><span class="hljs-params">()</span><span class="hljs-type">const</span></span>;<span class="hljs-comment">//打印√</span><br>	<span class="hljs-comment">// 拷贝构造函数√</span><br>  <span class="hljs-comment">// d2(d1)</span><br>	<span class="hljs-built_in">Date</span>(<span class="hljs-type">const</span> Date&amp; d);<br>	<span class="hljs-comment">// 赋值运算符重载</span><br>  <span class="hljs-comment">// d2 = d3 -&gt; d2.operator=(&amp;d2, d3)√</span><br>	Date&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-type">const</span> Date&amp; d);<br>	<span class="hljs-comment">// 日期+=天数</span><br>	Date&amp; <span class="hljs-keyword">operator</span>+=(<span class="hljs-type">int</span> day);<br>	<span class="hljs-comment">// 日期+天数</span><br>	Date <span class="hljs-keyword">operator</span>+(<span class="hljs-type">int</span> day)<span class="hljs-type">const</span>;<br><br>	<span class="hljs-comment">// 日期-天数</span><br>	Date <span class="hljs-keyword">operator</span>-(<span class="hljs-type">int</span> day)<span class="hljs-type">const</span>;<br>	<span class="hljs-comment">// 日期-=天数</span><br>	Date&amp; <span class="hljs-keyword">operator</span>-=(<span class="hljs-type">int</span> day);<br>	<span class="hljs-comment">// 前置++</span><br>	Date&amp; <span class="hljs-keyword">operator</span>++();<br>	<span class="hljs-comment">// 后置++</span><br>	Date <span class="hljs-keyword">operator</span>++(<span class="hljs-type">int</span>);<br>	<span class="hljs-comment">// 后置--</span><br>	Date <span class="hljs-keyword">operator</span>--(<span class="hljs-type">int</span>);<br>	<span class="hljs-comment">// 前置--</span><br>	Date&amp; <span class="hljs-keyword">operator</span>--();<br>	 <span class="hljs-comment">//&gt;运算符重载</span><br>	<span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span>&gt;(<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span><br>	&#123;<br>		<span class="hljs-keyword">return</span> !(*<span class="hljs-keyword">this</span> &lt;= d);<br>	&#125;<br><br>	<span class="hljs-comment">// ==运算符重载√</span><br>	<span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span>==(<span class="hljs-type">const</span> Date&amp; d) <span class="hljs-type">const</span>;<br>	<br>	<span class="hljs-comment">// &gt;=运算符重载√</span><br>	<span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &gt;= (<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span><br>	&#123;<br>		<span class="hljs-keyword">return</span> !(*<span class="hljs-keyword">this</span> &lt; d);<br>	&#125;<br>	<br>	<span class="hljs-comment">// &lt;运算符重载√</span><br>	<span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt; (<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span>;<br>	<br>	<span class="hljs-comment">// &lt;=运算符重载√</span><br>	<span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt;= (<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span><br>	&#123;<br>		<span class="hljs-built_in">return</span> ((*<span class="hljs-keyword">this</span> &lt; d) || (*<span class="hljs-keyword">this</span> == d));<br>	&#125;<br><br>	<span class="hljs-comment">// !=运算符重载√</span><br>	<span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> != (<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span><br>	&#123;<br>		<span class="hljs-keyword">return</span> !(*<span class="hljs-keyword">this</span> == d);<br>	&#125;<br>	<span class="hljs-comment">// 日期-日期 返回天数</span><br>	<span class="hljs-type">int</span> <span class="hljs-keyword">operator</span>-(<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span>;<br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-type">int</span> _year;<br>	<span class="hljs-type">int</span> _month;<br>	<span class="hljs-type">int</span> _day;<br>&#125;;<br><br><br></code></pre></td></tr></table></figure>
+<h2><a id="Datecpp_671"></a>Date.cpp</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;date.h&quot;</span></span><br><br><span class="hljs-comment">// 获取某年某月的天数</span><br><span class="hljs-type">int</span> Date:: <span class="hljs-built_in">GetMonthDay</span>(<span class="hljs-type">int</span> year, <span class="hljs-type">int</span> month)<br>&#123;<br>	<span class="hljs-type">static</span> <span class="hljs-type">int</span> Mday[<span class="hljs-number">13</span>] = &#123; <span class="hljs-number">0</span>,<span class="hljs-number">31</span>,<span class="hljs-number">28</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span> &#125;;<span class="hljs-comment">//定义成静态的避免多次开辟空间</span><br>	<span class="hljs-keyword">if</span> (((year % <span class="hljs-number">4</span> == <span class="hljs-number">0</span> &amp;&amp; year % <span class="hljs-number">100</span> != <span class="hljs-number">0</span>) || (year % <span class="hljs-number">400</span> == <span class="hljs-number">0</span>)) &amp;&amp; (month == <span class="hljs-number">2</span>))<br>	&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-number">29</span>;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">return</span> Mday[month];<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">// 全缺省的构造函数</span><br>Date::<span class="hljs-built_in">Date</span>(<span class="hljs-type">int</span> year , <span class="hljs-type">int</span> month ,<span class="hljs-type">int</span> day )<br>&#123;<br>	<span class="hljs-keyword">if</span> (year &gt;= <span class="hljs-number">1</span> &amp;&amp;<br>		month &lt;= <span class="hljs-number">12</span> &amp;&amp; month &gt;= <span class="hljs-number">1</span> &amp;&amp;<br>		day &gt;= <span class="hljs-number">1</span> &amp;&amp; day &lt;= <span class="hljs-built_in">GetMonthDay</span>(year, month))<br>	&#123;<br>		_year = year;<br>		_month = month;<br>		_day = day;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;日期非法&quot;</span> &lt;&lt; endl;<br>	&#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Date::Print</span><span class="hljs-params">()</span><span class="hljs-type">const</span></span><br><span class="hljs-function"></span>&#123;<br>	cout &lt;&lt; _year &lt;&lt; <span class="hljs-string">&quot;-&quot;</span> &lt;&lt; _month &lt;&lt; <span class="hljs-string">&quot;-&quot;</span> &lt;&lt; _day &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-comment">// 拷贝构造函数</span><br><span class="hljs-comment">// d2(d1)</span><br> Date::<span class="hljs-built_in">Date</span>(<span class="hljs-type">const</span> Date&amp; d)<br>&#123;<br>	_year = d._year;<br>	_month = d._month;<br>	_day = d._day;<br>&#125;<br><br><span class="hljs-comment">// 赋值运算符重载</span><br><span class="hljs-comment">// d2 = d3 -&gt; d2.operator=(&amp;d2, d3)</span><br>Date&amp; Date::<span class="hljs-keyword">operator</span>=(<span class="hljs-type">const</span> Date&amp; d)<br>&#123;<br>	<span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> != &amp;d)<br>	&#123;<br>		_year = d._year;<br>		_month = d._month;<br>		_day = d._day;<br>	&#125;<br>	<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br><span class="hljs-comment">// 日期+=天数 写+= 然后+调用+= 因为+=是引用返回</span><br>Date&amp; Date::  <span class="hljs-keyword">operator</span>+=(<span class="hljs-type">int</span> day)<br>&#123;<br>	<span class="hljs-keyword">if</span> (day &lt; <span class="hljs-number">0</span>)<span class="hljs-comment">//小于零相当于减正数 &gt;0好算</span><br>	&#123;<br>		<span class="hljs-built_in">return</span> (*<span class="hljs-keyword">this</span>) -= (-day);<br>	&#125;<br><br>	_day += day;<span class="hljs-comment">//先加一下</span><br><br>	<span class="hljs-keyword">while</span> (_day&gt;<span class="hljs-built_in">GetMonthDay</span>(_year,_month))<br>	&#123;<br>		_day -= <span class="hljs-built_in">GetMonthDay</span>(_year, _month);;<span class="hljs-comment">//看这个月的天数能不能抵消</span><br>		++_month;<br>		<span class="hljs-keyword">if</span> (_month ==<span class="hljs-number">13</span>)<br>		&#123;<br>			_year++;<br>			_month = <span class="hljs-number">1</span>;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br><span class="hljs-comment">// 日期+天数</span><br>Date Date:: <span class="hljs-keyword">operator</span>+(<span class="hljs-type">int</span> day)<span class="hljs-type">const</span><br>&#123;<br>	<span class="hljs-function">Date <span class="hljs-title">d</span><span class="hljs-params">(*<span class="hljs-keyword">this</span>)</span></span>;<br>	d += day;<br>	<span class="hljs-keyword">return</span> d;<br>&#125;<br><br><span class="hljs-comment">// 日期-天数 这其实是就是把不合理的数据变成合理的数据</span><br>Date Date::  <span class="hljs-keyword">operator</span>-(<span class="hljs-type">int</span> day)<span class="hljs-type">const</span><br>&#123;<br>	<span class="hljs-function">Date <span class="hljs-title">d</span><span class="hljs-params">(*<span class="hljs-keyword">this</span>)</span></span>;<br>	d -= day;<br>	<span class="hljs-keyword">return</span> d;<br>&#125;<br><br><span class="hljs-comment">// 日期-=天数</span><br>Date&amp; Date:: <span class="hljs-keyword">operator</span>-=(<span class="hljs-type">int</span> day)<br>&#123;<br>	<span class="hljs-keyword">if</span> (day &lt; <span class="hljs-number">0</span>)<br>	&#123;<br>		<span class="hljs-built_in">return</span> (*<span class="hljs-keyword">this</span>) +=(-day);<br>	&#125;<br>	_day -= day;<span class="hljs-comment">//先减一下</span><br>	<span class="hljs-keyword">while</span> (_day&lt;<span class="hljs-built_in">GetMonthDay</span>(_year,_month))<br>	&#123;<br>		--_month;<br>		<span class="hljs-keyword">if</span> (_month == <span class="hljs-number">0</span>)<br>		&#123;<br>			_year--;<br>			_month = <span class="hljs-number">12</span>;<br>		&#125;<br>		_day += <span class="hljs-built_in">GetMonthDay</span>(_year, _month);<br>	&#125;<br>	<span class="hljs-keyword">return</span>*<span class="hljs-keyword">this</span>;<br>&#125;<br><br><span class="hljs-comment">// 前置++</span><br>Date&amp; Date:: <span class="hljs-keyword">operator</span>++()<br>&#123;<br>	*<span class="hljs-keyword">this</span> += <span class="hljs-number">1</span>;<span class="hljs-comment">//调用一个函数</span><br>	<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br><span class="hljs-comment">// 后置++ 先用再+</span><br>Date  Date:: <span class="hljs-keyword">operator</span>++(<span class="hljs-type">int</span>)<br>&#123;<br>	<span class="hljs-function">Date <span class="hljs-title">tmp</span><span class="hljs-params">(*<span class="hljs-keyword">this</span>)</span></span>;<br>	*<span class="hljs-keyword">this</span> += <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">return</span> tmp;<br>&#125;<br><br><span class="hljs-comment">// 后置--</span><br>Date Date:: <span class="hljs-keyword">operator</span>--(<span class="hljs-type">int</span>)<br>&#123;<br>	<span class="hljs-function">Date <span class="hljs-title">tmp</span><span class="hljs-params">(*<span class="hljs-keyword">this</span>)</span></span>;<br>	*<span class="hljs-keyword">this</span> -= <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">return</span> tmp;<br>&#125;<br><br><span class="hljs-comment">// 前置--</span><br>Date&amp; Date:: <span class="hljs-keyword">operator</span>--()<br>&#123;<br>	*<span class="hljs-keyword">this</span> -= <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br><span class="hljs-comment">// ==运算符重载</span><br><span class="hljs-type">bool</span> Date:: <span class="hljs-keyword">operator</span>==(<span class="hljs-type">const</span> Date&amp; d) <span class="hljs-type">const</span><br>&#123;<br>	<span class="hljs-built_in">return</span> ((_year == d._year) &amp;&amp;<br>		(_month == d._month) &amp;&amp;<br>		(_day == d._day));<br>&#125;<br><br><span class="hljs-comment">// &lt;运算符重载</span><br><span class="hljs-type">bool</span> Date:: <span class="hljs-keyword">operator</span> &lt; (<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span><br>&#123;<br>	<span class="hljs-keyword">if</span> ((_year &lt; d._year) ||<br>		(_year == d._year &amp;&amp; _month &lt; d._month) ||<br>		(_year == d._year &amp;&amp; _month == d._month &amp;&amp; _day &lt; d._day))<br>	&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">// 日期-日期 返回天数</span><br><span class="hljs-type">int</span> Date:: <span class="hljs-keyword">operator</span>-(<span class="hljs-type">const</span> Date&amp; d)<span class="hljs-type">const</span><br>&#123;<br>	<span class="hljs-type">int</span> flag = <span class="hljs-number">1</span>;<span class="hljs-comment">//默认*this大</span><br>	<span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<br>	Date max = *<span class="hljs-keyword">this</span>;<br>	Date min = d;<br>	<span class="hljs-keyword">if</span> ((*<span class="hljs-keyword">this</span>)&lt; d)<br>	&#123;<br>		flag = <span class="hljs-number">-1</span>;<span class="hljs-comment">//*this小的话 剪完之后就是负数所以flag=-1</span><br>		min = *<span class="hljs-keyword">this</span>;<br>		max = d;<br>	&#125;<br>	<span class="hljs-keyword">while</span> (min!=max)<span class="hljs-comment">//min+几次 count就+几次</span><br>	&#123;<br>		min++;<br>		count++;<br>	&#125;<br>	<span class="hljs-keyword">return</span> count * flag;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/96a6d71cc9338fdf8f1228a9c0f2ee25.png#pic_center" srcset="/img/loading.gif" lazyload><br/> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/620c235af9596ac1f112f5a618151ec9.png#pic_center" srcset="/img/loading.gif" lazyload><br/> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/d48b7e0f81a7cf8192f262762eca7677.png#pic_center" srcset="/img/loading.gif" lazyload><br/> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/img_convert/19e97366f97697eaa33e0bab31d87e19.png#pic_center" srcset="/img/loading.gif" lazyload/></img></img></img></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c/" class="category-chain-item">c++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">#开发语言</a>
+      
+        <a href="/tags/c/">#c++</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>类和对象中，通过日期类来深入理解构造函数，析构函数，重载，拷贝构造，赋值重载，取地址重载，操作符重载</div>
+      <div>https://6jackjiang.github.io/2022/05/24/categories/c++/类和对象中，通过日期类来深入理解构造函数，析构函数，重载，拷贝构造，赋值重载，取地址重载，操作符重载/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>米兰的小铁匠</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月24日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/26/categories/c++/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B8%8B%E7%AF%87%E4%B9%8B%E5%86%8D%E8%B0%88%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%8C%E5%8F%8B%E5%85%83%EF%BC%8C%E5%86%85%E9%83%A8%E7%B1%BB/" title="类和对象下篇之再谈构造函数，友元，内部类">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">类和对象下篇之再谈构造函数，友元，内部类</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/23/categories/python/Python%20%E4%B8%8B%E6%A0%87%E5%BC%82%E5%B8%B8/" title="Python 下标异常">
+                        <span class="hidden-mobile">Python 下标异常</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
